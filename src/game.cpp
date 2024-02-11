@@ -3,9 +3,15 @@
 
 
 Game::Game() {
+    event_handler.add_key(KEY_W);
+    event_handler.add_key(KEY_S);
+    event_handler.add_key(KEY_A);
+    event_handler.add_key(KEY_D);
+
+    logic_timer = Timer(GAME_PERIOD);
+
     grid = Grid();
     snake = Snake(0U, 0U);
-    logic_timer = Timer(GAME_PERIOD);
 
     running = false;
     paused = false;
@@ -13,7 +19,11 @@ Game::Game() {
 
 
 void Game::events(void) {
-
+    event_handler.update();
+    if (event_handler.check(KEY_W, HOLD)) {snake.turn(DIRECTION::UP);}
+    if (event_handler.check(KEY_S, HOLD)) {snake.turn(DIRECTION::DOWN);}
+    if (event_handler.check(KEY_A, HOLD)) {snake.turn(DIRECTION::LEFT);}
+    if (event_handler.check(KEY_D, HOLD)) {snake.turn(DIRECTION::RIGHT);}
 }
 
 

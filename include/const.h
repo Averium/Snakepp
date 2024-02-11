@@ -1,7 +1,7 @@
 #pragma once
 
 #include "raylib.h"
-#include "intvector.h"
+#include "integer_vector.h"
 
 
 #define FPS 60U

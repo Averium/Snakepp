@@ -1,4 +1,4 @@
-#include "intvector.h"
+#include "integer_vector.h"
 
 
 Vector::Vector(void) {

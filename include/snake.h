@@ -1,7 +1,7 @@
 #pragma once
 
 #include "const.h"
-#include "intvector.h"
+#include "integer_vector.h"
 
 
 class Snake {
@@ -11,7 +11,7 @@ public:
     Snake(unsigned char row, unsigned char col);
 
     void move(void);
-    void turn(void);
+    void turn(Vector direction);
 
     Vector position;
     Vector direction;

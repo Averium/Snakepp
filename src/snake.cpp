@@ -20,6 +20,6 @@ void Snake::move(void) {
 }
 
 
-void Snake::turn(void) {
-
+void Snake::turn(Vector direction) {
+    this->direction = direction;
 }

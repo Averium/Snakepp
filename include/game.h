@@ -3,6 +3,7 @@
 #include "grid.h"
 #include "snake.h"
 #include "timer.h"
+#include "event_handler.h"
 
 
 class Game {
@@ -10,9 +11,11 @@ class Game {
 public:
     Game();
 
+    Timer logic_timer;
+    EventHandler event_handler;
+
     Grid grid;
     Snake snake;
-    Timer logic_timer;
 
     void start(void);
 

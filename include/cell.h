@@ -2,7 +2,7 @@
 
 #include "raylib.h"
 #include "const.h"
-#include <vector>
+#include "integer_vector.h"
 
 
 enum celltype{
@@ -29,7 +29,7 @@ public:
     unsigned int counter;
 
 private:
-    std::vector<unsigned int> grid2screen(unsigned char row, unsigned char col);
+    Vector grid2screen(unsigned char row, unsigned char col);
 
 
 };
