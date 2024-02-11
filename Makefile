@@ -8,7 +8,7 @@ OBJECT := $(patsubst $(SOURCE_FOLDER)/%.cpp,$(OBJECT_FOLDER)/%.o,$(SOURCE))
 HEADER := $(wildcard $(INCLUDE_FOLDER)/game/*.hpp)
 
 SFML_LINK_FLAGS := -lraylib -lopengl32 -lgdi32 -lwinmm
-INCLUDE_FLAGS := -I$(INCLUDE_FOLDER) -I$(INCLUDE_FOLDER)/game -I$(INCLUDE_FOLDER)/SFML
+INCLUDE_FLAGS := -I$(INCLUDE_FOLDER)
 
 LINK := -L$(LIBRARY_FOLER) $(SFML_LINK_FLAGS)
 EXE := main
