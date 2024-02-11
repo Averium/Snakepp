@@ -1,4 +1,5 @@
 #include "cell.h"
+#include "debug.h"
 
 
 Cell::Cell() {
@@ -14,6 +15,7 @@ Cell::Cell(celltype type, unsigned int counter) {
 void Cell::set_state(celltype type, unsigned int counter) {
     this->type = type;
     this->counter = counter;
+    print(counter);
 }
 
 

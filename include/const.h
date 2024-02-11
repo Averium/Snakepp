@@ -7,6 +7,8 @@
 #define FPS 60U
 #define GAME_PERIOD 0.5F
 
+#define STARTING_LENGTH 3U
+
 #define GRID_COLUMNS 20U
 #define GRID_ROWS 20U
 #define CELL_SIZE 30U

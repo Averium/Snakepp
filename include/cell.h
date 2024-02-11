@@ -24,11 +24,12 @@ public:
     void update(void);
     void render(unsigned char row, unsigned char col);
 
-    celltype type; 
+    celltype type;
+    
+    unsigned int counter;
 
 private:
     std::vector<unsigned int> grid2screen(unsigned char row, unsigned char col);
 
-    unsigned int counter;
 
 };

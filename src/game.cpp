@@ -22,7 +22,6 @@ void Game::update(void) {
         snake.move();
         Cell* snake_head = grid.cell_at(snake.position);
         snake_head->set_state(SNAKE_HEAD, snake.length);
-
         grid.update();
     }
 }
