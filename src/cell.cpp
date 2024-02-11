@@ -3,7 +3,7 @@
 
 
 Cell::Cell() {
-    set_state(EMPTY, 0U);
+    set_state(EMPTY);
 }
 
 
@@ -18,13 +18,18 @@ void Cell::set_state(celltype type, unsigned int counter) {
 }
 
 
+void Cell::set_state(celltype type) {
+    this->type = type;
+    this->counter = UINT_ZERO;
+}
+
+
 void Cell::update(void) {
-    if (counter > 0U) {
+    if (counter > UINT_ZERO) {
         counter--;
     }
-    else {
-        counter = 0U;
-        type = EMPTY;
+    else if (type == SNAKE_HEAD || type == SNAKE_BODY) {
+        set_state(EMPTY);
     }
 }
 

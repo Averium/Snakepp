@@ -2,6 +2,7 @@
 
 #include "grid.h"
 #include "snake.h"
+#include "apple.h"
 #include "timer.h"
 #include "event_handler.h"
 
@@ -16,6 +17,7 @@ public:
 
     Grid grid;
     Snake snake;
+    Apple apple;
 
     void start(void);
 

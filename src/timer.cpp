@@ -3,7 +3,7 @@
 
 
 Timer::Timer() {
-    this->period = 0.0F;
+    this->period = FLOAT_ZERO;
 }
 
 

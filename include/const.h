@@ -4,8 +4,13 @@
 #include "integer_vector.h"
 
 
+#define UINT_ZERO 0U
+#define UINT_ONE 1U
+
+#define FLOAT_ZERO 0.0F
+
 #define FPS 60U
-#define GAME_PERIOD 0.5F
+#define GAME_PERIOD 0.2F
 
 #define STARTING_LENGTH 3U
 
@@ -13,6 +18,8 @@
 #define GRID_ROWS 20U
 #define CELL_SIZE 30U
 #define CELL_GAP 1U
+
+#define TITLE "SNAKE"
 
 #define NON_TRANSPARENT 255U
 

@@ -2,6 +2,7 @@
 
 #include "const.h"
 #include "integer_vector.h"
+#include <queue>
 
 
 class Snake {
@@ -11,7 +12,8 @@ public:
     Snake(unsigned char row, unsigned char col);
 
     void move(void);
-    void turn(Vector direction);
+    void turn(Vector new_direction);
+    void change_direction(void);
 
     Vector position;
     Vector direction;
@@ -19,5 +21,7 @@ public:
     unsigned int length;
 
 private:
+
+    std::queue<Vector> turn_queue;
 
 };

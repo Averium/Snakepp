@@ -15,8 +15,8 @@ Cell* Grid::cell_at(Vector position) {
 void Grid::render(void) {
     Cell* cell;
 
-    for (int row = 0; row < GRID_ROWS; row++) {
-        for (int col = 0; col < GRID_COLUMNS; col++) {
+    for (unsigned char row = UINT_ZERO; row < GRID_ROWS; row++) {
+        for (unsigned char col = UINT_ZERO; col < GRID_COLUMNS; col++) {
             
             cell = &grid[row][col];
             cell->render(row, col);
@@ -28,8 +28,8 @@ void Grid::render(void) {
 void Grid::update(void) {
     Cell* cell;
 
-    for (int row = 0; row < GRID_ROWS; row++) {
-        for (int col = 0; col < GRID_COLUMNS; col++) {
+    for (unsigned char row = UINT_ZERO; row < GRID_ROWS; row++) {
+        for (unsigned char col = UINT_ZERO; col < GRID_COLUMNS; col++) {
             
             cell = &grid[row][col];
             cell->update();

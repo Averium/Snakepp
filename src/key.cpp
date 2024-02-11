@@ -2,7 +2,7 @@
 
 
 Key::Key(void) {
-    int keycode = 0U;
+    int keycode = UINT_ZERO;
 }
 
 

@@ -20,6 +20,7 @@ public:
     Cell(celltype type, unsigned int counter);
 
     void set_state(celltype type, unsigned int counter);
+    void set_state(celltype type);
 
     void update(void);
     void render(unsigned char row, unsigned char col);

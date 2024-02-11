@@ -1,6 +1,7 @@
 #pragma once
 
 #include "raylib.h"
+#include "const.h"
 
 
 class Key {
