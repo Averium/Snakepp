@@ -7,8 +7,9 @@ Cell::Cell() {
 }
 
 
-Cell::Cell(celltype type, unsigned int counter) {
+Cell::Cell(Vector position, celltype type, unsigned int counter) {
     set_state(type, counter);
+    this->grid_position = position;
 }
 
 
@@ -34,30 +35,27 @@ void Cell::update(void) {
 }
 
 
-void Cell::render(unsigned char row, unsigned char col) {
-    Vector screen_pos = grid2screen(row, col);
+void Cell::render(Vector position) {
+    Vector screen_position = grid2screen(position);
     
     switch (type) {
-
     case SNAKE_BODY:
-        DrawRectangle(screen_pos.x, screen_pos.y, CELL_SIDE, CELL_SIDE, COLORS::SNAKE);
+        DrawRectangle(screen_position.x, screen_position.y, CELL_SIDE, CELL_SIDE, COLORS::SNAKE);
         break;
-        
     case SNAKE_HEAD:
-        DrawRectangle(screen_pos.x, screen_pos.y, CELL_SIDE, CELL_SIDE, COLORS::SNAKE);
+        DrawRectangle(screen_position.x, screen_position.y, CELL_SIDE, CELL_SIDE, COLORS::SNAKE);
         break;
-
     case APPLE:
-        DrawRectangle(screen_pos.x, screen_pos.y, CELL_SIDE, CELL_SIDE, COLORS::APPLE);
+        DrawRectangle(screen_position.x, screen_position.y, CELL_SIDE, CELL_SIDE, COLORS::APPLE);
         break;
-
     default:
-        break;
-        
+        break;   
     }
 }
 
 
-Vector Cell::grid2screen(unsigned char row, unsigned char col) {
-    return Vector(col * CELL_SIZE - CELL_GAP, row * CELL_SIZE - CELL_GAP);
+Vector Cell::grid2screen(Vector position) {
+    unsigned char col = grid_position.x;
+    unsigned char row = grid_position.y;
+    return Vector(col * CELL_SIZE + CELL_GAP, row * CELL_SIZE + CELL_GAP) + position;
 }

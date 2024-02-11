@@ -16,21 +16,20 @@ enum celltype{
 class Cell{
 
 public:
-    Cell(void);
-    Cell(celltype type, unsigned int counter);
+    Cell();
+    Cell(Vector position, celltype type, unsigned int counter);
 
     void set_state(celltype type, unsigned int counter);
     void set_state(celltype type);
 
     void update(void);
-    void render(unsigned char row, unsigned char col);
+    void render(Vector position);
 
     celltype type;
     
     unsigned int counter;
 
 private:
-    Vector grid2screen(unsigned char row, unsigned char col);
-
-
+    Vector grid2screen(Vector position);
+    Vector grid_position;
 };

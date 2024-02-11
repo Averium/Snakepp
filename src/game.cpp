@@ -8,7 +8,9 @@ Game::Game() {
     event_handler.add_key(KEY_A);
     event_handler.add_key(KEY_D);
     event_handler.add_key(KEY_P);
+    event_handler.add_key(KEY_R);
 
+    grid = Grid(LAYOUT::GRID);
     logic_timer = Timer(GAME_PERIOD);
 
     snake = Snake(UINT_ZERO, UINT_ZERO);
@@ -16,6 +18,7 @@ Game::Game() {
 
     running = false;
     paused = false;
+    game_over = false;
 }
 
 
@@ -28,11 +31,12 @@ void Game::events(void) {
     if (event_handler.check(KEY_D, PRESS)) { snake.turn(DIRECTION::RIGHT); }
 
     if (event_handler.check(KEY_P, PRESS)) { paused = !paused; }
+    if (event_handler.check(KEY_R, PRESS)) { reset(); }
 }
 
 
 void Game::update(void) {
-    if (!paused && logic_timer.tick()) {
+    if (!paused && !game_over && logic_timer.tick()) {
         
         snake.change_direction();
         snake.move();
@@ -40,14 +44,14 @@ void Game::update(void) {
         Cell* snake_head = grid.cell_at(snake.position);
         
         if (snake_head->type == SNAKE_BODY) {
-            // GAME OVER
+            game_over = true;
         }
         else if (snake_head->type == APPLE) {
             snake.length++;
             apple.repos(&grid);
         }
         
-        snake_head->set_state(SNAKE_HEAD, snake.length);
+        snake_head->set_state(SNAKE_BODY, snake.length);
         
         grid.update();
     }
@@ -55,10 +59,23 @@ void Game::update(void) {
 
 
 void Game::start(void) {
-    running = true;
-    paused = false;
+    if (!running) {
+        running = true;
+        paused = true;
+        loop();
+    }
+}
 
-    loop();
+
+void Game::reset(void) {
+    if (game_over) {
+        paused = true;
+        game_over = false;
+
+        grid = Grid(LAYOUT::GRID);
+        snake = Snake(UINT_ZERO, UINT_ZERO);
+        apple.repos(&grid);
+    }
 }
 
 

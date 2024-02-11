@@ -2,7 +2,8 @@
 
 
 int main(void) {
-    InitWindow(GRID_COLUMNS * CELL_SIZE, GRID_ROWS * CELL_SIZE, TITLE);
+    InitWindow(LAYOUT::WINDOW.x, LAYOUT::WINDOW.y, TITLE);
+    SetWindowState(FLAG_WINDOW_UNDECORATED);
     SetTargetFPS(FPS);
 
     Game game = Game();

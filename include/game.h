@@ -20,6 +20,7 @@ public:
     Apple apple;
 
     void start(void);
+    void reset(void);
 
     void events(void);
     void update(void);
@@ -29,5 +30,6 @@ public:
 private:
     bool running;
     bool paused;
+    bool game_over;
 
 };

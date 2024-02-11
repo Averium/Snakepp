@@ -12,8 +12,8 @@ class Grid{
 public:
 
     Grid(void);
+    Grid(Vector position);
 
-    void print(void);
     void update(void);
     void render(void);
 
@@ -21,4 +21,5 @@ public:
 
 private:
     Cell grid[GRID_ROWS][GRID_COLUMNS];
+    Vector position;
 };
