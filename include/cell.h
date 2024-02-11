@@ -19,6 +19,8 @@ public:
     Cell(void);
     Cell(celltype type, unsigned int counter);
 
+    void set_state(celltype type, unsigned int counter);
+
     void update(void);
     void render(unsigned char row, unsigned char col);
 
@@ -28,5 +30,5 @@ private:
     std::vector<unsigned int> grid2screen(unsigned char row, unsigned char col);
 
     unsigned int counter;
-    
+
 };

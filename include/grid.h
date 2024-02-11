@@ -13,12 +13,12 @@ public:
 
     Grid(void);
 
-    void init_grid(void);
     void print(void);
+    void update(void);
     void render(void);
 
-    Cell grid[GRID_ROWS][GRID_COLUMNS];
+    Cell* cell_at(Vector position);
 
 private:
-
+    Cell grid[GRID_ROWS][GRID_COLUMNS];
 };

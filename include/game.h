@@ -1,6 +1,8 @@
 #pragma once
 
 #include "grid.h"
+#include "snake.h"
+#include "timer.h"
 
 
 class Game {
@@ -9,6 +11,8 @@ public:
     Game();
 
     Grid grid;
+    Snake snake;
+    Timer logic_timer;
 
     void start(void);
 

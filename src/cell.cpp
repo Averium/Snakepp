@@ -2,19 +2,18 @@
 
 
 Cell::Cell() {
-    this->type = EMPTY;
-    this->counter = 0U;
+    set_state(EMPTY, 0U);
 }
 
 
 Cell::Cell(celltype type, unsigned int counter) {
-    this->type = type;
-    this->counter = counter;
+    set_state(type, counter);
 }
 
 
-std::vector<unsigned int> Cell::grid2screen(unsigned char row, unsigned char col) {
-    return {col * CELL_SIZE - CELL_GAP, row * CELL_SIZE - CELL_GAP};
+void Cell::set_state(celltype type, unsigned int counter) {
+    this->type = type;
+    this->counter = counter;
 }
 
 
@@ -47,8 +46,12 @@ void Cell::render(unsigned char row, unsigned char col) {
         break;
 
     default:
-        DrawRectangle(screen_pos[0], screen_pos[1], CELL_SIDE, CELL_SIDE, COLORS::BACKGROUND);
         break;
-
+        
     }
+}
+
+
+std::vector<unsigned int> Cell::grid2screen(unsigned char row, unsigned char col) {
+    return {col * CELL_SIZE - CELL_GAP, row * CELL_SIZE - CELL_GAP};
 }
