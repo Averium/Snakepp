@@ -20,6 +20,6 @@ public:
     Cell* cell_at(Vector position);
 
 private:
-    Cell grid[GRID_ROWS][GRID_COLUMNS];
+    Cell grid[CONST::GRID_ROWS][CONST::GRID_COLUMNS];
     Vector position;
 };

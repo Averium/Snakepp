@@ -2,9 +2,9 @@
 
 
 int main(void) {
-    InitWindow(LAYOUT::WINDOW.x, LAYOUT::WINDOW.y, TITLE);
+    InitWindow(LAYOUT::WINDOW.x, LAYOUT::WINDOW.y, "");
     SetWindowState(FLAG_WINDOW_UNDECORATED);
-    SetTargetFPS(FPS);
+    SetTargetFPS(CONST::FPS);
 
     Game game = Game();
     game.start();
@@ -26,5 +26,5 @@ TODO:
         - settings screen
         - key bindings screen
         - highscore screen
-    implement file handline
+    implement file handling
 */

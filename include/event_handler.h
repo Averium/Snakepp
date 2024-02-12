@@ -1,8 +1,8 @@
 #pragma once
+
 #include <map>
 #include <vector>
 #include "key.h"
-#include "debug.h"
 
 
 enum keymode {

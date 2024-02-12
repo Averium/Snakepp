@@ -2,7 +2,6 @@
 
 #include "raylib.h"
 #include "const.h"
-#include "integer_vector.h"
 
 
 enum celltype{

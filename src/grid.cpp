@@ -10,9 +10,9 @@ Grid::Grid(void) {}
 Grid::Grid(Vector position) {
     this->position = position;
 
-    for (unsigned char row = UINT_ZERO; row < GRID_ROWS; row++) {
-        for (unsigned char col = UINT_ZERO; col < GRID_COLUMNS; col++) {      
-            grid[row][col] = Cell(Vector(col, row), EMPTY, UINT_ZERO);
+    for (unsigned char row = CONST::UINT_ZERO; row < CONST::GRID_ROWS; row++) {
+        for (unsigned char col = CONST::UINT_ZERO; col < CONST::GRID_COLUMNS; col++) {      
+            grid[row][col] = Cell(Vector(col, row), EMPTY, CONST::UINT_ZERO);
         }
     }
 }
@@ -26,8 +26,8 @@ Cell* Grid::cell_at(Vector position) {
 void Grid::update(void) {
     Cell* cell;
 
-    for (unsigned char row = UINT_ZERO; row < GRID_ROWS; row++) {
-        for (unsigned char col = UINT_ZERO; col < GRID_COLUMNS; col++) {
+    for (unsigned char row = CONST::UINT_ZERO; row < CONST::GRID_ROWS; row++) {
+        for (unsigned char col = CONST::UINT_ZERO; col < CONST::GRID_COLUMNS; col++) {
             
             cell = &grid[row][col];
             cell->update();
@@ -39,10 +39,10 @@ void Grid::update(void) {
 void Grid::render(Vector snake_direction) {
     Cell* cell;
 
-    DrawRectangle(position.x, position.y, GRID_COLUMNS * CELL_SIZE, GRID_ROWS * CELL_SIZE, COLORS::GRID);
+    DrawRectangle(position.x, position.y, CONST::GRID_COLUMNS * CONST::CELL_SIZE, CONST::GRID_ROWS * CONST::CELL_SIZE, COLORS::GRID);
 
-    for (unsigned char row = UINT_ZERO; row < GRID_ROWS; row++) {
-        for (unsigned char col = UINT_ZERO; col < GRID_COLUMNS; col++) {
+    for (unsigned char row = CONST::UINT_ZERO; row < CONST::GRID_ROWS; row++) {
+        for (unsigned char col = CONST::UINT_ZERO; col < CONST::GRID_COLUMNS; col++) {
             
             cell = &grid[row][col];
             cell->render(position, snake_direction);

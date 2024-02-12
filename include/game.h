@@ -6,12 +6,14 @@
 #include "timer.h"
 #include "event_handler.h"
 #include "mouse_handler.h"
+#include "window_header.h"
 
 
 class Game {
 
 public:
     Game();
+    WindowHeader header;
 
     Timer logic_timer;
     EventHandler key_handler;

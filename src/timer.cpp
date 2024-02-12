@@ -3,7 +3,7 @@
 
 
 Timer::Timer() {
-    this->period = FLOAT_ZERO;
+    this->period = CONST::FLOAT_ZERO;
 }
 
 

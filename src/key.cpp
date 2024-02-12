@@ -3,7 +3,7 @@
 
 
 Key::Key(void) {
-    int keycode = UINT_ZERO;
+    int keycode = CONST::UINT_ZERO;
 }
 
 

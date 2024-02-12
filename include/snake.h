@@ -3,7 +3,6 @@
 #include <queue>
 
 #include "const.h"
-#include "integer_vector.h"
 #include "grid.h"
 
 

@@ -3,16 +3,16 @@
 
 
 Snake::Snake(void) {
-    position = Vector(UINT_ZERO, UINT_ZERO);
+    position = Vector(CONST::UINT_ZERO, CONST::UINT_ZERO);
     direction = DIRECTION::RIGHT;
-    length = STARTING_LENGTH;
+    length = CONST::STARTING_LENGTH;
 }
 
 
 Snake::Snake(Vector start_pos, Grid* grid) {
     position = start_pos;
     direction = DIRECTION::RIGHT;
-    length = STARTING_LENGTH;
+    length = CONST::STARTING_LENGTH;
     Cell* cell;
 
     cell = grid->cell_at(position);
@@ -29,10 +29,10 @@ Snake::Snake(Vector start_pos, Grid* grid) {
 void Snake::move(void) {
     Vector new_position = position + direction;
 
-    if (new_position.x > (int)GRID_COLUMNS - 1) { new_position.x = 0; }
-    if (new_position.x < 0) { new_position.x = (int)GRID_COLUMNS - 1; }
-    if (new_position.y > (int)GRID_ROWS - 1) { new_position.y = 0; }
-    if (new_position.y < 0) { new_position.y = (int)GRID_ROWS - 1; }
+    if (new_position.x > (int)CONST::GRID_COLUMNS - 1) { new_position.x = 0; }
+    if (new_position.x < 0) { new_position.x = (int)CONST::GRID_COLUMNS - 1; }
+    if (new_position.y > (int)CONST::GRID_ROWS - 1) { new_position.y = 0; }
+    if (new_position.y < 0) { new_position.y = (int)CONST::GRID_ROWS - 1; }
 
     position = new_position;
 }
@@ -47,7 +47,7 @@ void Snake::turn(Vector new_direction) {
 
 
 void Snake::change_direction(void) {
-    if (turn_queue.size() > UINT_ZERO) {
+    if (turn_queue.size() > CONST::UINT_ZERO) {
         Vector new_direction = turn_queue.front();
 
         if (new_direction != -direction) {

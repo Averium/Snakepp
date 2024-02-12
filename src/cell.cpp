@@ -21,12 +21,12 @@ void Cell::set_state(celltype type, unsigned int counter) {
 
 void Cell::set_state(celltype type) {
     this->type = type;
-    this->counter = UINT_ZERO;
+    this->counter = CONST::UINT_ZERO;
 }
 
 
 void Cell::update(void) {
-    if (counter > UINT_ZERO) {
+    if (counter > CONST::UINT_ZERO) {
         counter--;
     }
     else if (type == SNAKE_HEAD || type == SNAKE_BODY) {
@@ -80,5 +80,5 @@ void Cell::render(Vector position, Vector snake_direction) {
 Vector Cell::grid2screen(Vector position) {
     unsigned char col = grid_position.x;
     unsigned char row = grid_position.y;
-    return Vector(col * CELL_SIZE + CELL_GAP, row * CELL_SIZE + CELL_GAP) + position;
+    return Vector(col * CONST::CELL_SIZE + CONST::CELL_GAP, row * CONST::CELL_SIZE + CONST::CELL_GAP) + position;
 }

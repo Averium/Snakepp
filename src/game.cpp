@@ -4,6 +4,8 @@
 
 Game::Game() {
 
+    header = WindowHeader(LAYOUT::HEADER, CONST::HEADER_TEXT);
+
     key_handler.add_key(KEY_UP);
     key_handler.add_key(KEY_DOWN);
     key_handler.add_key(KEY_LEFT);
@@ -14,7 +16,7 @@ Game::Game() {
     mouse_handler.add_key(MOUSE_BUTTON_LEFT);
 
     grid = Grid(LAYOUT::GRID);
-    logic_timer = Timer(GAME_PERIOD);
+    logic_timer = Timer(CONST::GAME_PERIOD);
 
     snake = Snake(START_POS, &grid);
     apple.repos(&grid);
@@ -25,9 +27,32 @@ Game::Game() {
 }
 
 
+void Game::start(void) {
+    if (!running) {
+        running = true;
+        paused = true;
+        loop();
+    }
+}
+
+
+void Game::reset(void) {
+    if (game_over) {
+        paused = true;
+        game_over = false;
+
+        grid = Grid(LAYOUT::GRID);
+        snake = Snake(START_POS, &grid);
+        apple.repos(&grid);
+    }
+}
+
+
 void Game::events(void) {
     key_handler.update();
     mouse_handler.update();
+
+    header.events(&mouse_handler);
 
     if (!paused) {
         if (key_handler.check(KEY_UP, PRESS)) { snake.turn(DIRECTION::UP); }
@@ -63,24 +88,14 @@ void Game::update(void) {
 }
 
 
-void Game::start(void) {
-    if (!running) {
-        running = true;
-        paused = true;
-        loop();
-    }
-}
+void Game::render(void) {
+    BeginDrawing();
+    ClearBackground(COLORS::BACKGROUND);
 
+    grid.render(snake.direction);
+    header.render();
 
-void Game::reset(void) {
-    if (game_over) {
-        paused = true;
-        game_over = false;
-
-        grid = Grid(LAYOUT::GRID);
-        snake = Snake(START_POS, &grid);
-        apple.repos(&grid);
-    }
+    EndDrawing();
 }
 
 
@@ -91,14 +106,4 @@ void Game::loop(void) {
         update();
         render();
     }
-}
-
-
-void Game::render(void) {
-    BeginDrawing();
-    ClearBackground(COLORS::BACKGROUND);
-
-    grid.render(snake.direction);
-
-    EndDrawing();
 }

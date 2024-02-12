@@ -7,38 +7,42 @@ class Rect {
 
 public:
     Rect();
-    Rect(int w, int h);
-    Rect(int x, int y, int w, int h);
+    Rect(unsigned int w, unsigned int h);
+    Rect(int x, int y, unsigned int w, unsigned int h);
+    Rect(Rect &rect);
 
-    inline void left(int);
-    inline void right(int);
-    inline void top(int);
-    inline void bottom(int);
-    inline void centerx(int);
-    inline void centery(int);
+    int width(void) const;
+    int height(void) const;
 
-    inline void topleft(Vector);
-    inline void topright(Vector);
-    inline void bottomleft(Vector);
-    inline void bottomright(Vector);
-    inline void center(Vector);
+    void left(int);
+    void right(int);
+    void top(int);
+    void bottom(int);
+    void centerx(int);
+    void centery(int);
+
+    void topleft(Vector);
+    void topright(Vector);
+    void bottomleft(Vector);
+    void bottomright(Vector);
+    void center(Vector);
     
-    inline int left(void) const;
-    inline int right(void) const;
-    inline int top(void) const;
-    inline int bottom(void) const;
-    inline int centerx(void) const;
-    inline int centery(void) const;
+    int left(void) const;
+    int right(void) const;
+    int top(void) const;
+    int bottom(void) const;
+    int centerx(void) const;
+    int centery(void) const;
 
-    inline Vector topleft(void) const;
-    inline Vector topright(void) const;
-    inline Vector bottomleft(void) const;
-    inline Vector bottomright(void) const;
-    inline Vector center(void) const;
+    Vector topleft(void) const;
+    Vector topright(void) const;
+    Vector bottomleft(void) const;
+    Vector bottomright(void) const;
+    Vector center(void) const;
 
 private:
     int x;
     int y;
-    int w;
-    int h;
+    unsigned int w;
+    unsigned int h;
 };
