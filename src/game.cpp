@@ -3,12 +3,15 @@
 
 
 Game::Game() {
-    event_handler.add_key(KEY_UP);
-    event_handler.add_key(KEY_DOWN);
-    event_handler.add_key(KEY_LEFT);
-    event_handler.add_key(KEY_RIGHT);
-    event_handler.add_key(KEY_P);
-    event_handler.add_key(KEY_R);
+
+    key_handler.add_key(KEY_UP);
+    key_handler.add_key(KEY_DOWN);
+    key_handler.add_key(KEY_LEFT);
+    key_handler.add_key(KEY_RIGHT);
+    key_handler.add_key(KEY_P);
+    key_handler.add_key(KEY_R);
+
+    mouse_handler.add_key(MOUSE_BUTTON_LEFT);
 
     grid = Grid(LAYOUT::GRID);
     logic_timer = Timer(GAME_PERIOD);
@@ -23,16 +26,17 @@ Game::Game() {
 
 
 void Game::events(void) {
-    event_handler.update();
+    key_handler.update();
+    mouse_handler.update();
 
     if (!paused) {
-        if (event_handler.check(KEY_UP, PRESS)) { snake.turn(DIRECTION::UP); }
-        if (event_handler.check(KEY_DOWN, PRESS)) { snake.turn(DIRECTION::DOWN); }
-        if (event_handler.check(KEY_LEFT, PRESS)) { snake.turn(DIRECTION::LEFT); }
-        if (event_handler.check(KEY_RIGHT, PRESS)) { snake.turn(DIRECTION::RIGHT); }
+        if (key_handler.check(KEY_UP, PRESS)) { snake.turn(DIRECTION::UP); }
+        if (key_handler.check(KEY_DOWN, PRESS)) { snake.turn(DIRECTION::DOWN); }
+        if (key_handler.check(KEY_LEFT, PRESS)) { snake.turn(DIRECTION::LEFT); }
+        if (key_handler.check(KEY_RIGHT, PRESS)) { snake.turn(DIRECTION::RIGHT); }
     }
-    if (event_handler.check(KEY_P, PRESS)) { paused = !paused; }
-    if (event_handler.check(KEY_R, PRESS)) { reset(); }
+    if (key_handler.check(KEY_P, PRESS)) { paused = !paused; }
+    if (key_handler.check(KEY_R, PRESS)) { reset(); }
 }
 
 

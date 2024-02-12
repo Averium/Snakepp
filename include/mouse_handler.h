@@ -1,27 +1,16 @@
 #pragma once
 #include <map>
 #include <vector>
-#include "key.h"
+#include "mousekey.h"
+#include "event_handler.h"
 
 
-enum keymode {
-    PRESS,
-    RELEASE,
-    HOLD,
-};
-
-
-class MouseHandler {
+class MouseHandler : public EventHandler {
 
 public:
     MouseHandler(void);
 
-    bool check(int keycode, keymode mode);
-    void add_key(int keycode);
+    void update(void) override;
+    void add_key(int keycode) override;
 
-    void update(void);
-
-private:
-    std::map<int, Key> keymap;
-    std::vector<Key*> keyref;
 };

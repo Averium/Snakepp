@@ -10,13 +10,13 @@ public:
     Key(void);
     Key(int keycode);
 
-    void update(void);
+    virtual void update(void);
 
     bool is_pressed(void) const;
     bool is_released(void) const;
     bool is_holded(void) const;
 
-private:
+protected:
 
     int keycode;
     bool last_pressed;

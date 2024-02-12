@@ -2,6 +2,7 @@
 #include <map>
 #include <vector>
 #include "key.h"
+#include "debug.h"
 
 
 enum keymode {
@@ -11,17 +12,18 @@ enum keymode {
 };
 
 
-class KeyboardHandler {
+class EventHandler {
 
 public:
-    KeyboardHandler(void);
+    EventHandler(void);
+    ~EventHandler();
 
     bool check(int keycode, keymode mode);
-    void add_key(int keycode);
 
-    void update(void);
+    virtual void add_key(int keycode);
+    virtual void update(void);
 
-private:
-    std::map<int, Key> keymap;
+protected:
+    std::map<int, Key*> keymap;
     std::vector<Key*> keyref;
 };
