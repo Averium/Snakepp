@@ -1,10 +1,10 @@
-#include "event_handler.h"
+#include "mouse_handler.h"
 
 
-EventHandler::EventHandler(void) {}
+MouseHandler::MouseHandler(void) {}
 
 
-bool EventHandler::check(int keycode, keymode mode) {
+bool MouseHandler::check(int keycode, keymode mode) {
     Key* key = &keymap[keycode];
     
     switch (mode) {
@@ -21,13 +21,13 @@ bool EventHandler::check(int keycode, keymode mode) {
 }
 
 
-void EventHandler::add_key(int keycode) {
+void MouseHandler::add_key(int keycode) {
     keymap[keycode] = Key(keycode);
     keyref.push_back(&keymap[keycode]);
 }
 
 
-void EventHandler::update(void) {
+void MouseHandler::update(void) {
     for (Key* key : keyref) {
         key->update();
     }

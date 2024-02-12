@@ -9,10 +9,20 @@ Snake::Snake(void) {
 }
 
 
-Snake::Snake(unsigned char row, unsigned char col) {
-    position = Vector((int)row, (int)col);
+Snake::Snake(Vector start_pos, Grid* grid) {
+    position = start_pos;
     direction = DIRECTION::RIGHT;
     length = STARTING_LENGTH;
+    Cell* cell;
+
+    cell = grid->cell_at(position);
+    cell->set_state(SNAKE_HEAD, length - 1);
+
+    for (int i = 1; i < length; i++) {
+        Vector target = position - direction * i;
+        Cell* cell = grid->cell_at(target);
+        cell->set_state(SNAKE_BODY, length - i - 1);
+    }
 }
 
 

@@ -11,10 +11,10 @@ enum keymode {
 };
 
 
-class EventHandler {
+class MouseHandler {
 
 public:
-    EventHandler(void);
+    MouseHandler(void);
 
     bool check(int keycode, keymode mode);
     void add_key(int keycode);

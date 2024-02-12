@@ -3,17 +3,17 @@
 
 
 Game::Game() {
-    event_handler.add_key(KEY_W);
-    event_handler.add_key(KEY_S);
-    event_handler.add_key(KEY_A);
-    event_handler.add_key(KEY_D);
+    event_handler.add_key(KEY_UP);
+    event_handler.add_key(KEY_DOWN);
+    event_handler.add_key(KEY_LEFT);
+    event_handler.add_key(KEY_RIGHT);
     event_handler.add_key(KEY_P);
     event_handler.add_key(KEY_R);
 
     grid = Grid(LAYOUT::GRID);
     logic_timer = Timer(GAME_PERIOD);
 
-    snake = Snake(UINT_ZERO, UINT_ZERO);
+    snake = Snake(START_POS, &grid);
     apple.repos(&grid);
 
     running = false;
@@ -25,11 +25,12 @@ Game::Game() {
 void Game::events(void) {
     event_handler.update();
 
-    if (event_handler.check(KEY_W, PRESS)) { snake.turn(DIRECTION::UP); }
-    if (event_handler.check(KEY_S, PRESS)) { snake.turn(DIRECTION::DOWN); }
-    if (event_handler.check(KEY_A, PRESS)) { snake.turn(DIRECTION::LEFT); }
-    if (event_handler.check(KEY_D, PRESS)) { snake.turn(DIRECTION::RIGHT); }
-
+    if (!paused) {
+        if (event_handler.check(KEY_UP, PRESS)) { snake.turn(DIRECTION::UP); }
+        if (event_handler.check(KEY_DOWN, PRESS)) { snake.turn(DIRECTION::DOWN); }
+        if (event_handler.check(KEY_LEFT, PRESS)) { snake.turn(DIRECTION::LEFT); }
+        if (event_handler.check(KEY_RIGHT, PRESS)) { snake.turn(DIRECTION::RIGHT); }
+    }
     if (event_handler.check(KEY_P, PRESS)) { paused = !paused; }
     if (event_handler.check(KEY_R, PRESS)) { reset(); }
 }
@@ -51,7 +52,7 @@ void Game::update(void) {
             apple.repos(&grid);
         }
         
-        snake_head->set_state(SNAKE_BODY, snake.length);
+        snake_head->set_state(SNAKE_NEW, snake.length);
         
         grid.update();
     }
@@ -73,7 +74,7 @@ void Game::reset(void) {
         game_over = false;
 
         grid = Grid(LAYOUT::GRID);
-        snake = Snake(UINT_ZERO, UINT_ZERO);
+        snake = Snake(START_POS, &grid);
         apple.repos(&grid);
     }
 }
@@ -93,7 +94,7 @@ void Game::render(void) {
     BeginDrawing();
     ClearBackground(COLORS::BACKGROUND);
 
-    grid.render();
+    grid.render(snake.direction);
 
     EndDrawing();
 }

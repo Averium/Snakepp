@@ -2,6 +2,7 @@
 
 #include "raylib.h"
 #include "integer_vector.h"
+#include "rectangle.h"
 
 
 #define UINT_ZERO 0U
@@ -25,10 +26,11 @@
 
 
 namespace COLORS {
-    const Color BACKGROUND = {30, 30, 30, NON_TRANSPARENT};
-    const Color GRID = {50, 200, 0, NON_TRANSPARENT};
-    const Color SNAKE = {0, 150, 0, NON_TRANSPARENT};
-    const Color APPLE = {200, 0, 0, NON_TRANSPARENT};
+    const Color BACKGROUND = {20, 20, 20, NON_TRANSPARENT};
+    const Color GRID = {60, 60, 60, NON_TRANSPARENT};
+    const Color SNAKE = {20, 20, 20, NON_TRANSPARENT};
+    const Color PATTERN = {40, 40, 40, NON_TRANSPARENT};
+    const Color APPLE = {20, 20, 20, NON_TRANSPARENT};
 }
 
 namespace DIRECTION {
@@ -39,9 +41,11 @@ namespace DIRECTION {
 }
 
 namespace LAYOUT {
-    const Vector WINDOW = Vector(CELL_SIZE * (GRID_COLUMNS + 2), CELL_SIZE * (GRID_ROWS + 2));
-    const Vector GRID = Vector(CELL_SIZE, CELL_SIZE);
+    const Vector WINDOW = Vector(CELL_SIZE * (GRID_COLUMNS + 6), CELL_SIZE * (GRID_ROWS + 3));
+    const Vector GRID = Vector(CELL_SIZE, CELL_SIZE * 2);
+    const Rect HEADER = Rect(0, CELL_SIZE * (GRID_ROWS + 2), LAYOUT::WINDOW.x, CELL_SIZE);
 }
 
 
 const unsigned int CELL_SIDE = (CELL_SIZE - CELL_GAP * 2U);
+const Vector START_POS = Vector(5U, 1U);

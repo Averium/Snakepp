@@ -1,15 +1,17 @@
 #pragma once
 
+#include <queue>
+
 #include "const.h"
 #include "integer_vector.h"
-#include <queue>
+#include "grid.h"
 
 
 class Snake {
 
 public:
     Snake(void);
-    Snake(unsigned char row, unsigned char col);
+    Snake(Vector start_pos, Grid* grid);
 
     void move(void);
     void turn(Vector new_direction);

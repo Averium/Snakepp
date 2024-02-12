@@ -9,6 +9,7 @@ enum celltype{
     EMPTY,
     SNAKE_BODY,
     SNAKE_HEAD,
+    SNAKE_NEW,
     APPLE,
 };
 
@@ -23,7 +24,7 @@ public:
     void set_state(celltype type);
 
     void update(void);
-    void render(Vector position);
+    void render(Vector position, Vector snake_direction);
 
     celltype type;
     

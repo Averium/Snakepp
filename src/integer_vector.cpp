@@ -13,6 +13,13 @@ Vector::Vector(int x, int y) {
 }
 
 
+Vector Vector::operator * (int value) const {
+    int x = (int)(this->x * value);
+    int y = (int)(this->y * value);
+    return Vector(x, y);
+}
+
+
 Vector Vector::operator + (Vector vector) const {
     int x = this->x + vector.x;
     int y = this->y + vector.y;

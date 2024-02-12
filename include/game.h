@@ -4,7 +4,7 @@
 #include "snake.h"
 #include "apple.h"
 #include "timer.h"
-#include "event_handler.h"
+#include "keyboard_handler.h"
 
 
 class Game {
@@ -13,7 +13,7 @@ public:
     Game();
 
     Timer logic_timer;
-    EventHandler event_handler;
+    KeyboardHandler event_handler;
 
     Grid grid;
     Snake snake;
