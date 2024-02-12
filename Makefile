@@ -16,6 +16,8 @@ EXE := main
 all: $(OBJECT) $(HEADER)
 	g++ $(OBJECT) -o $(EXE) $(LINK)
 
+force: clean all
+
 $(OBJECT_FOLDER)/%.o: $(SOURCE_FOLDER)/%.cpp $(INCLUDE_FOLDER)/%.h | $(OBJECT_FOLDER)
 	g++ $(INCLUDE_FLAGS) -c $< -o $@
 
