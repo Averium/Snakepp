@@ -1,7 +1,7 @@
 #pragma once
 
 #include "const.h"
-#include "event_handler.h"
+#include "mouse_handler.h"
 
 
 class WindowHeader : public Rect {
@@ -11,7 +11,7 @@ public:
     WindowHeader(Rect rect, const char* text);
     WindowHeader(Rect rect);
 
-    void events(EventHandler* event_handler);
+    void events(MouseHandler* mouse_handler);
     void render(void);
 
     void init_font(void);
@@ -19,4 +19,8 @@ public:
 private:
     const char* text = "";
     Font font;
+
+    bool grab;
+    Vector grab_position;
+    Vector window_position;
 };

@@ -1,15 +1,15 @@
 #include "integer_vector.h"
+#include <cmath>
 
 
-Vector::Vector(void) {
-    this->x = 0;
-    this->y = 0;
-}
+Vector::Vector(void): x(0), y(0) {}
+Vector::Vector(int x, int y): x(x), y(y) {}
+Vector::Vector(Vector2 vector): x(vector.x), y(vector.y) {}
+Vector::Vector(const Vector &vector): x(vector.x), y(vector.y) {}
 
 
-Vector::Vector(int x, int y) {
-    this->x = x;
-    this->y = y;
+float Vector::length(void) const {
+    return sqrt((float)(x) * (float)(x) + (float)(y) * (float)(y));
 }
 
 

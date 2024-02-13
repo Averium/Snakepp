@@ -13,8 +13,6 @@ Game::Game() {
     key_handler.add_key(KEY_P);
     key_handler.add_key(KEY_R);
 
-    mouse_handler.add_key(MOUSE_BUTTON_LEFT);
-
     grid = Grid(LAYOUT::GRID);
     logic_timer = Timer(CONST::GAME_PERIOD);
 

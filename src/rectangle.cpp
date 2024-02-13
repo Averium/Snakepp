@@ -1,7 +1,7 @@
 #include "rectangle.h"
 
 
-Rect::Rect() {}
+Rect::Rect(void) {}
 
 Rect::Rect(unsigned int w, unsigned int h) {
     this->x = 0;
@@ -26,8 +26,24 @@ Rect::Rect(Rect &rect) {
 }
 
 
-int Rect::width(void) const  { return w; }
-int Rect::height(void) const { return h; }
+bool Rect::collide(Vector point) {
+    return (
+        (left() <= point.x)  &&
+        (right() >= point.x) &&
+        (top() <= point.y)   &&
+        (bottom() >= point.y)
+    );
+}
+
+
+bool Rect::collide(Rect rect) {
+    return (
+        (this->left() <= rect.right()) &&
+        (this->right() >= rect.left()) &&
+        (this->top() <= rect.bottom()) && 
+        (this->bottom() >= rect.top())
+    );
+}
 
 void Rect::topleft(Vector vector) {
     top(vector.y);
@@ -60,16 +76,3 @@ void Rect::top(int value)            { y = value; }
 void Rect::bottom(int value)         { y = value - h; }
 void Rect::centerx(int value)        { x = value - w / 2; }
 void Rect::centery(int value)        { y = value - h / 2; }
-
-int Rect::left(void) const           { return x; }
-int Rect::right(void) const          { return x + w; }
-int Rect::top(void) const            { return y; }
-int Rect::bottom(void) const         { return y + h; }
-int Rect::centerx(void) const        { return x + w / 2; }
-int Rect::centery(void) const        { return y + h / 2; }
-
-Vector Rect::topleft(void) const     { return Vector(top(), left()); }
-Vector Rect::topright(void) const    { return Vector(top(), right()); }
-Vector Rect::bottomleft(void) const  { return Vector(bottom(), left()); }
-Vector Rect::bottomright(void) const { return Vector(bottom(), left()); }
-Vector Rect::center(void) const      { return Vector(centerx(), centery()); }

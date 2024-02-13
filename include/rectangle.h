@@ -11,8 +11,11 @@ public:
     Rect(int x, int y, unsigned int w, unsigned int h);
     Rect(Rect &rect);
 
-    int width(void) const;
-    int height(void) const;
+    bool collide(Vector point);
+    bool collide(Rect rect);
+
+    inline int width(void) const { return w; }
+    inline int height(void) const { return h; }
 
     void left(int);
     void right(int);
@@ -27,18 +30,18 @@ public:
     void bottomright(Vector);
     void center(Vector);
     
-    int left(void) const;
-    int right(void) const;
-    int top(void) const;
-    int bottom(void) const;
-    int centerx(void) const;
-    int centery(void) const;
+    inline int left(void) const { return x; }
+    inline int right(void) const { return x + w; }
+    inline int top(void) const { return y; }
+    inline int bottom(void) const { return y + h; }
+    inline int centerx(void) const { return x + w / 2; }
+    inline int centery(void) const { return y + h / 2; }
 
-    Vector topleft(void) const;
-    Vector topright(void) const;
-    Vector bottomleft(void) const;
-    Vector bottomright(void) const;
-    Vector center(void) const;
+    inline Vector topleft(void) const { return Vector(top(), left()); }
+    inline Vector topright(void) const { return Vector(top(), right()); }
+    inline Vector bottomleft(void) const { return Vector(bottom(), left()); }
+    inline Vector bottomright(void) const { return Vector(bottom(), left()); }
+    inline Vector center(void) const { return Vector(centerx(), centery()); }
 
 private:
     int x;

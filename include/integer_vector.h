@@ -1,11 +1,17 @@
 #pragma once
 
+#include "raylib.h"
+
 
 class Vector {
 
 public:
     Vector(void); 
     Vector(int x, int y);
+    Vector(Vector2 vector);
+    Vector(const Vector &vector);
+
+    float length(void) const;
 
     Vector operator * (int value) const;
 
