@@ -4,25 +4,39 @@
 
 Game::Game() {
 
-    header = WindowHeader(LAYOUT::HEADER, CONST::HEADER_TEXT);
+    init_events();
+    init_objects();
 
+    running = false;
+    paused = false;
+    game_over = false;
+}
+
+
+void Game::init_objects(void) {
+    header = WindowHeader(LAYOUT::HEADER, CONST::HEADER_TEXT);
+    grid = Grid(LAYOUT::GRID);
+    logic_timer = Timer(CONST::GAME_PERIOD);
+    snake = Snake(START_POS, &grid);
+    apple.repos(&grid);
+}
+
+
+void Game::init_states(void) {
+
+}
+
+
+void Game::init_events(void) {
     key_handler.add_key(KEY_UP);
     key_handler.add_key(KEY_DOWN);
     key_handler.add_key(KEY_LEFT);
     key_handler.add_key(KEY_RIGHT);
     key_handler.add_key(KEY_P);
     key_handler.add_key(KEY_R);
-
-    grid = Grid(LAYOUT::GRID);
-    logic_timer = Timer(CONST::GAME_PERIOD);
-
-    snake = Snake(START_POS, &grid);
-    apple.repos(&grid);
-
-    running = false;
-    paused = false;
-    game_over = false;
 }
+
+
 
 
 void Game::start(void) {

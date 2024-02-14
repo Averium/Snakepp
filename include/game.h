@@ -23,6 +23,10 @@ public:
     Snake snake;
     Apple apple;
 
+    void init_objects(void);
+    void init_states(void);
+    void init_events(void);
+
     void start(void);
     void reset(void);
 
