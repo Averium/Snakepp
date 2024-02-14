@@ -7,6 +7,7 @@
 #include "event_handler.h"
 #include "mouse_handler.h"
 #include "window_header.h"
+#include "state_machine.h"
 
 
 class Game {

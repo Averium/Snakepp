@@ -12,25 +12,31 @@ StateMachine::~StateMachine() {
 
 void StateMachine::add_state(State* state) {
     states[state->id] = state;
+}
 
-    if (current_state == nullptr) {
-        current_state = state;
-        current_state->on_entry();
-    }
+void StateMachine::init(State* state) {
+    init_state = state;
+    add_state(state);
+    activate_state(state);
 }
 
 
-void StateMachine::transition(void) {
+void StateMachine::activate_state(State* state) {
+    current_state->on_exit();
+    current_state = state;
+    current_state->on_entry();
+}
+
+
+void StateMachine::reset(void) {
+    activate_state(init_state);
+}
+
+
+void StateMachine::update_state(void) {
     GameStateId next_state_id = current_state->conditions();
 
     if (next_state_id != current_state->id) {
-        current_state->on_exit();
-        current_state = states[next_state_id];
-        current_state->on_entry();
+        activate_state(states[next_state_id]);
     }
 }
-
-
-void StateMachine::events(void) { current_state->events(); }
-void StateMachine::update(void) { current_state->update(); }
-void StateMachine::render(void) { current_state->render(); }
