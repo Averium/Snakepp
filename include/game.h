@@ -8,7 +8,10 @@
 #include "mouse_handler.h"
 #include "window_header.h"
 #include "state_machine.h"
-#include "state_derived.h"
+
+#include "running_state.h"
+#include "paused_state.h"
+#include "gameover_state.h"
 
 
 class Game: public StateMachine {
