@@ -6,6 +6,7 @@ Snake::Snake(void) {
     position = Vector(CONST::UINT_ZERO, CONST::UINT_ZERO);
     direction = DIRECTION::RIGHT;
     length = CONST::STARTING_LENGTH;
+    dead = false;
 }
 
 
@@ -13,6 +14,7 @@ Snake::Snake(Vector start_pos, Grid* grid) {
     position = start_pos;
     direction = DIRECTION::RIGHT;
     length = CONST::STARTING_LENGTH;
+    dead = false;
     Cell* cell;
 
     cell = grid->cell_at(position);

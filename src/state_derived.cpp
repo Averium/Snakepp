@@ -1,120 +1,122 @@
 #include "state_derived.h"
-#include "state_machine.h"
+#include "game.h"
 
 
 /* STARTUP */
 
-StartupState::StartupState(StateMachine* state_machine) : State(STARTUP, state_machine) {}
+StartupState::StartupState(Game* game) : GameState(STARTUP, game) {}
 
 GameStateId StartupState::conditions(void) const {
     return STARTUP;
 }
 
-void StartupState::events(void) {}
-void StartupState::update(void) {}
-void StartupState::render(void) {}
-
 
 /* MENU */
 
-MenuState::MenuState(StateMachine* state_machine) : State(MENU, state_machine) {}
+MenuState::MenuState(Game* game) : GameState(MENU, game) {}
 
 GameStateId MenuState::conditions(void) const {
     return MENU;
 }
 
-void MenuState::events(void) {}
-void MenuState::update(void) {}
-void MenuState::render(void) {}
-
 
 /* SETTINGS */
 
-SettingsState::SettingsState(StateMachine* state_machine) : State(SETTINGS, state_machine) {}
+SettingsState::SettingsState(Game* game) : GameState(SETTINGS, game) {}
 
 GameStateId SettingsState::conditions(void) const {
     return SETTINGS;
 }
 
-void SettingsState::events(void) {}
-void SettingsState::update(void) {}
-void SettingsState::render(void) {}
-
 
 /* KEYBINDS */
 
-KeyBindsState::KeyBindsState(StateMachine* state_machine) : State(KEYBINDS, state_machine) {}
+KeyBindsState::KeyBindsState(Game* game) : GameState(KEYBINDS, game) {}
 
 GameStateId KeyBindsState::conditions(void) const {
     return KEYBINDS;
 }
 
-void KeyBindsState::events(void) {}
-void KeyBindsState::update(void) {}
-void KeyBindsState::render(void) {}
-
 
 /* HIGHSCORES */
 
-HighScoresState::HighScoresState(StateMachine* state_machine) : State(HIGHSCORES, state_machine) {}
+HighScoresState::HighScoresState(Game* game) : GameState(HIGHSCORES, game) {}
 
 GameStateId HighScoresState::conditions(void) const {
     return HIGHSCORES;
 }
 
-void HighScoresState::events(void) {}
-void HighScoresState::update(void) {}
-void HighScoresState::render(void) {}
-
 
 /* GAME */
 
-GameState::GameState(StateMachine* state_machine) : State(GAME, state_machine) {}
+RunningState::RunningState(Game* game) : GameState(GAME, game) {}
 
-GameStateId GameState::conditions(void) const {
+GameStateId RunningState::conditions(void) const {
+    Cell* snake_head = game->grid.cell_at(game->snake.position);
+    if (game->snake.dead) { return GAMEOVER; }
+    if (game->key_handler.check(KEY_P, PRESS)) { return PAUSED; }
     return GAME;
 }
 
-void GameState::events(void) {}
-void GameState::update(void) {}
-void GameState::render(void) {}
+void RunningState::events(void) {
+    if (game->key_handler.check(KEY_UP, PRESS)) { game->snake.turn(DIRECTION::UP); }
+    if (game->key_handler.check(KEY_DOWN, PRESS)) { game->snake.turn(DIRECTION::DOWN); }
+    if (game->key_handler.check(KEY_LEFT, PRESS)) { game->snake.turn(DIRECTION::LEFT); }
+    if (game->key_handler.check(KEY_RIGHT, PRESS)) { game->snake.turn(DIRECTION::RIGHT); }
+}
+
+void RunningState::update(void) {
+    if (game->logic_timer.tick()) {
+        
+        game->snake.change_direction();
+        game->snake.move();
+        
+        Cell* snake_head = game->grid.cell_at(game->snake.position);
+        
+        if (snake_head->type == SNAKE_BODY) {
+            game->snake.dead = true;
+        }
+
+        if (snake_head->type == APPLE) {
+            game->snake.length++;
+            game->apple.repos(&game->grid);
+        }
+        
+        snake_head->set_state(SNAKE_NEW, game->snake.length);
+        
+        game->grid.update();
+    }
+}
 
 
 /* PAUSED */
 
-PausedState::PausedState(StateMachine* state_machine) : State(PAUSED, state_machine) {}
+PausedState::PausedState(Game* game) : GameState(PAUSED, game) {}
 
 GameStateId PausedState::conditions(void) const {
+    if (game->key_handler.check(KEY_P, PRESS)) { return GAME; }
     return PAUSED;
 }
-
-void PausedState::events(void) {}
-void PausedState::update(void) {}
-void PausedState::render(void) {}
 
 
 /* GAMEOVER */
 
-GameOverState::GameOverState(StateMachine* state_machine) : State(GAMEOVER, state_machine) {}
+GameOverState::GameOverState(Game* game) : GameState(GAMEOVER, game) {}
 
 GameStateId GameOverState::conditions(void) const {
+    if (game->key_handler.check(KEY_R, PRESS)) { return GAME; }
     return GAMEOVER;
 }
 
-void GameOverState::events(void) {}
-void GameOverState::update(void) {}
-void GameOverState::render(void) {}
+void GameOverState::on_exit(void) {
+    game->reset();
+}
 
 
 /* SHUTDOWN */
 
-ShutdownState::ShutdownState(StateMachine* state_machine) : State(SHUTDOWN, state_machine) {}
+ShutdownState::ShutdownState(Game* game) : GameState(SHUTDOWN, game) {}
 
 GameStateId ShutdownState::conditions(void) const {
     return SHUTDOWN;
 }
-
-void ShutdownState::events(void) {}
-void ShutdownState::update(void) {}
-void ShutdownState::render(void) {}
-

@@ -1,138 +1,119 @@
-#include "game.h"
+#pragma once
+
+#include "state.h"
+#include "debug.h"
+
+
+class Game;
+
+
+/* DERIVED GAME STATE */
+
+class GameState: public State {
+
+public:
+    inline GameState(GameStateId id, Game* game) : State(id, nullptr), game(game) {}
+
+    virtual void events(void) {};
+    virtual void update(void) {};
+    virtual void render(void) {};
+
+protected:
+    Game* game;
+
+};
 
 
 /* STARTUP */
 
-class StartupState : public State {
+class StartupState : public GameState {
 
 public:
-    StartupState(StateMachine* state_machine);
+    StartupState(Game* game);
     GameStateId conditions(void) const override;
-
-    void events(void);
-    void update(void);
-    void render(void);
-
 };
 
 
 /* MENU */
 
-class MenuState : public State {
+class MenuState : public GameState {
 
 public:
-    MenuState(StateMachine* state_machine);
+    MenuState(Game* game);
     GameStateId conditions(void) const override;
-
-    void events(void);
-    void update(void);
-    void render(void);
-
 };
 
 
 /* SETTINGS */
 
-class SettingsState : public State {
+class SettingsState : public GameState {
 
 public:
-    SettingsState(StateMachine* state_machine);
+    SettingsState(Game* game);
     GameStateId conditions(void) const override;
-
-    void events(void);
-    void update(void);
-    void render(void);
-
 };
 
 
 /* KEYBIND */
 
-class KeyBindsState : public State {
+class KeyBindsState : public GameState {
 
 public:
-    KeyBindsState(StateMachine* state_machine);
+    KeyBindsState(Game* game);
     GameStateId conditions(void) const override;
-
-    void events(void);
-    void update(void);
-    void render(void);
-
 };
 
 
 /* HIGHSCORES */
 
-class HighScoresState : public State {
+class HighScoresState : public GameState {
 
 public:
-    HighScoresState(StateMachine* state_machine);
+    HighScoresState(Game* game);
     GameStateId conditions(void) const override;
-
-    void events(void);
-    void update(void);
-    void render(void);
-
 };
 
 
 /* GAME */
 
-class GameState : public State {
+class RunningState : public GameState {
 
 public:
-    GameState(StateMachine* state_machine);
+    RunningState(Game* game);
     GameStateId conditions(void) const override;
 
-    void events(void);
-    void update(void);
-    void render(void);
-
+    void events(void) override;
+    void update(void) override;
 };
 
 
 /* PAUSED */
 
-class PausedState : public State {
+class PausedState : public GameState {
 
 public:
-    PausedState(StateMachine* state_machine);
+    PausedState(Game* game);
     GameStateId conditions(void) const override;
-
-    void events(void);
-    void update(void);
-    void render(void);
-
 };
 
 
 /* GAMEOVER */
 
-class GameOverState : public State {
+class GameOverState : public GameState {
 
 public:
-    GameOverState(StateMachine* state_machine);
+    GameOverState(Game* game);
     GameStateId conditions(void) const override;
 
-    void events(void);
-    void update(void);
-    void render(void);
-
+    void on_exit(void) override;
 };
 
 
 /* SHUTDOWN */
 
-
-class ShutdownState : public State {
+class ShutdownState : public GameState {
 
 public:
-    ShutdownState(StateMachine* state_machine);
+    ShutdownState(Game* game);
     GameStateId conditions(void) const override;
-
-    void events(void);
-    void update(void);
-    void render(void);
-
 };
-

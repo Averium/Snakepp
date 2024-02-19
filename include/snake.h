@@ -20,6 +20,7 @@ public:
     Vector direction;
 
     unsigned int length;
+    bool dead;
 
 private:
 

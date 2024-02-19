@@ -8,9 +8,10 @@
 #include "mouse_handler.h"
 #include "window_header.h"
 #include "state_machine.h"
+#include "state_derived.h"
 
 
-class Game {
+class Game: public StateMachine {
 
 public:
     Game();
@@ -38,7 +39,5 @@ public:
 
 private:
     bool running;
-    bool paused;
-    bool game_over;
 
 };

@@ -6,10 +6,9 @@ Game::Game() {
 
     init_events();
     init_objects();
+    init_states();
 
     running = false;
-    paused = false;
-    game_over = false;
 }
 
 
@@ -23,7 +22,9 @@ void Game::init_objects(void) {
 
 
 void Game::init_states(void) {
-
+    init(new PausedState(this));
+    add_state(new RunningState(this));
+    add_state(new GameOverState(this));
 }
 
 
@@ -37,66 +38,32 @@ void Game::init_events(void) {
 }
 
 
-
-
 void Game::start(void) {
     if (!running) {
         running = true;
-        paused = true;
         loop();
     }
 }
 
 
 void Game::reset(void) {
-    if (game_over) {
-        paused = true;
-        game_over = false;
-
-        grid = Grid(LAYOUT::GRID);
-        snake = Snake(START_POS, &grid);
-        apple.repos(&grid);
-    }
+    grid = Grid(LAYOUT::GRID);
+    snake = Snake(START_POS, &grid);
+    apple.repos(&grid);
 }
 
 
 void Game::events(void) {
     key_handler.update();
     mouse_handler.update();
-
     header.events(&mouse_handler);
-
-    if (!paused) {
-        if (key_handler.check(KEY_UP, PRESS)) { snake.turn(DIRECTION::UP); }
-        if (key_handler.check(KEY_DOWN, PRESS)) { snake.turn(DIRECTION::DOWN); }
-        if (key_handler.check(KEY_LEFT, PRESS)) { snake.turn(DIRECTION::LEFT); }
-        if (key_handler.check(KEY_RIGHT, PRESS)) { snake.turn(DIRECTION::RIGHT); }
-    }
-    if (key_handler.check(KEY_P, PRESS)) { paused = !paused; }
-    if (key_handler.check(KEY_R, PRESS)) { reset(); }
+    current_state->events();
 }
 
 
 void Game::update(void) {
-    if (!paused && !game_over && logic_timer.tick()) {
-        
-        snake.change_direction();
-        snake.move();
-        
-        Cell* snake_head = grid.cell_at(snake.position);
-        
-        if (snake_head->type == SNAKE_BODY) {
-            game_over = true;
-        }
-        else if (snake_head->type == APPLE) {
-            snake.length++;
-            apple.repos(&grid);
-        }
-        
-        snake_head->set_state(SNAKE_NEW, snake.length);
-        
-        grid.update();
-    }
+    check_for_transition();
+    current_state->update();
 }
 
 
@@ -104,8 +71,10 @@ void Game::render(void) {
     BeginDrawing();
     ClearBackground(COLORS::BACKGROUND);
 
-    grid.render(snake.direction);
     header.render();
+    grid.render(snake.direction);
+
+    current_state->render();
 
     EndDrawing();
 }
