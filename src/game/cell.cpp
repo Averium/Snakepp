@@ -1,4 +1,4 @@
-#include "cell.h"
+#include "game/cell.h"
 #include "debug.h"
 
 

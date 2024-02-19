@@ -3,14 +3,27 @@ OBJECT_FOLDER := obj
 INCLUDE_FOLDER := include
 LIBRARY_FOLER := lib
 
-SOURCE := $(wildcard $(SOURCE_FOLDER)/*.cpp)
-OBJECT := $(patsubst $(SOURCE_FOLDER)/%.cpp,$(OBJECT_FOLDER)/%.o,$(SOURCE))
-HEADER := $(wildcard $(INCLUDE_FOLDER)/game/*.hpp)
+C := .cpp
+O := .o
+H := .h
 
-SFML_LINK_FLAGS := -lraylib -lopengl32 -lgdi32 -lwinmm
-INCLUDE_FLAGS := -I$(INCLUDE_FOLDER)
+RAYLIB_LINK_FLAGS := -lraylib -lopengl32 -lgdi32 -lwinmm
 
-LINK := -L$(LIBRARY_FOLER) $(SFML_LINK_FLAGS)
+SOURCE := $(wildcard $(SOURCE_FOLDER)/*$(C))
+SOURCE += $(wildcard $(SOURCE_FOLDER)/*/*$(C))
+
+OBJECT := $(patsubst $(SOURCE_FOLDER)/%$(C),$(OBJECT_FOLDER)/%$(O),$(SOURCE))
+#OBJECT := $(addprefix $(OBJECT_FOLDER)/,$(notdir $(OBJECT)))
+
+HEADER := $(wildcard $(INCLUDE_FOLDER)/*$(H))
+HEADER += $(wildcard $(INCLUDE_FOLDER)/*/*$(H))
+
+INCLUDE_FOLDERS := $(patsubst %/,%,$(sort $(wildcard $(dir $(HEADER)))))
+OBJECT_FOLDERS := $(patsubst $(INCLUDE_FOLDER)%,$(OBJECT_FOLDER)%,$(INCLUDE_FOLDERS))
+
+INCLUDE_FLAGS := $(addprefix -I,$(INCLUDE_FOLDERS))
+
+LINK := -L$(LIBRARY_FOLER) $(RAYLIB_LINK_FLAGS)
 EXE := main
 
 all: $(OBJECT) $(HEADER)
@@ -18,11 +31,11 @@ all: $(OBJECT) $(HEADER)
 
 force: clean all
 
-$(OBJECT_FOLDER)/%.o: $(SOURCE_FOLDER)/%.cpp $(INCLUDE_FOLDER)/%.h | $(OBJECT_FOLDER)
+$(OBJECT_FOLDER)/%$(O): $(SOURCE_FOLDER)/%$(C) $(INCLUDE_FOLDER)/%$(H) | $(OBJECT_FOLDERS)
 	g++ $(INCLUDE_FLAGS) -c $< -o $@
 
-$(OBJECT_FOLDER):
-	mkdir $(OBJECT_FOLDER)
+$(OBJECT_FOLDERS):
+	$(foreach dir,$(OBJECT_FOLDERS),if not exist "$(dir)" mkdir "$(dir)" &&) echo
 
 .PHONY: clean
 clean:
@@ -33,4 +46,4 @@ clean:
 
 .PHONY: info
 info:
-	$(info $(CXX))
+	$(info $(OBJECT_FOLDERS))
