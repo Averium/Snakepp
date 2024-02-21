@@ -1,5 +1,4 @@
 #include "mousekey.h"
-#include "debug.h"
 
 
 MouseKey::MouseKey(int keycode) : Key::Key(keycode) {}

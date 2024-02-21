@@ -5,8 +5,8 @@ EventHandler::EventHandler(void) {}
 
 
 EventHandler::~EventHandler(void) {
-    for (Key* key : keyref) {
-        delete key;
+    for (std::pair<const int, Key*>& pair : keymap) {
+        delete pair.second;
     }
 }
 
@@ -30,12 +30,11 @@ bool EventHandler::check(int keycode, keymode mode) {
 void EventHandler::add_key(int keycode) {
     Key* key = new Key(keycode);
     keymap[keycode] = key;
-    keyref.push_back(key);
 }
 
 
 void EventHandler::update(void) {
-    for (Key* key : keyref) {
-        key->update();
+    for (std::pair<const int, Key*>& pair : keymap) {
+        pair.second->update();
     }
 }

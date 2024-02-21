@@ -25,5 +25,4 @@ public:
 
 protected:
     std::map<int, Key*> keymap;
-    std::vector<Key*> keyref;
 };

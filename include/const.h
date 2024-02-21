@@ -24,13 +24,19 @@ namespace PATH {
 }
 
 namespace COLORS {
-    const Color BACKGROUND = {20, 20, 20, CONST::NON_TRANSPARENT};
-    const Color GRID = {40, 40, 40, CONST::NON_TRANSPARENT};
-    const Color SNAKE = {20, 20, 20, CONST::NON_TRANSPARENT};
-    const Color PATTERN = {40, 40, 40, CONST::NON_TRANSPARENT};
-    const Color APPLE = {20, 20, 20, CONST::NON_TRANSPARENT};
-    const Color HEADER = {20, 20, 20, CONST::NON_TRANSPARENT};
-    const Color HEADER_TEXT = {40, 40, 40, CONST::NON_TRANSPARENT};
+    const Color GREY30 = {20, 20, 20, CONST::NON_TRANSPARENT};
+    const Color GREY40 = {40, 40, 40, CONST::NON_TRANSPARENT};
+    const Color GREY50 = {60, 60, 60, CONST::NON_TRANSPARENT};
+    const Color RED120 = {120, 0, 0, CONST::NON_TRANSPARENT};
+    const Color RED180 = {180, 0, 0, CONST::NON_TRANSPARENT};
+    
+    const Color BACKGROUND = GREY30;
+    const Color GRID = GREY40;
+    const Color SNAKE = GREY30;
+    const Color PATTERN = GREY40;
+    const Color APPLE = GREY30;
+    const Color HEADER = GREY30;
+    const Color HEADER_TEXT = GREY40;
 }
 
 namespace DIRECTION {

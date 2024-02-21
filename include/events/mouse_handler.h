@@ -1,7 +1,5 @@
 #pragma once
 
-#include <map>
-#include <vector>
 #include "mousekey.h"
 #include "event_handler.h"
 
