@@ -15,18 +15,19 @@ public:
     GuiItem();
     GuiItem(Gui* gui, int layer);
 
-    virtual void events(void) = 0;
+    virtual void events(MouseHandler* mouse_handler, EventHandler* event_handler) = 0;
     virtual void update(void) = 0;
     virtual void render(void) const = 0;
 
-    int layer;
+    virtual int get_layer(void) const;
 
-private:
     Gui* gui;
 
+protected:
+    int layer;
 };
 
 
 struct SortByLayer {
-    bool operator()(const GuiItem& first, const GuiItem& second) const;
+    bool operator()(const GuiItem* first, const GuiItem* second) const;
 };

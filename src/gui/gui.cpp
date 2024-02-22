@@ -1,16 +1,31 @@
 #include "gui.h"
 
 
-Gui::Gui() {}
+Gui::Gui() : GuiItem(this, 0) {}
 
-Gui::~Gui() {}
 
-void Gui::events(void) {}
+void Gui::activate_item(GuiItem* item) {
+    if (items.contains(item)) {
+        active_items.insert(item);
+    }
+};
 
-void Gui::update(void) {}
+void Gui::deactivate_item(GuiItem* item) {
+    if (active_items.contains(item)) {
+        active_items.erase(item);
+    }
+};
 
-void Gui::render(void) const {}
 
-void Gui::activate_items(GuiItem* item[]) {};
+template <typename TYPE>
+void Gui::new_register(const std::string& name) {
+    TYPE* value = new TYPE();
 
-void Gui::deactivate_items(GuiItem* item[]) {};
+    if constexpr (std::is_same_v<TYPE, bool>) {
+        bool_register[name] = value;
+    } else if constexpr (std::is_same_v<TYPE, int>) {
+        int_register[name] = value;
+    } else if constexpr (std::is_same_v<TYPE, float>) {
+        float_register[name] = value;
+    }
+}

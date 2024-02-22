@@ -1,10 +1,14 @@
 #include "gui_item.h"
+#include "gui.h"
 
 
 GuiItem::GuiItem() {}
 
-GuiItem::GuiItem(Gui* gui, int layer): gui(gui) {};
+GuiItem::GuiItem(Gui* gui, int layer): gui(gui), layer(layer) {};
 
-bool SortByLayer::operator()(const GuiItem& first, const GuiItem& second) const {
-    return first.layer < second.layer;
+int GuiItem::get_layer(void) const { return this->layer; }
+
+
+bool SortByLayer::operator()(const GuiItem* first, const GuiItem* second) const {
+    return first->get_layer() < second->get_layer();
 }

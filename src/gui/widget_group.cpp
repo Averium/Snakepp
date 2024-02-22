@@ -1,16 +1,30 @@
 #include "widget_group.h"
+#include "gui.h"
 
 
 WidgetGroup::WidgetGroup() {}
 
-WidgetGroup::WidgetGroup(Gui* gui) {}
 
-WidgetGroup::~WidgetGroup() {}
+WidgetGroup::WidgetGroup(WidgetGroup* group, int layer) : GuiItem(group->gui, layer) {
+    group->add_item(this);
+}
 
-void WidgetGroup::add_item(GuiItem* item) {}
+WidgetGroup::~WidgetGroup() {
+    for (GuiItem* item : items) { delete item; }
+}
 
-void WidgetGroup::events(void) {}
+void WidgetGroup::add_item(GuiItem* item) {
+    items.insert(item);
+}
 
-void WidgetGroup::update(void) {}
+void WidgetGroup::events(MouseHandler* mouse_handler, EventHandler* event_handler) {
+    for (GuiItem* item : items) { item->events(mouse_handler, event_handler); }
+}
 
-void WidgetGroup::render(void) const {}
+void WidgetGroup::update(void) {
+    for (GuiItem* item : items) { item->update(); }
+}
+
+void WidgetGroup::render(void) const {
+    for (GuiItem* item : items) { item->render(); }
+}
