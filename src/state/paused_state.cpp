@@ -8,7 +8,6 @@ PausedState::PausedState(Game* game) : GameState(PAUSED, game) {}
 GameStateId PausedState::conditions(void) const {
     if (game->key_handler.check(KEY_P, PRESS)) { return GAME; }
     if (game->key_handler.check(KEY_ESCAPE, PRESS)) { return SHUTDOWN; }
-
     return PAUSED;
 }
 

@@ -25,6 +25,9 @@ void Game::init_objects(void) {
 void Game::init_states(void) {
     init(new StartupState(this));
     add_state(new MenuState(this));
+    add_state(new SettingsState(this));
+    add_state(new KeyBindsState(this));
+    add_state(new HighScoresState(this));
     add_state(new PausedState(this));
     add_state(new RunningState(this));
     add_state(new GameOverState(this));
@@ -46,8 +49,11 @@ void Game::init_events(void) {
 void Game::init_gui(void) {
     gui = new Gui();
     menu_group = new WidgetGroup(gui, 1);
-    paused_group = new WidgetGroup(gui, 1);
-    gameover_group = new WidgetGroup(gui, 1);
+    paused_group = new WidgetGroup(gui, 2);
+    gameover_group = new WidgetGroup(gui, 3);
+    settings_group = new WidgetGroup(gui, 4);
+    keybinds_group = new WidgetGroup(gui, 5);
+    highscores_group = new WidgetGroup(gui, 6);
 
     menu_start_button = new Button(menu_group, LAYOUT::MENU_START_BUTTON, "Start game", red_widget, CENTER, 1);
     menu_settings_button = new Button(menu_group, LAYOUT::MENU_SETTINGS_BUTTON, "Settings", grey_widget, CENTER, 2);
@@ -55,7 +61,12 @@ void Game::init_gui(void) {
     menu_highscores_button = new Button(menu_group, LAYOUT::MENU_HIGHSCORES_BUTTON, "High scores", grey_widget, CENTER, 4);
     menu_exit_button = new Button(menu_group, LAYOUT::MENU_EXIT_BUTTON, "Exit", red_widget, CENTER, 5);
 
-    paused_paused_label = new TextLabel(paused_group, LAYOUT::GRID_CENTER, "Paused", grey_widget, CENTER);
+    settings_back_button = new Button(settings_group, LAYOUT::MENU_BACK_BUTTON, "Back", grey_widget, CENTER);
+    keybinds_back_button = new Button(keybinds_group, LAYOUT::MENU_BACK_BUTTON, "Back", grey_widget, CENTER);
+    highscores_back_button = new Button(highscores_group, LAYOUT::MENU_BACK_BUTTON, "Back", grey_widget, CENTER);
+
+    paused_paused_label = new TextLabel(paused_group, LAYOUT::GRID_CENTER, "Paused", grey_widget, CENTER, 1);
+    paused_info_label = new TextLabel(paused_group, LAYOUT::GAMEOVER_INFO, "Press 'p' to continue", grey_widget_small, CENTER, 2);
 
     gameover_gameover_label = new TextLabel(gameover_group, LAYOUT::GAMEOVER_LABEL, "Game over", red_widget, CENTER, 1);
     gameover_info_label = new TextLabel(gameover_group, LAYOUT::GAMEOVER_INFO, "Press 'r' to restart", grey_widget_small, CENTER, 2);

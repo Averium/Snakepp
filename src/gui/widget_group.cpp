@@ -1,3 +1,5 @@
+#include <stdexcept>
+
 #include "widget_group.h"
 #include "gui.h"
 #include "debug.h"
@@ -7,7 +9,10 @@ WidgetGroup::WidgetGroup() {}
 
 
 WidgetGroup::WidgetGroup(WidgetGroup* group, int layer) : GuiItem(group->gui, layer) {
-    if (group != this) {
+    if (group == nullptr) {
+        throw std::runtime_error("Adding nullptr to a WigetGroup is not allowed");
+    }
+    else if (group != this) {
         group->add_item(this);
     }
 }
