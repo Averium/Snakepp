@@ -3,6 +3,7 @@
 
 #include <string>
 #include "widget.h"
+#include "widget_style.h"
 
 
 class TextLabel : public Widget {
@@ -13,15 +14,16 @@ public:
         WidgetGroup* group,
         Vector position,
         std::string text,
-        unsigned char text_size = 40U,
-        Vector anchor = Vector(0U, 0U),
-        Align align = TOPLEFT,
+        const WidgetStyle style,
+        Alignment alignment = TOPLEFT,
         int layer = 1
     );
 
-    void render(void) const override;
+    void draw_text(const char* text, Color color, Vector position = Vector()) const;
+
+    virtual void render(void) const override;
 
 protected:
     std::string text;
-    unsigned char text_size = 40;
+    const WidgetStyle style;
 };

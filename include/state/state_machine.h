@@ -3,6 +3,16 @@
 #include <map>
 #include "state.h"
 
+#include "gameover_state.h"
+#include "highscores_state.h"
+#include "keybind_state.h"
+#include "menu_state.h"
+#include "paused_state.h"
+#include "running_state.h"
+#include "settings_state.h"
+#include "shutdown_state.h"
+#include "startup_state.h"
+
 
 class StateMachine {
 

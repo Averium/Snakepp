@@ -9,11 +9,9 @@
 #include "window_header.h"
 #include "state_machine.h"
 #include "gui.h"
+#include "widget_style.h"
 #include "text_label.h"
-
-#include "running_state.h"
-#include "paused_state.h"
-#include "gameover_state.h"
+#include "button.h"
 
 
 class Game: public StateMachine {
@@ -32,9 +30,11 @@ public:
 
     Gui* gui;
 
+    WidgetGroup* menu_group;
     WidgetGroup* paused_group;
     WidgetGroup* gameover_group;
     
+    Button* start_button;
     TextLabel* paused_label;
     TextLabel* gameover_label;
 

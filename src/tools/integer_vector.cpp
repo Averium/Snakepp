@@ -4,12 +4,17 @@
 
 Vector::Vector(void): x(0), y(0) {}
 Vector::Vector(int x, int y): x(x), y(y) {}
-Vector::Vector(Vector2 vector): x(vector.x), y(vector.y) {}
+Vector::Vector(Vector2 vector): x((unsigned int)(vector.x)), y((unsigned int)(vector.y)) {}
 Vector::Vector(const Vector &vector): x(vector.x), y(vector.y) {}
 
 
 float Vector::length(void) const {
     return sqrt((float)(x) * (float)(x) + (float)(y) * (float)(y));
+}
+
+
+Vector2 Vector::vector2(void) const {
+    return {(float)(x), (float)(y)};
 }
 
 

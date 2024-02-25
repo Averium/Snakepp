@@ -5,11 +5,7 @@
 #include "rectangle.h"
 
 
-enum Align {
-    TOP,
-    BOTTOM,
-    LEFT,
-    RIGHT,
+enum Alignment {
     TOPLEFT,
     TOPRIGHT,
     BOTTOMLEFT,
@@ -22,13 +18,16 @@ class Widget : public GuiItem, public Rect {
 
 public:
     Widget();
-    Widget(WidgetGroup* group, Rect body, Vector anchor, Align align, int layer);
+    Widget(WidgetGroup* group, Rect body, Alignment alignment, int layer);
+
+    inline bool is_clicked(void) { return clicked; }
+    void align(Vector position);
 
     virtual void events(MouseHandler& mouse, EventHandler& keyboard) override;
 
 protected:
-    Vector anchor;
-    Align align;
+
+    Alignment alignment;
 
     bool focused;
     bool clicked;

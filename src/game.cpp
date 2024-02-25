@@ -5,9 +5,9 @@
 Game::Game() {
 
     init_events();
+    init_gui();
     init_objects();
     init_states();
-    init_gui();
 
     running = false;
 }
@@ -23,7 +23,8 @@ void Game::init_objects(void) {
 
 
 void Game::init_states(void) {
-    init(new PausedState(this));
+    init(new MenuState(this));
+    add_state(new PausedState(this));
     add_state(new RunningState(this));
     add_state(new GameOverState(this));
 }
@@ -41,11 +42,13 @@ void Game::init_events(void) {
 
 void Game::init_gui(void) {
     gui = new Gui();
+    menu_group = new WidgetGroup(gui, 1);
     paused_group = new WidgetGroup(gui, 1);
     gameover_group = new WidgetGroup(gui, 1);
 
-    paused_label = new TextLabel(paused_group, Vector(60, 60), "PAUSED");
-    gameover_label = new TextLabel(gameover_group, Vector(60, 60), "GAME OVER");
+    start_button = new Button(menu_group, Vector(100, 100), "Start game", red_widget);
+    paused_label = new TextLabel(paused_group, Vector(60, 60), "Paused", grey_widget);
+    gameover_label = new TextLabel(gameover_group, Vector(60, 60), "Game over", grey_widget);
 }
 
 

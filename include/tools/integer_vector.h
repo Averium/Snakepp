@@ -12,6 +12,7 @@ public:
     Vector(const Vector &vector);
 
     float length(void) const;
+    Vector2 vector2(void) const;
 
     Vector operator * (int value) const;
 
