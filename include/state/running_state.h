@@ -11,4 +11,5 @@ public:
 
     void events(void) override;
     void update(void) override;
+    void render(void) override;
 };

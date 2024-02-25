@@ -1,4 +1,5 @@
 #include "integer_vector.h"
+#include "debug.h"
 #include <cmath>
 
 
@@ -21,6 +22,13 @@ Vector2 Vector::vector2(void) const {
 Vector Vector::operator * (int value) const {
     int x = (int)(this->x * value);
     int y = (int)(this->y * value);
+    return Vector(x, y);
+}
+
+
+Vector Vector::operator / (int value) const {
+    int x = (int)(this->x / value);
+    int y = (int)(this->y / value);
     return Vector(x, y);
 }
 
@@ -65,4 +73,9 @@ bool Vector::operator == (Vector vector) const {
 
 bool Vector::operator != (Vector vector) const {
     return (this->x != vector.x || this->y != vector.y);
+}
+
+
+void Vector::print(void) const {
+    std::cout << "Vector: [" << x << ", " << y << "]" << std::endl;
 }

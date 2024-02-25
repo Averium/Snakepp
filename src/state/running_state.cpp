@@ -9,6 +9,8 @@ GameStateId RunningState::conditions(void) const {
     Cell* snake_head = game->grid.cell_at(game->snake.position);
     if (game->snake.dead) { return GAMEOVER; }
     if (game->key_handler.check(KEY_P, PRESS)) { return PAUSED; }
+    if (game->key_handler.check(KEY_ESCAPE, PRESS)) { return PAUSED; }
+
     return GAME;
 }
 
@@ -42,4 +44,9 @@ void RunningState::update(void) {
         
         game->grid.update();
     }
+}
+
+
+void RunningState::render(void) {
+    game->grid.render_cells(game->snake.direction);
 }

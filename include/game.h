@@ -34,9 +34,16 @@ public:
     WidgetGroup* paused_group;
     WidgetGroup* gameover_group;
     
-    Button* start_button;
-    TextLabel* paused_label;
-    TextLabel* gameover_label;
+    Button* menu_start_button;
+    Button* menu_settings_button;
+    Button* menu_keybinds_button;
+    Button* menu_highscores_button;
+    Button* menu_exit_button;
+    
+    TextLabel* paused_paused_label;
+
+    TextLabel* gameover_gameover_label;
+    TextLabel* gameover_info_label;
 
     void init_objects(void);
     void init_states(void);
@@ -44,6 +51,7 @@ public:
     void init_gui(void);
 
     void start(void);
+    void stop(void);
     void reset(void);
 
     void events(void);

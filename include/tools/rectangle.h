@@ -37,14 +37,16 @@ public:
     inline int right(void) const { return x + w; }
     inline int top(void) const { return y; }
     inline int bottom(void) const { return y + h; }
-    inline int centerx(void) const { return x + w / 2; }
-    inline int centery(void) const { return y + h / 2; }
+    inline int centerx(void) const { return (int)(x + w / 2); }
+    inline int centery(void) const { return (int)(y + h / 2); }
 
-    inline Vector topleft(void) const { return Vector(top(), left()); }
-    inline Vector topright(void) const { return Vector(top(), right()); }
-    inline Vector bottomleft(void) const { return Vector(bottom(), left()); }
-    inline Vector bottomright(void) const { return Vector(bottom(), left()); }
+    inline Vector topleft(void) const { return Vector(left(), top()); }
+    inline Vector topright(void) const { return Vector(right(), top()); }
+    inline Vector bottomleft(void) const { return Vector(left(), bottom()); }
+    inline Vector bottomright(void) const { return Vector(right(), bottom()); }
     inline Vector center(void) const { return Vector(centerx(), centery()); }
+
+    void print(void) const;
 
 private:
     int x;

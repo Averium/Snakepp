@@ -8,4 +8,6 @@ class ShutdownState : public GameState {
 public:
     ShutdownState(Game* game);
     GameStateId conditions(void) const override;
+
+    void on_entry(void);
 };

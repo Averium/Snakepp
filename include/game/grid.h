@@ -15,7 +15,8 @@ public:
     Grid(Vector position);
 
     void update(void);
-    void render(Vector snake_direction);
+    void render_background(void);
+    void render_cells(Vector snake_direction);
 
     Cell* cell_at(Vector position);
 

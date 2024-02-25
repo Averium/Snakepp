@@ -24,18 +24,21 @@ namespace CONST {
 }
 
 namespace COLORS {
-    const Color GREY30 = {20, 20, 20, CONST::NON_TRANSPARENT};
+    const Color GREY20 = {20, 20, 20, CONST::NON_TRANSPARENT};
+    const Color GREY30 = {30, 30, 30, CONST::NON_TRANSPARENT};
     const Color GREY40 = {40, 40, 40, CONST::NON_TRANSPARENT};
-    const Color GREY50 = {60, 60, 60, CONST::NON_TRANSPARENT};
+    const Color GREY100 = {100, 100, 100, CONST::NON_TRANSPARENT};
+    const Color GREY140 = {140, 140, 140, CONST::NON_TRANSPARENT};
+
     const Color RED120 = {120, 0, 0, CONST::NON_TRANSPARENT};
     const Color RED180 = {180, 0, 0, CONST::NON_TRANSPARENT};
     
-    const Color BACKGROUND = GREY30;
+    const Color BACKGROUND = GREY20;
     const Color GRID = GREY40;
-    const Color SNAKE = GREY30;
+    const Color SNAKE = GREY20;
     const Color PATTERN = GREY40;
-    const Color APPLE = GREY30;
-    const Color HEADER = GREY30;
+    const Color APPLE = GREY20;
+    const Color HEADER = GREY20;
     const Color HEADER_TEXT = GREY40;
 }
 
@@ -50,6 +53,19 @@ namespace LAYOUT {
     const Vector WINDOW = Vector(CONST::CELL_SIZE * (CONST::GRID_COLUMNS + 6), CONST::CELL_SIZE * (CONST::GRID_ROWS + 2));
     const Vector GRID = Vector(CONST::CELL_SIZE, CONST::CELL_SIZE);
     inline Rect HEADER = Rect(0, 0, (CONST::CELL_SIZE * (CONST::GRID_COLUMNS + 6)), CONST::CELL_SIZE);
+
+    const unsigned int WIDGET_GAP = 50U;
+    const unsigned int WIDGET_GAP_SMALL = 40U; 
+    const Vector GRID_CENTER = Vector(CONST::GRID_COLUMNS, CONST::GRID_ROWS) * CONST::CELL_SIZE / 2 + GRID;
+    
+    const Vector MENU_START_BUTTON = GRID_CENTER + Vector(0, WIDGET_GAP * -2);
+    const Vector MENU_SETTINGS_BUTTON = GRID_CENTER + Vector(0, WIDGET_GAP * -1);
+    const Vector MENU_KEYBINDS_BUTTON = GRID_CENTER + Vector(0, WIDGET_GAP * 0);
+    const Vector MENU_HIGHSCORES_BUTTON = GRID_CENTER + Vector(0, WIDGET_GAP * 1);
+    const Vector MENU_EXIT_BUTTON = GRID_CENTER + Vector(0, WIDGET_GAP * 2);
+
+    const Vector GAMEOVER_LABEL = GRID_CENTER;
+    const Vector GAMEOVER_INFO = GRID_CENTER + Vector(0, WIDGET_GAP_SMALL);
 }
 
 const unsigned int CELL_SIDE = (CONST::CELL_SIZE - CONST::CELL_GAP * 2U);

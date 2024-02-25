@@ -23,10 +23,12 @@ void Game::init_objects(void) {
 
 
 void Game::init_states(void) {
-    init(new MenuState(this));
+    init(new StartupState(this));
+    add_state(new MenuState(this));
     add_state(new PausedState(this));
     add_state(new RunningState(this));
     add_state(new GameOverState(this));
+    add_state(new ShutdownState(this));
 }
 
 
@@ -37,6 +39,7 @@ void Game::init_events(void) {
     key_handler.add_key(KEY_RIGHT);
     key_handler.add_key(KEY_P);
     key_handler.add_key(KEY_R);
+    key_handler.add_key(KEY_ESCAPE);
 }
 
 
@@ -46,9 +49,16 @@ void Game::init_gui(void) {
     paused_group = new WidgetGroup(gui, 1);
     gameover_group = new WidgetGroup(gui, 1);
 
-    start_button = new Button(menu_group, Vector(100, 100), "Start game", red_widget);
-    paused_label = new TextLabel(paused_group, Vector(60, 60), "Paused", grey_widget);
-    gameover_label = new TextLabel(gameover_group, Vector(60, 60), "Game over", grey_widget);
+    menu_start_button = new Button(menu_group, LAYOUT::MENU_START_BUTTON, "Start game", red_widget, CENTER, 1);
+    menu_settings_button = new Button(menu_group, LAYOUT::MENU_SETTINGS_BUTTON, "Settings", grey_widget, CENTER, 2);
+    menu_keybinds_button = new Button(menu_group, LAYOUT::MENU_KEYBINDS_BUTTON, "Keybinds", grey_widget, CENTER, 3);
+    menu_highscores_button = new Button(menu_group, LAYOUT::MENU_HIGHSCORES_BUTTON, "High scores", grey_widget, CENTER, 4);
+    menu_exit_button = new Button(menu_group, LAYOUT::MENU_EXIT_BUTTON, "Exit", red_widget, CENTER, 5);
+
+    paused_paused_label = new TextLabel(paused_group, LAYOUT::GRID_CENTER, "Paused", grey_widget, CENTER);
+
+    gameover_gameover_label = new TextLabel(gameover_group, LAYOUT::GAMEOVER_LABEL, "Game over", red_widget, CENTER, 1);
+    gameover_info_label = new TextLabel(gameover_group, LAYOUT::GAMEOVER_INFO, "Press 'r' to restart", grey_widget_small, CENTER, 2);
 }
 
 
@@ -58,6 +68,11 @@ void Game::start(void) {
         running = true;
         loop();
     }
+}
+
+
+void Game::stop(void) {
+    running = false;
 }
 
 
@@ -89,18 +104,15 @@ void Game::render(void) {
     ClearBackground(COLORS::BACKGROUND);
 
     header.render();
-    grid.render(snake.direction);
-
+    grid.render_background();
     current_state->render();
-    
     gui->render();
-
     EndDrawing();
 }
 
 
 void Game::loop(void) {
-    while (running == true && WindowShouldClose() == false) {
+    while (running == true) {
         events();
         update();
         render();

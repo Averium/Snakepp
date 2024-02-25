@@ -6,6 +6,7 @@ GameOverState::GameOverState(Game* game) : GameState(GAMEOVER, game) {}
 
 GameStateId GameOverState::conditions(void) const {
     if (game->key_handler.check(KEY_R, PRESS)) { return GAME; }
+    if (game->key_handler.check(KEY_ESCAPE, PRESS)) { return SHUTDOWN; }
     return GAMEOVER;
 }
 
@@ -18,4 +19,9 @@ void GameOverState::on_entry(void) {
 void GameOverState::on_exit(void) {
     game->gui->deactivate_item(game->gameover_group);
     game->reset();
+}
+
+
+void GameOverState::render(void) {
+    game->grid.render_cells(game->snake.direction);
 }

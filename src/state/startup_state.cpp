@@ -5,5 +5,5 @@
 StartupState::StartupState(Game* game) : GameState(STARTUP, game) {}
 
 GameStateId StartupState::conditions(void) const {
-    return STARTUP;
+    return MENU;
 }

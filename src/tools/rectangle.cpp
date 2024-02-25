@@ -1,4 +1,5 @@
 #include "rectangle.h"
+#include "debug.h"
 
 
 Rect::Rect(void) {}
@@ -76,3 +77,11 @@ void Rect::top(int value)            { y = value; }
 void Rect::bottom(int value)         { y = value - h; }
 void Rect::centerx(int value)        { x = value - w / 2; }
 void Rect::centery(int value)        { y = value - h / 2; }
+
+
+void Rect::print(void) const {
+    std::cout << "Rectangle: [" << left() << ", ";
+    std::cout << top() << ", ";
+    std::cout << width() << ", ";
+    std::cout << height() << "]" << std::endl;
+}

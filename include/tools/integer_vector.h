@@ -15,6 +15,7 @@ public:
     Vector2 vector2(void) const;
 
     Vector operator * (int value) const;
+    Vector operator / (int value) const;
 
     Vector operator + (Vector vector) const;
     Vector operator - (Vector vector) const;
@@ -29,5 +30,5 @@ public:
     int x;
     int y;
 
-private:
+    void print(void) const;
 };
