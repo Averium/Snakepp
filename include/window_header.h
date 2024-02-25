@@ -11,7 +11,7 @@ public:
     WindowHeader(Rect rect, const char* text);
     WindowHeader(Rect rect);
 
-    void events(MouseHandler* mouse_handler);
+    void events(MouseHandler& mouse_handler);
     void render(void);
 
     void init_font(void);

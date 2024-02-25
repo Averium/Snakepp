@@ -1,12 +1,15 @@
 #include "widget_group.h"
 #include "gui.h"
+#include "debug.h"
 
 
 WidgetGroup::WidgetGroup() {}
 
 
 WidgetGroup::WidgetGroup(WidgetGroup* group, int layer) : GuiItem(group->gui, layer) {
-    group->add_item(this);
+    if (group != this) {
+        group->add_item(this);
+    }
 }
 
 WidgetGroup::~WidgetGroup() {
@@ -17,8 +20,14 @@ void WidgetGroup::add_item(GuiItem* item) {
     items.insert(item);
 }
 
-void WidgetGroup::events(MouseHandler* mouse_handler, EventHandler* event_handler) {
-    for (GuiItem* item : items) { item->events(mouse_handler, event_handler); }
+unsigned int WidgetGroup::number_of_items(void) const {
+    return items.size();
+}
+
+void WidgetGroup::events(MouseHandler& mouse, EventHandler& keyboard) {
+    for (GuiItem* item : items) {
+        item->events(mouse, keyboard);
+    }
 }
 
 void WidgetGroup::update(void) {

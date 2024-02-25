@@ -15,13 +15,13 @@ public:
     GuiItem();
     GuiItem(Gui* gui, int layer);
 
-    virtual void events(MouseHandler* mouse_handler, EventHandler* event_handler) = 0;
-    virtual void update(void) = 0;
-    virtual void render(void) const = 0;
+    virtual void events(MouseHandler& mouse, EventHandler& keyboard);
+    virtual void update(void);
+    virtual void render(void) const;
 
     virtual int get_layer(void) const;
 
-    Gui* gui;
+    Gui* gui = nullptr;
 
 protected:
     int layer;

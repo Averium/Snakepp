@@ -1,10 +1,22 @@
 #include "gui_item.h"
 #include "gui.h"
+#include "debug.h"
 
 
 GuiItem::GuiItem() {}
 
+
 GuiItem::GuiItem(Gui* gui, int layer): gui(gui), layer(layer) {};
+
+
+void GuiItem::events(MouseHandler& mouse, EventHandler& keyboard) {}
+
+
+void GuiItem::update(void) {}
+
+
+void GuiItem::render(void) const {}
+
 
 int GuiItem::get_layer(void) const { return this->layer; }
 

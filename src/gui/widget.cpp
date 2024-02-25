@@ -1,18 +1,21 @@
 #include "widget.h"
 #include "widget_group.h"
-#include "integer_vector.h"
+#include "gui.h"
+#include "debug.h"
 
 
-Widget::Widget(WidgetGroup* group, Rect body, int layer): GuiItem(group->gui, layer), Rect(body) {}
+Widget::Widget() {}
 
-void Widget::events(MouseHandler* mouse_handler, EventHandler* event_handler) {
-    Vector mouse_position = mouse_handler->get_position();
-
-    focused = collide(mouse_position);
-    clicked = focused && mouse_handler->check(MOUSE_BUTTON_LEFT, PRESS);
-    holded = focused && mouse_handler->check(MOUSE_BUTTON_LEFT, HOLD);
+Widget::Widget(WidgetGroup* group, Rect body, Vector anchor, Align align, int layer) :
+    GuiItem(group->gui, layer), Rect(body), anchor(anchor), align(align)
+{
+    group->add_item(this);
 }
 
-void Widget::update(void) {}
+void Widget::events(MouseHandler& mouse, EventHandler& keyboard) {
+    Vector mouse_position = mouse.get_position();
 
-void Widget::render(void) const {}
+    focused = collide(mouse_position);
+    clicked = focused && mouse.check(MOUSE_BUTTON_LEFT, PRESS);
+    holded = focused && mouse.check(MOUSE_BUTTON_LEFT, HOLD);
+}

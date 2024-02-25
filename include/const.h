@@ -3,6 +3,10 @@
 #include "raylib.h"
 #include "rectangle.h"
 
+namespace PATH {
+    constexpr char FONT[] = "resources/fonts/font.ttf";
+}
+
 namespace CONST {
     constexpr unsigned int UINT_ZERO = 0U;
     constexpr unsigned int UINT_ONE = 1U;
@@ -17,10 +21,6 @@ namespace CONST {
     constexpr unsigned int NON_TRANSPARENT = 255U;
     constexpr char HEADER_TEXT[] = "Click here to move window";
     constexpr char HEADER_TEXT_SIZE = 40U;
-}
-
-namespace PATH {
-    constexpr char FONT[] = "resources/fonts/font.ttf";
 }
 
 namespace COLORS {

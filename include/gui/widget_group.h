@@ -5,7 +5,7 @@
 #include "gui_item.h"
 
 
-class WidgetGroup : virtual public GuiItem {
+class WidgetGroup : public GuiItem {
 
 public:
     WidgetGroup();
@@ -14,8 +14,9 @@ public:
     ~WidgetGroup();
 
     void add_item(GuiItem* item);
+    unsigned int number_of_items(void) const;
 
-    virtual void events(MouseHandler* mouse_handler, EventHandler* event_handler) override;
+    virtual void events(MouseHandler& mouse, EventHandler& keyboard) override;
     virtual void update(void) override;
     virtual void render(void) const override;
 

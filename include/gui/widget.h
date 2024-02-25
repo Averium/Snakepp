@@ -1,19 +1,35 @@
 #pragma once
 
 #include "gui_item.h"
+#include "gui.h"
 #include "rectangle.h"
 
 
-class Widget : virtual public GuiItem, public Rect {
+enum Align {
+    TOP,
+    BOTTOM,
+    LEFT,
+    RIGHT,
+    TOPLEFT,
+    TOPRIGHT,
+    BOTTOMLEFT,
+    BOTTOMRIGHT,
+    CENTER,
+};
+
+
+class Widget : public GuiItem, public Rect {
 
 public:
-    Widget(WidgetGroup* group, Rect body, int layer);
+    Widget();
+    Widget(WidgetGroup* group, Rect body, Vector anchor, Align align, int layer);
 
-    void events(MouseHandler* mouse_handler, EventHandler* event_handler) override;
-    void update(void) override;
-    void render(void) const override;
+    virtual void events(MouseHandler& mouse, EventHandler& keyboard) override;
 
-private:
+protected:
+    Vector anchor;
+    Align align;
+
     bool focused;
     bool clicked;
     bool holded;

@@ -17,14 +17,12 @@ Rect::Rect(int x, int y, unsigned int w, unsigned int h) {
     this->h = h;
 }
 
-
 Rect::Rect(Rect &rect) {
     this->x = rect.left();
     this->y = rect.top();
     this->w = rect.width();
     this->h = rect.height();
 }
-
 
 bool Rect::collide(Vector point) {
     return (
@@ -35,7 +33,6 @@ bool Rect::collide(Vector point) {
     );
 }
 
-
 bool Rect::collide(Rect rect) {
     return (
         (this->left() <= rect.right()) &&
@@ -44,6 +41,9 @@ bool Rect::collide(Rect rect) {
         (this->bottom() >= rect.top())
     );
 }
+
+void Rect::width(unsigned int new_width)   { w = new_width; }
+void Rect::height(unsigned int new_height) { h = new_height; }
 
 void Rect::topleft(Vector vector) {
     top(vector.y);

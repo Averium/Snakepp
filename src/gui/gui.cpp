@@ -1,7 +1,11 @@
 #include "gui.h"
+#include "debug.h"
 
 
-Gui::Gui() : GuiItem(this, 0) {}
+Gui::Gui() : WidgetGroup(this, 0) {
+    gui = this;
+    init_font();
+}
 
 
 void Gui::activate_item(GuiItem* item) {
@@ -27,5 +31,31 @@ void Gui::new_register(const std::string& name) {
         int_register[name] = value;
     } else if constexpr (std::is_same_v<TYPE, float>) {
         float_register[name] = value;
+    }
+}
+
+
+void Gui::init_font(void) {
+    font = LoadFont(PATH::FONT);
+}
+
+
+void Gui::events(MouseHandler& mouse, EventHandler& keyboard) {
+    for (GuiItem* item : active_items) {
+        item->events(mouse, keyboard);
+    }
+}
+
+
+void Gui::update(void) {
+    for (GuiItem* item : active_items) {
+        item->update();
+    }
+}
+
+
+void Gui::render(void) const {
+    for (GuiItem* item : active_items) {
+        item->render();
     }
 }

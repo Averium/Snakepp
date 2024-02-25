@@ -15,17 +15,10 @@ int main(void) {
 
 /*
 TODO:
-    interface system
-        - interface class
-        - register class template
-        - widgetgroup class
-        - widgetstyle class
-        - widget class
-        - textlabel class
-        - datalabel class
-        - button class
-        - switch class
-        - slider class
+    - datalabel class
+    - button class
+    - switch class
+    - slider class
 
     file handling
         - settings file

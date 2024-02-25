@@ -18,7 +18,7 @@ void StateMachine::add_state(State* state) {
 void StateMachine::init(State* state) {
     init_state = state;
     add_state(state);
-    activate_state(state);
+    current_state = state;
 }
 
 

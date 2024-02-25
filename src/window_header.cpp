@@ -14,22 +14,22 @@ WindowHeader::WindowHeader(Rect rect) : Rect(rect) {
 }
 
 
-void WindowHeader::events(MouseHandler* mouse_handler) {
+void WindowHeader::events(MouseHandler& mouse_handler) {
 
-    if (collide(mouse_handler->get_position()) && mouse_handler->check(MOUSE_BUTTON_LEFT, PRESS)) {
+    if (collide(mouse_handler.get_position()) && mouse_handler.check(MOUSE_BUTTON_LEFT, PRESS)) {
         grab = true;
     }
-    if (!mouse_handler->check(MOUSE_BUTTON_LEFT, HOLD)) {
+    if (!mouse_handler.check(MOUSE_BUTTON_LEFT, HOLD)) {
         grab = false;
     }
 
     if (grab) {
-        window_position = (window_position + mouse_handler->get_position() - grab_position);
+        window_position = (window_position + mouse_handler.get_position() - grab_position);
         SetWindowPosition(window_position.x, window_position.y);
     }
     else {
         window_position = Vector(GetWindowPosition());
-        grab_position = mouse_handler->get_position();
+        grab_position = mouse_handler.get_position();
     }
 }
 

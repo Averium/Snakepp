@@ -14,6 +14,9 @@ public:
     bool collide(Vector point);
     bool collide(Rect rect);
 
+    void width(unsigned int);
+    void height(unsigned int);
+
     inline int width(void) const { return w; }
     inline int height(void) const { return h; }
 
