@@ -7,13 +7,14 @@ C := .cpp
 O := .o
 H := .h
 
+GCC := g++ -std=c++20
+
 RAYLIB_LINK_FLAGS := -lraylib -lopengl32 -lgdi32 -lwinmm
 
 SOURCE := $(wildcard $(SOURCE_FOLDER)/*$(C))
 SOURCE += $(wildcard $(SOURCE_FOLDER)/*/*$(C))
 
 OBJECT := $(patsubst $(SOURCE_FOLDER)/%$(C),$(OBJECT_FOLDER)/%$(O),$(SOURCE))
-#OBJECT := $(addprefix $(OBJECT_FOLDER)/,$(notdir $(OBJECT)))
 
 HEADER := $(wildcard $(INCLUDE_FOLDER)/*$(H))
 HEADER += $(wildcard $(INCLUDE_FOLDER)/*/*$(H))
@@ -27,12 +28,12 @@ LINK := -L$(LIBRARY_FOLER) $(RAYLIB_LINK_FLAGS)
 EXE := main
 
 all: $(OBJECT) $(HEADER)
-	g++ $(OBJECT) -o $(EXE) $(LINK)
+	$(GCC) $(OBJECT) -o $(EXE) $(LINK)
 
 force: clean all
 
 $(OBJECT_FOLDER)/%$(O): $(SOURCE_FOLDER)/%$(C) $(INCLUDE_FOLDER)/%$(H) | $(OBJECT_FOLDERS)
-	g++ $(INCLUDE_FLAGS) -c $< -o $@
+	$(GCC) $(INCLUDE_FLAGS) -c $< -o $@
 
 $(OBJECT_FOLDERS):
 	$(foreach dir,$(OBJECT_FOLDERS),if not exist "$(dir)" mkdir "$(dir)" &&) echo
