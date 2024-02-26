@@ -16,10 +16,15 @@ TextLabel::TextLabel(
 
 ) : Widget(group, Rect(), alignment, layer), text(text), style(style)
 {
-    Vector text_dim = Vector(MeasureTextEx(gui->font, text.c_str(), style.font_size, 0.0F));
+    Vector text_dim = text_dimensions(text.c_str());
     width(text_dim.x);
     height(text_dim.y);
     align(position);
+}
+
+
+Vector TextLabel::text_dimensions(const char* text) const {
+    return Vector(MeasureTextEx(gui->font, text, style.font_size, 0.0F));
 }
 
 

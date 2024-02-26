@@ -21,13 +21,14 @@ public:
     Widget(WidgetGroup* group, Rect body, Alignment alignment, int layer);
 
     inline bool is_clicked(void) { return clicked; }
-    void align(Vector position);
+    void align(Vector anchor);
 
     virtual void events(MouseHandler& mouse, EventHandler& keyboard) override;
 
 protected:
 
     Alignment alignment;
+    Vector anchor;
 
     bool focused;
     bool clicked;

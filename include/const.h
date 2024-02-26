@@ -65,6 +65,7 @@ namespace LAYOUT {
     const Vector MENU_EXIT_BUTTON = GRID_CENTER + Vector(0, WIDGET_GAP * 2);
 
     const Vector MENU_BACK_BUTTON = GRID_CENTER + Vector(0, WIDGET_GAP * 4);
+    const Vector SETTINGS_TEST_SWITCH = GRID_CENTER + Vector(0, WIDGET_GAP * 3);
 
     const Vector GAMEOVER_LABEL = GRID_CENTER;
     const Vector GAMEOVER_INFO = GRID_CENTER + Vector(0, WIDGET_GAP_SMALL);

@@ -12,6 +12,7 @@
 #include "widget_style.h"
 #include "text_label.h"
 #include "button.h"
+#include "switch.h"
 
 
 class Game: public StateMachine {
@@ -44,6 +45,8 @@ public:
     Button* menu_exit_button = nullptr;
 
     Button* settings_back_button = nullptr;
+    Switch* settings_test_switch = nullptr;
+
     Button* keybinds_back_button = nullptr;
     Button* highscores_back_button = nullptr;
     

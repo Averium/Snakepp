@@ -19,6 +19,7 @@ public:
         int layer = 1
     );
 
+    Vector text_dimensions(const char* text) const;
     void draw_text(const char* text, Color color, Vector position = Vector()) const;
 
     virtual void render(void) const override;

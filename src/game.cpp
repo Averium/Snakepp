@@ -61,7 +61,9 @@ void Game::init_gui(void) {
     menu_highscores_button = new Button(menu_group, LAYOUT::MENU_HIGHSCORES_BUTTON, "High scores", grey_widget, CENTER, 4);
     menu_exit_button = new Button(menu_group, LAYOUT::MENU_EXIT_BUTTON, "Exit", red_widget, CENTER, 5);
 
-    settings_back_button = new Button(settings_group, LAYOUT::MENU_BACK_BUTTON, "Back", grey_widget, CENTER);
+    settings_back_button = new Button(settings_group, LAYOUT::MENU_BACK_BUTTON, "Back", grey_widget, CENTER, 1);
+    settings_test_switch = new Switch(settings_group, LAYOUT::SETTINGS_TEST_SWITCH, "Switch", red_widget, false, CENTER, 2);
+
     keybinds_back_button = new Button(keybinds_group, LAYOUT::MENU_BACK_BUTTON, "Back", grey_widget, CENTER);
     highscores_back_button = new Button(highscores_group, LAYOUT::MENU_BACK_BUTTON, "Back", grey_widget, CENTER);
 
