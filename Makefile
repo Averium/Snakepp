@@ -5,7 +5,7 @@ LIBRARY_FOLER := lib
 
 C := .cpp
 O := .o
-H := .h
+H := .hpp
 
 GCC := g++ -std=c++20
 

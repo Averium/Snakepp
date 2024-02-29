@@ -1,4 +1,4 @@
-#include "mousekey.h"
+#include "mousekey.hpp"
 
 
 MouseKey::MouseKey(int keycode) : Key::Key(keycode) {}

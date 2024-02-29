@@ -1,5 +1,5 @@
-#include "rectangle.h"
-#include "debug.h"
+#include "rectangle.hpp"
+#include "debug.hpp"
 
 
 Rect::Rect(void) {}

@@ -1,6 +1,6 @@
-#include "text_label.h"
-#include "gui.h"
-#include "debug.h"
+#include "text_label.hpp"
+#include "gui.hpp"
+#include "debug.hpp"
 
 
 TextLabel::TextLabel() : style(grey_widget) {}

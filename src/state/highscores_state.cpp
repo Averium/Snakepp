@@ -1,5 +1,5 @@
-#include "highscores_state.h"
-#include "game.h"
+#include "highscores_state.hpp"
+#include "game.hpp"
 
 
 HighScoresState::HighScoresState(Game* game) : GameState(HIGHSCORES, game) {}

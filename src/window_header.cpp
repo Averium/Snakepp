@@ -1,5 +1,5 @@
-#include "window_header.h"
-#include "debug.h"
+#include "window_header.hpp"
+#include "debug.hpp"
 
 
 WindowHeader::WindowHeader() : Rect() {}

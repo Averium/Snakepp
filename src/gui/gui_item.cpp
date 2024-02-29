@@ -1,6 +1,6 @@
-#include "gui_item.h"
-#include "gui.h"
-#include "debug.h"
+#include "gui_item.hpp"
+#include "gui.hpp"
+#include "debug.hpp"
 
 
 GuiItem::GuiItem() {}

@@ -1,5 +1,5 @@
-#include "gui.h"
-#include "debug.h"
+#include "gui.hpp"
+#include "debug.hpp"
 
 
 Gui::Gui() : WidgetGroup(this, 0) {

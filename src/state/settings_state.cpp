@@ -1,5 +1,5 @@
-#include "settings_state.h"
-#include "game.h"
+#include "settings_state.hpp"
+#include "game.hpp"
 
 
 SettingsState::SettingsState(Game* game) : GameState(SETTINGS, game) {}

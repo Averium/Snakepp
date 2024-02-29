@@ -1,5 +1,5 @@
-#include "menu_state.h"
-#include "game.h"
+#include "menu_state.hpp"
+#include "game.hpp"
 
 
 MenuState::MenuState(Game* game) : GameState(MENU, game) {}

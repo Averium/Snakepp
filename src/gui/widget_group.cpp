@@ -1,8 +1,8 @@
 #include <stdexcept>
 
-#include "widget_group.h"
-#include "gui.h"
-#include "debug.h"
+#include "widget_group.hpp"
+#include "gui.hpp"
+#include "debug.hpp"
 
 
 WidgetGroup::WidgetGroup() {}

@@ -1,7 +1,7 @@
-#include "widget.h"
-#include "widget_group.h"
-#include "gui.h"
-#include "debug.h"
+#include "widget.hpp"
+#include "widget_group.hpp"
+#include "gui.hpp"
+#include "debug.hpp"
 
 
 Widget::Widget() {}

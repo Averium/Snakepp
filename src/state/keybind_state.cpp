@@ -1,5 +1,5 @@
-#include "keybind_state.h"
-#include "game.h"
+#include "keybind_state.hpp"
+#include "game.hpp"
 
 
 KeyBindsState::KeyBindsState(Game* game) : GameState(KEYBINDS, game) {}

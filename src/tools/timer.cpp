@@ -1,5 +1,5 @@
-#include "raylib.h"
-#include "timer.h"
+#include "raylib.hpp"
+#include "timer.hpp"
 
 
 Timer::Timer() {

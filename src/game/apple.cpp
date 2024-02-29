@@ -1,4 +1,4 @@
-#include "game/apple.h"
+#include "game/apple.hpp"
 
 
 Apple::Apple() {}

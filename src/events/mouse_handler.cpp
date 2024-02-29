@@ -1,4 +1,4 @@
-#include "mouse_handler.h"
+#include "mouse_handler.hpp"
 
 
 MouseHandler::MouseHandler(void) : EventHandler::EventHandler() {

@@ -1,5 +1,5 @@
-#include "main.h"
-#include "debug.h"
+#include "main.hpp"
+#include "debug.hpp"
 
 
 #define TEST 0
@@ -27,7 +27,6 @@ int main(void) {
 /*
 TODO:
     - datalabel class
-    - switch class
     - slider class
 
     file handling

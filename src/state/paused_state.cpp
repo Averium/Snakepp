@@ -1,5 +1,5 @@
-#include "paused_state.h"
-#include "game.h"
+#include "paused_state.hpp"
+#include "game.hpp"
 
 
 PausedState::PausedState(Game* game) : GameState(PAUSED, game) {}

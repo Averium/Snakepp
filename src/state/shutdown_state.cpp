@@ -1,5 +1,5 @@
-#include "shutdown_state.h"
-#include "game.h"
+#include "shutdown_state.hpp"
+#include "game.hpp"
 
 
 ShutdownState::ShutdownState(Game* game) : GameState(SHUTDOWN, game) {}

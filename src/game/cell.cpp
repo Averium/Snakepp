@@ -1,5 +1,5 @@
-#include "game/cell.h"
-#include "debug.h"
+#include "game/cell.hpp"
+#include "debug.hpp"
 
 
 Cell::Cell() {

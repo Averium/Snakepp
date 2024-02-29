@@ -1,5 +1,5 @@
-#include "running_state.h"
-#include "game.h"
+#include "running_state.hpp"
+#include "game.hpp"
 
 
 RunningState::RunningState(Game* game) : GameState(GAME, game) {}

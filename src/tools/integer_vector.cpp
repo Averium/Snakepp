@@ -1,5 +1,5 @@
-#include "integer_vector.h"
-#include "debug.h"
+#include "integer_vector.hpp"
+#include "debug.hpp"
 #include <cmath>
 
 

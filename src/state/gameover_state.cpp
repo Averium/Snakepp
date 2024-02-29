@@ -1,5 +1,5 @@
-#include "gameover_state.h"
-#include "game.h"
+#include "gameover_state.hpp"
+#include "game.hpp"
 
 
 GameOverState::GameOverState(Game* game) : GameState(GAMEOVER, game) {}

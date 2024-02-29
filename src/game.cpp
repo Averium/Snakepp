@@ -1,5 +1,5 @@
-#include "game.h"
-#include "debug.h"
+#include "game.hpp"
+#include "debug.hpp"
 
 
 Game::Game() {

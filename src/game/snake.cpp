@@ -1,5 +1,5 @@
-#include "game/snake.h"
-#include "debug.h"
+#include "game/snake.hpp"
+#include "debug.hpp"
 
 
 Snake::Snake(void) {

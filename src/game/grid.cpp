@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "const.h"
-#include "game/grid.h"
+#include "const.hpp"
+#include "game/grid.hpp"
 
 
 Grid::Grid(void) {}
