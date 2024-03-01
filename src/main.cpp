@@ -1,21 +1,15 @@
 #include "main.hpp"
 #include "debug.hpp"
 
-
 #define TEST 0
 
 
 int main(void) {
     if (TEST) {
-        Rect rect = Rect(10, 20, 100, 100);
-        rect.bottomleft(Vector(500, 400));
-        rect.print();
-    }
-    else {
-        InitWindow(LAYOUT::WINDOW.x, LAYOUT::WINDOW.y, "");
-        SetWindowState(FLAG_WINDOW_UNDECORATED);
-        SetTargetFPS(CONST::FPS);
 
+    }
+
+    else {
         Game game = Game();
         game.start();
 
@@ -28,6 +22,8 @@ int main(void) {
 TODO:
     - datalabel class
     - slider class
+
+    - always active widget groups & window header as a widget
 
     file handling
         - settings file

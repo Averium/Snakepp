@@ -4,6 +4,7 @@
 
 Game::Game() {
 
+    init_window();
     init_events();
     init_gui();
     init_objects();
@@ -13,9 +14,18 @@ Game::Game() {
 }
 
 
+void Game::init_window(void) {
+    Vector window = layout("WINDOW");
+
+    InitWindow(window.x, window.y, "");
+    SetWindowState(FLAG_WINDOW_UNDECORATED);
+    SetTargetFPS(CONST::FPS);
+}
+
+
 void Game::init_objects(void) {
-    header = WindowHeader(LAYOUT::HEADER, CONST::HEADER_TEXT);
-    grid = Grid(LAYOUT::GRID);
+    header = WindowHeader(layout("HEADER"), CONST::HEADER_TEXT);
+    grid = Grid(layout("GRID"));
     logic_timer = Timer(CONST::GAME_PERIOD);
     snake = Snake(START_POS, &grid);
     apple.repos(&grid);
@@ -55,23 +65,23 @@ void Game::init_gui(void) {
     keybinds_group = new WidgetGroup(gui, 5);
     highscores_group = new WidgetGroup(gui, 6);
 
-    menu_start_button = new Button(menu_group, LAYOUT::MENU_START_BUTTON, "Start game", red_widget, CENTER, 1);
-    menu_settings_button = new Button(menu_group, LAYOUT::MENU_SETTINGS_BUTTON, "Settings", grey_widget, CENTER, 2);
-    menu_keybinds_button = new Button(menu_group, LAYOUT::MENU_KEYBINDS_BUTTON, "Keybinds", grey_widget, CENTER, 3);
-    menu_highscores_button = new Button(menu_group, LAYOUT::MENU_HIGHSCORES_BUTTON, "High scores", grey_widget, CENTER, 4);
-    menu_exit_button = new Button(menu_group, LAYOUT::MENU_EXIT_BUTTON, "Exit", red_widget, CENTER, 5);
+    menu_start_button = new Button(menu_group, layout("MENU_ITEM_1"), "Start game", red_widget, CENTER, 1);
+    menu_settings_button = new Button(menu_group, layout("MENU_ITEM_2"), "Settings", grey_widget, CENTER, 2);
+    menu_keybinds_button = new Button(menu_group, layout("MENU_ITEM_3"), "Keybinds", grey_widget, CENTER, 3);
+    menu_highscores_button = new Button(menu_group, layout("MENU_ITEM_4"), "High scores", grey_widget, CENTER, 4);
+    menu_exit_button = new Button(menu_group, layout("MENU_ITEM_5"), "Exit", red_widget, CENTER, 5);
 
-    settings_back_button = new Button(settings_group, LAYOUT::MENU_BACK_BUTTON, "Back", grey_widget, CENTER, 1);
-    settings_test_switch = new Switch(settings_group, LAYOUT::SETTINGS_TEST_SWITCH, "Switch", red_widget, false, CENTER, 2);
+    settings_back_button = new Button(settings_group, layout("MENU_ITEM_6"), "Back", grey_widget, CENTER, 1);
+    settings_test_switch = new Switch(settings_group, layout("MENU_ITEM_5"), "Switch", red_widget, false, CENTER, 2);
 
-    keybinds_back_button = new Button(keybinds_group, LAYOUT::MENU_BACK_BUTTON, "Back", grey_widget, CENTER);
-    highscores_back_button = new Button(highscores_group, LAYOUT::MENU_BACK_BUTTON, "Back", grey_widget, CENTER);
+    keybinds_back_button = new Button(keybinds_group, layout("MENU_ITEM_6"), "Back", grey_widget, CENTER);
+    highscores_back_button = new Button(highscores_group, layout("MENU_ITEM_6"), "Back", grey_widget, CENTER);
 
-    paused_paused_label = new TextLabel(paused_group, LAYOUT::GRID_CENTER, "Paused", grey_widget, CENTER, 1);
-    paused_info_label = new TextLabel(paused_group, LAYOUT::GAMEOVER_INFO, "Press 'p' to continue", grey_widget_small, CENTER, 2);
+    paused_paused_label = new TextLabel(paused_group, layout("GRID_CENTER"), "Paused", grey_widget, CENTER, 1);
+    paused_info_label = new TextLabel(paused_group, layout("GAMEOVER_INFO"), "Press 'p' to continue", grey_widget_small, CENTER, 2);
 
-    gameover_gameover_label = new TextLabel(gameover_group, LAYOUT::GAMEOVER_LABEL, "Game over", red_widget, CENTER, 1);
-    gameover_info_label = new TextLabel(gameover_group, LAYOUT::GAMEOVER_INFO, "Press 'r' to restart", grey_widget_small, CENTER, 2);
+    gameover_gameover_label = new TextLabel(gameover_group, layout("GAMEOVER_LABEL"), "Game over", red_widget, CENTER, 1);
+    gameover_info_label = new TextLabel(gameover_group, layout("GAMEOVER_INFO"), "Press 'r' to restart", grey_widget_small, CENTER, 2);
 }
 
 
@@ -90,7 +100,7 @@ void Game::stop(void) {
 
 
 void Game::reset(void) {
-    grid = Grid(LAYOUT::GRID);
+    grid = Grid(layout("GRID"));
     snake = Snake(START_POS, &grid);
     apple.repos(&grid);
 }

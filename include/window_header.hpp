@@ -8,8 +8,8 @@ class WindowHeader : public Rect {
 
 public:
     WindowHeader();
-    WindowHeader(Rect rect, const char* text);
-    WindowHeader(Rect rect);
+    WindowHeader(Vector dim);
+    WindowHeader(Vector dim, const char* text);
 
     void events(MouseHandler& mouse_handler);
     void render(void);

@@ -5,11 +5,12 @@
 WindowHeader::WindowHeader() : Rect() {}
 
 
-WindowHeader::WindowHeader(Rect rect, const char* text) : Rect(rect), text(text) {
+WindowHeader::WindowHeader(Vector dim) : Rect(0, 0, dim.x, dim.y) {
     init_font();
 }
 
-WindowHeader::WindowHeader(Rect rect) : Rect(rect) {
+
+WindowHeader::WindowHeader(Vector dim, const char* text) : Rect(0, 0, dim.x, dim.y), text(text) {
     init_font();
 }
 

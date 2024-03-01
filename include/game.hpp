@@ -13,6 +13,8 @@
 #include "text_label.hpp"
 #include "button.hpp"
 #include "switch.hpp"
+#include "data_file.hpp"
+#include "layout_data.hpp"
 
 
 class Game: public StateMachine {
@@ -20,6 +22,8 @@ class Game: public StateMachine {
 public:
     Game();
     WindowHeader header;
+
+    LayoutData layout = LayoutData(PATH::LAYOUT);
 
     Timer logic_timer;
     EventHandler key_handler;
@@ -56,6 +60,7 @@ public:
     TextLabel* gameover_gameover_label = nullptr;
     TextLabel* gameover_info_label = nullptr;
 
+    void init_window(void);
     void init_objects(void);
     void init_states(void);
     void init_events(void);

@@ -1,10 +1,13 @@
 #pragma once
 
+#include <string>
+
 #include "raylib.hpp"
 #include "rectangle.hpp"
 
 namespace PATH {
     constexpr char FONT[] = "resources/fonts/font.ttf";
+    const std::string LAYOUT = "resources/data/layout";
 }
 
 namespace CONST {
@@ -12,13 +15,15 @@ namespace CONST {
     constexpr unsigned int UINT_ONE = 1U;
     constexpr float FLOAT_ZERO = 0.0F;
     constexpr unsigned int FPS = 60U;
-    constexpr float GAME_PERIOD = 0.1F;
-    constexpr unsigned int STARTING_LENGTH = 3U;
     constexpr unsigned int GRID_COLUMNS = 20U;
     constexpr unsigned int GRID_ROWS = 20U;
     constexpr unsigned int CELL_SIZE = 40U;
     constexpr unsigned int CELL_GAP = 1U;
     constexpr unsigned int NON_TRANSPARENT = 255U;
+
+    
+    constexpr float GAME_PERIOD = 0.1F;
+    constexpr unsigned int STARTING_LENGTH = 3U;
     constexpr char HEADER_TEXT[] = "Click here to move window";
     constexpr char HEADER_TEXT_SIZE = 40U;
 }
@@ -47,28 +52,6 @@ namespace DIRECTION {
     const Vector DOWN  = Vector( 0,  1);
     const Vector LEFT  = Vector(-1,  0);
     const Vector RIGHT = Vector( 1,  0);
-}
-
-namespace LAYOUT {
-    const Vector WINDOW = Vector(CONST::CELL_SIZE * (CONST::GRID_COLUMNS + 6), CONST::CELL_SIZE * (CONST::GRID_ROWS + 2));
-    const Vector GRID = Vector(CONST::CELL_SIZE, CONST::CELL_SIZE);
-    inline Rect HEADER = Rect(0, 0, (CONST::CELL_SIZE * (CONST::GRID_COLUMNS + 6)), CONST::CELL_SIZE);
-
-    const unsigned int WIDGET_GAP = 50U;
-    const unsigned int WIDGET_GAP_SMALL = 40U; 
-    const Vector GRID_CENTER = Vector(CONST::GRID_COLUMNS, CONST::GRID_ROWS) * CONST::CELL_SIZE / 2 + GRID;
-    
-    const Vector MENU_START_BUTTON = GRID_CENTER + Vector(0, WIDGET_GAP * -2);
-    const Vector MENU_SETTINGS_BUTTON = GRID_CENTER + Vector(0, WIDGET_GAP * -1);
-    const Vector MENU_KEYBINDS_BUTTON = GRID_CENTER + Vector(0, WIDGET_GAP * 0);
-    const Vector MENU_HIGHSCORES_BUTTON = GRID_CENTER + Vector(0, WIDGET_GAP * 1);
-    const Vector MENU_EXIT_BUTTON = GRID_CENTER + Vector(0, WIDGET_GAP * 2);
-
-    const Vector MENU_BACK_BUTTON = GRID_CENTER + Vector(0, WIDGET_GAP * 4);
-    const Vector SETTINGS_TEST_SWITCH = GRID_CENTER + Vector(0, WIDGET_GAP * 3);
-
-    const Vector GAMEOVER_LABEL = GRID_CENTER;
-    const Vector GAMEOVER_INFO = GRID_CENTER + Vector(0, WIDGET_GAP_SMALL);
 }
 
 const unsigned int CELL_SIDE = (CONST::CELL_SIZE - CONST::CELL_GAP * 2U);
