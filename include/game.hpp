@@ -55,6 +55,9 @@ public:
     
     TextLabel* paused_paused_label = nullptr;
     TextLabel* paused_info_label = nullptr;
+    Button* paused_resume_button = nullptr;
+    Button* paused_menu_button = nullptr;
+
 
     TextLabel* gameover_gameover_label = nullptr;
     TextLabel* gameover_info_label = nullptr;

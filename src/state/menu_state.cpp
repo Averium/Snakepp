@@ -19,6 +19,7 @@ GameStateId MenuState::conditions(void) const {
 
 void MenuState::on_entry(void) {
     game->gui->activate_item(game->menu_group);
+    game->reset();
 }
 
 

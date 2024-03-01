@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "file.hpp"
 #include "raylib.hpp"
 

@@ -1,7 +1,8 @@
 #pragma once
 
-#include "widget_group.hpp"
 #include <string>
+
+#include "widget_group.hpp"
 
 
 class Gui : public WidgetGroup {

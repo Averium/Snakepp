@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "file.hpp"
 #include "integer_vector.hpp"
 

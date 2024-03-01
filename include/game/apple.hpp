@@ -1,8 +1,9 @@
 #pragma once
 
+#include <vector>
+
 #include "const.hpp"
 #include "grid.hpp"
-#include <vector>
 
 
 class Apple {
