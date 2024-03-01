@@ -17,26 +17,26 @@ typedef struct {
 
 const WidgetStyle grey_widget = {
     42U,
-    COLORS::GREY140,
-    COLORS::GREY100,
-    COLORS::GREY140,
-    COLORS::GREY100,
+    COLORS("GREY140"),
+    COLORS("GREY100"),
+    COLORS("GREY140"),
+    COLORS("GREY100"),
 };
 
 
 const WidgetStyle grey_widget_small = {
     32U,
-    COLORS::GREY140,
-    COLORS::GREY100,
-    COLORS::GREY140,
-    COLORS::GREY100,
+    COLORS("GREY140"),
+    COLORS("GREY100"),
+    COLORS("GREY140"),
+    COLORS("GREY100"),
 };
 
 
 const WidgetStyle red_widget = {
     42U,
-    COLORS::RED180,
-    COLORS::RED120,
-    COLORS::GREY140,
-    COLORS::GREY100,
+    COLORS("RED180"),
+    COLORS("RED120"),
+    COLORS("GREY140"),
+    COLORS("GREY100"),
 };

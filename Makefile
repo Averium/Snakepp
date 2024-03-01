@@ -16,6 +16,9 @@ SOURCE += $(wildcard $(SOURCE_FOLDER)/*/*$(C))
 
 OBJECT := $(patsubst $(SOURCE_FOLDER)/%$(C),$(OBJECT_FOLDER)/%$(O),$(SOURCE))
 
+# Put const.o at the back, because it contains global variables
+OBJECT := $(filter-out $(OBJECT_FOLDER)/const$(O), $(OBJECT)) $(OBJECT_FOLDER)/const$(O)
+
 HEADER := $(wildcard $(INCLUDE_FOLDER)/*$(H))
 HEADER += $(wildcard $(INCLUDE_FOLDER)/*/*$(H))
 
@@ -36,14 +39,14 @@ $(OBJECT_FOLDER)/%$(O): $(SOURCE_FOLDER)/%$(C) $(INCLUDE_FOLDER)/%$(H) | $(OBJEC
 	$(GCC) $(INCLUDE_FLAGS) -c $< -o $@
 
 $(OBJECT_FOLDERS):
-	$(foreach dir,$(OBJECT_FOLDERS),if not exist "$(dir)" mkdir "$(dir)" &&) echo
+	$(foreach dir,$(OBJECT_FOLDERS),mkdir -p "$(dir)" &&) echo
 
 .PHONY: clean
 clean:
-	@if exist $(OBJECT_FOLDER) (rmdir /s /q $(OBJECT_FOLDER))
-	@del /Q *.exe 2>NUL
-	$(info Removed "obj" folder)
-	$(info Removed "exe" files)
+	$(RM) -r $(OBJECT_FOLDER)
+	$(RM) *.exe
+	@echo "Removed \"$(OBJECT_FOLDER)\" folder"
+	@echo "Removed \"exe\" files"
 
 .PHONY: info
 info:

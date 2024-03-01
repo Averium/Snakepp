@@ -4,10 +4,14 @@
 
 #include "raylib.hpp"
 #include "rectangle.hpp"
+#include "layout_data.hpp"
+#include "color_data.hpp"
+
 
 namespace PATH {
     constexpr char FONT[] = "resources/fonts/font.ttf";
     const std::string LAYOUT = "resources/data/layout";
+    const std::string COLORS = "resources/data/colors";
 }
 
 namespace CONST {
@@ -28,25 +32,6 @@ namespace CONST {
     constexpr char HEADER_TEXT_SIZE = 40U;
 }
 
-namespace COLORS {
-    const Color GREY20 = {20, 20, 20, CONST::NON_TRANSPARENT};
-    const Color GREY30 = {30, 30, 30, CONST::NON_TRANSPARENT};
-    const Color GREY40 = {40, 40, 40, CONST::NON_TRANSPARENT};
-    const Color GREY100 = {100, 100, 100, CONST::NON_TRANSPARENT};
-    const Color GREY140 = {140, 140, 140, CONST::NON_TRANSPARENT};
-
-    const Color RED120 = {120, 0, 0, CONST::NON_TRANSPARENT};
-    const Color RED180 = {180, 0, 0, CONST::NON_TRANSPARENT};
-    
-    const Color BACKGROUND = GREY20;
-    const Color GRID = GREY40;
-    const Color SNAKE = GREY20;
-    const Color PATTERN = GREY40;
-    const Color APPLE = GREY20;
-    const Color HEADER = GREY20;
-    const Color HEADER_TEXT = GREY40;
-}
-
 namespace DIRECTION {
     const Vector UP    = Vector( 0, -1);
     const Vector DOWN  = Vector( 0,  1);
@@ -56,3 +41,7 @@ namespace DIRECTION {
 
 const unsigned int CELL_SIDE = (CONST::CELL_SIZE - CONST::CELL_GAP * 2U);
 const Vector START_POS = Vector(5U, 1U);
+
+
+extern LayoutData LAYOUT;
+extern ColorData COLORS;

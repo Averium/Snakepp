@@ -41,8 +41,8 @@ void WindowHeader::render(void) {
     float text_y = (float)(centery() - CONST::HEADER_TEXT_SIZE / 2 + 2);
     Vector2 position = {text_x, text_y};
     
-    DrawRectangle(left(), top(), width(), height(), COLORS::HEADER);
-    DrawTextEx(font, text, position, CONST::HEADER_TEXT_SIZE, 0, COLORS::HEADER_TEXT);
+    DrawRectangle(left(), top(), width(), height(), COLORS("HEADER"));
+    DrawTextEx(font, text, position, CONST::HEADER_TEXT_SIZE, 0, COLORS("HEADER_TEXT"));
 }
 
 

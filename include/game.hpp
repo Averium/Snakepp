@@ -21,9 +21,8 @@ class Game: public StateMachine {
 
 public:
     Game();
+    
     WindowHeader header;
-
-    LayoutData layout = LayoutData(PATH::LAYOUT);
 
     Timer logic_timer;
     EventHandler key_handler;
