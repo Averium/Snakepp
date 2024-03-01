@@ -45,8 +45,6 @@ $(OBJECT_FOLDERS):
 clean:
 	$(RM) -r $(OBJECT_FOLDER)
 	$(RM) *.exe
-	@echo "Removed \"$(OBJECT_FOLDER)\" folder"
-	@echo "Removed \"exe\" files"
 
 .PHONY: info
 info:
