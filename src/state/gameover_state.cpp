@@ -2,15 +2,15 @@
 #include "game.hpp"
 
 
-GameOverState::GameOverState(Game* game) : GameState(GAMEOVER, game) {}
+GameOverState::GameOverState(Game* game) : GameState(GAMEOVER_STATE, game) {}
 
 GameStateId GameOverState::conditions(void) const {
-    if (game->key_handler.check(KEY_R, PRESS)) { return GAME; }
-    if (game->key_handler.check(KEY_ESCAPE, PRESS)) { return SHUTDOWN; }
-    if (game->gameover_restart_button->is_clicked()) { return GAME; }
-    if (game->gameover_menu_button->is_clicked()) { return MENU; }
+    if (game->key_handler.check(KEY_R, PRESS)) { return GAME_STATE; }
+    if (game->key_handler.check(KEY_ESCAPE, PRESS)) { return SHUTDOWN_STATE; }
+    if (game->gameover_restart_button->is_clicked()) { return GAME_STATE; }
+    if (game->gameover_menu_button->is_clicked()) { return MENU_STATE; }
     
-    return GAMEOVER;
+    return GAMEOVER_STATE;
 }
 
 

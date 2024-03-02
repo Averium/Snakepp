@@ -2,8 +2,8 @@
 #include "game.hpp"
 
 
-StartupState::StartupState(Game* game) : GameState(STARTUP, game) {}
+StartupState::StartupState(Game* game) : GameState(STARTUP_STATE, game) {}
 
 GameStateId StartupState::conditions(void) const {
-    return MENU;
+    return MENU_STATE;
 }

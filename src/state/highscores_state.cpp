@@ -2,11 +2,11 @@
 #include "game.hpp"
 
 
-HighScoresState::HighScoresState(Game* game) : GameState(HIGHSCORES, game) {}
+HighScoresState::HighScoresState(Game* game) : GameState(HIGHSCORES_STATE, game) {}
 
 GameStateId HighScoresState::conditions(void) const {
-    if (game->highscores_back_button->is_clicked()) { return MENU; }
-    return HIGHSCORES;
+    if (game->highscores_back_button->is_clicked()) { return MENU_STATE; }
+    return HIGHSCORES_STATE;
 }
 
 

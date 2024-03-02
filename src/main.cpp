@@ -23,8 +23,6 @@ TODO:
     - data label class
     - slider class
 
-    - always active widget groups & window header as a widget
-
     - settings file
         - speed
         - walls

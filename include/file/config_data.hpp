@@ -4,11 +4,13 @@
 
 
 template <class DATATYPE>
-class DataFile : public File<DATATYPE> {
+class ConfigData : public File<DATATYPE> {
 
 public:
-    DataFile() : File<DATATYPE>() {}
-    DataFile(const std::string path) : File<DATATYPE>(path, false) {}
+    ConfigData() : File<DATATYPE>() {}
+    ConfigData(const std::string path) : File<DATATYPE>(path, false) {
+        this->load();
+    }
 
 
     void read_data(void) {
@@ -17,6 +19,7 @@ public:
 
         while (this->file >> name >> value) {
             this->data[name] = value;
+            print(value);
         }
     }
 

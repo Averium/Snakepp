@@ -15,15 +15,18 @@ public:
     void render(void) const override;
 
     inline bool is_close_clicked(void) { return close_clicked; }
-    inline bool is_minimuze_clicked(void) { return false; }
+    inline bool is_minimize_clicked(void) { return minimize_clicked; }
 
 private:
     bool grab;
     bool close_hovered;
     bool close_clicked;
+    bool minimize_hovered;
+    bool minimize_clicked;
 
     Vector grab_position;
     Vector window_position;
 
     Rect close_rect;
+    Rect minimize_rect;
 };

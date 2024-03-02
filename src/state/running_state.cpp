@@ -2,16 +2,16 @@
 #include "game.hpp"
 
 
-RunningState::RunningState(Game* game) : GameState(GAME, game) {}
+RunningState::RunningState(Game* game) : GameState(GAME_STATE, game) {}
 
 
 GameStateId RunningState::conditions(void) const {
     Cell* snake_head = game->grid.cell_at(game->snake.position);
-    if (game->snake.dead) { return GAMEOVER; }
-    if (game->key_handler.check(KEY_P, PRESS)) { return PAUSED; }
-    if (game->key_handler.check(KEY_ESCAPE, PRESS)) { return PAUSED; }
+    if (game->snake.dead) { return GAMEOVER_STATE; }
+    if (game->key_handler.check(KEY_P, PRESS)) { return PAUSED_STATE; }
+    if (game->key_handler.check(KEY_ESCAPE, PRESS)) { return PAUSED_STATE; }
 
-    return GAME;
+    return GAME_STATE;
 }
 
 

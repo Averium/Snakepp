@@ -2,11 +2,11 @@
 #include "game.hpp"
 
 
-SettingsState::SettingsState(Game* game) : GameState(SETTINGS, game) {}
+SettingsState::SettingsState(Game* game) : GameState(SETTINGS_STATE, game) {}
 
 GameStateId SettingsState::conditions(void) const {
-    if (game->settings_back_button->is_clicked()) { return MENU; }
-    return SETTINGS;
+    if (game->settings_back_button->is_clicked()) { return MENU_STATE; }
+    return SETTINGS_STATE;
 }
 
 

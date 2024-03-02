@@ -2,10 +2,10 @@
 #include "game.hpp"
 
 
-ShutdownState::ShutdownState(Game* game) : GameState(SHUTDOWN, game) {}
+ShutdownState::ShutdownState(Game* game) : GameState(SHUTDOWN_STATE, game) {}
 
 GameStateId ShutdownState::conditions(void) const {
-    return SHUTDOWN;
+    return SHUTDOWN_STATE;
 }
 
 

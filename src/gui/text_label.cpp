@@ -35,6 +35,6 @@ void TextLabel::draw_text(const char* text, Color color, Vector position) const 
 
 
 void TextLabel::render(void) const {
-    draw_text(text.c_str(), style.primary_color_passive);
+    draw_text(text.c_str(), style.color_1_passive);
 }
 

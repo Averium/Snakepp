@@ -39,8 +39,8 @@ void Switch::events(MouseHandler& mouse, EventHandler& keyboard) {
 void Switch::render(void) const {
     Vector text_dim = text_dimensions(text.c_str());
 
-    Color primary_color = focused ? style.primary_color_active : style.primary_color_passive;
-    Color secondary_color = focused ? style.secondary_color_active : style.secondary_color_passive;
+    Color primary_color = focused ? style.color_1_active : style.color_1_passive;
+    Color secondary_color = focused ? style.color_2_active : style.color_2_passive;
     
     draw_text(text.c_str(), secondary_color);
     draw_text(state_text().c_str(), primary_color, Vector(text_dim.x, 0));

@@ -15,7 +15,7 @@ void ColorData::read_data(void) {
     unsigned int r, g, b;
 
     while (file >> name >> r >> g >> b) {
-        data[name] = {(unsigned char)(r), (unsigned char)(g), (unsigned char)(b), CONST::NON_TRANSPARENT};
+        data[name] = {(unsigned char)(r), (unsigned char)(g), (unsigned char)(b), 255U};
     }
 }
 

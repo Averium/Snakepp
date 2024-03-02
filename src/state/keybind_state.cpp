@@ -2,11 +2,11 @@
 #include "game.hpp"
 
 
-KeyBindsState::KeyBindsState(Game* game) : GameState(KEYBINDS, game) {}
+KeyBindsState::KeyBindsState(Game* game) : GameState(KEYBINDS_STATE, game) {}
 
 GameStateId KeyBindsState::conditions(void) const {
-    if (game->keybinds_back_button->is_clicked()) { return MENU; }
-    return KEYBINDS;
+    if (game->keybinds_back_button->is_clicked()) { return MENU_STATE; }
+    return KEYBINDS_STATE;
 }
 
 

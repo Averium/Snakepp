@@ -15,18 +15,16 @@ Game::Game() {
 
 
 void Game::init_window(void) {
-    Vector window = LAYOUT("WINDOW");
-
-    InitWindow(window.x, window.y, "");
+    InitWindow(LAYOUT("WINDOW").x, LAYOUT("WINDOW").y, "");
     SetWindowState(FLAG_WINDOW_UNDECORATED);
-    SetTargetFPS(CONST::FPS);
+    SetTargetFPS(SETTINGS("FPS"));
 }
 
 
 void Game::init_objects(void) {
     grid = Grid(LAYOUT("GRID"));
-    logic_timer = Timer(CONST::GAME_PERIOD);
-    snake = Snake(START_POS, &grid);
+    logic_timer = Timer((float)(SETTINGS("GAME_PERIOD")) / 1000.0F);
+    snake = Snake(Vector(5U, 1U), &grid);
     apple.repos(&grid);
 }
 
@@ -107,7 +105,7 @@ void Game::stop(void) {
 
 void Game::reset(void) {
     grid = Grid(LAYOUT("GRID"));
-    snake = Snake(START_POS, &grid);
+    snake = Snake(Vector(5U, 1U), &grid);
     apple.repos(&grid);
 }
 
@@ -119,6 +117,7 @@ void Game::events(void) {
     gui->events(mouse_handler, key_handler);
 
     if (window_header->is_close_clicked()) { stop(); }
+    if (window_header->is_minimize_clicked()) { MinimizeWindow(); }
 
     current_state->events();
 }
