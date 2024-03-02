@@ -73,6 +73,7 @@ void Game::init_gui(void) {
 
     settings_back_button = new Button(settings_group, LAYOUT("MENU_ITEM_6"), "Back", STYLE_LIGHT_42, CENTER, 1);
     settings_test_switch = new Switch(settings_group, LAYOUT("MENU_ITEM_5"), "Switch", STYLE_RED_42, false, CENTER, 2);
+    settings_test_slider = new Slider(settings_group, LAYOUT("MENU_ITEM_4"), 200U, STYLE_RED_42, CENTER, 3);
 
     keybinds_back_button = new Button(keybinds_group, LAYOUT("MENU_ITEM_6"), "Back", STYLE_LIGHT_42, CENTER);
     highscores_back_button = new Button(highscores_group, LAYOUT("MENU_ITEM_6"), "Back", STYLE_LIGHT_42, CENTER);

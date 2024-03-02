@@ -13,6 +13,7 @@
 #include "text_label.hpp"
 #include "button.hpp"
 #include "switch.hpp"
+#include "slider.hpp"
 #include "config_data.hpp"
 #include "layout_data.hpp"
 
@@ -49,6 +50,7 @@ public:
 
     Button* settings_back_button = nullptr;
     Switch* settings_test_switch = nullptr;
+    Slider* settings_test_slider = nullptr;
 
     Button* keybinds_back_button = nullptr;
     Button* highscores_back_button = nullptr;

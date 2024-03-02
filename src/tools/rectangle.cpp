@@ -43,8 +43,6 @@ bool Rect::collide(Rect rect) {
     );
 }
 
-void Rect::width(unsigned int new_width)   { w = new_width; }
-void Rect::height(unsigned int new_height) { h = new_height; }
 
 void Rect::size(unsigned int new_width, unsigned int new_height) {
     w = new_width;
@@ -55,64 +53,6 @@ void Rect::size(Vector new_size) {
     w = new_size.x;
     h = new_size.y;
 }
-
-void Rect::topleft(Vector vector) {
-    top(vector.y);
-    left(vector.x);
-}
-
-void Rect::topright(Vector vector) {
-    top(vector.y);
-    right(vector.x);
-}
-
-void Rect::bottomleft(Vector vector) {
-    bottom(vector.y);
-    left(vector.x);
-}
-
-void Rect::bottomright(Vector vector) {
-    bottom(vector.y);
-    right(vector.x);
-}
-
-void Rect::center(Vector vector) {
-    centerx(vector.x);
-    centery(vector.y);
-}
-
-void Rect::topleft(int x, int y) {
-    top(y);
-    left(x);
-}
-
-void Rect::topright(int x, int y) {
-    top(y);
-    right(x);
-}
-
-void Rect::bottomleft(int x, int y) {
-    bottom(y);
-    left(x);
-}
-
-void Rect::bottomright(int x, int y) {
-    bottom(y);
-    right(x);
-}
-
-void Rect::center(int x, int y) {
-    centerx(x);
-    centery(y);
-}
-
-void Rect::left(int value)           { x = value; }
-void Rect::right(int value)          { x = value - w; }
-void Rect::top(int value)            { y = value; }
-void Rect::bottom(int value)         { y = value - h; }
-void Rect::centerx(int value)        { x = value - w / 2; }
-void Rect::centery(int value)        { y = value - h / 2; }
-
 
 void Rect::print(void) const {
     std::cout << "Rectangle: [" << left() << ", ";
