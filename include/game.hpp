@@ -14,8 +14,7 @@
 #include "button.hpp"
 #include "switch.hpp"
 #include "slider.hpp"
-#include "config_data.hpp"
-#include "layout_data.hpp"
+#include "data_label.hpp"
 
 
 class Game: public StateMachine {
@@ -51,6 +50,7 @@ public:
     Button* settings_back_button = nullptr;
     Switch* settings_test_switch = nullptr;
     Slider* settings_test_slider = nullptr;
+    DataLabel<int>* settings_test_label = nullptr;
 
     Button* keybinds_back_button = nullptr;
     Button* highscores_back_button = nullptr;

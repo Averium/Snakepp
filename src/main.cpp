@@ -20,8 +20,8 @@ int main(void) {
 
 /*
 TODO:
-    - data label class
-    - slider class
+    - keybind widget
+    - finish gui
 
     - settings file
         - speed
