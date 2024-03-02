@@ -17,9 +17,9 @@ public:
         const WidgetStyle style,
         Alignment alignment = TOPLEFT,
         int layer = 1
-    ) : TextLabel(group, position, text + ": ", style, alignment, layer), value(value)
+    ) : TextLabel(group, position, text + ": ", style, alignment, layer)
     {
-
+        set_value(value);
     }
 
 
@@ -46,11 +46,14 @@ public:
     virtual void render(void) const {
         Vector text_dim = text_dimensions(text.c_str());
 
-        draw_text(text.c_str(), style.color_2_passive);
-        draw_text(value_text().c_str(), style.color_1_passive, Vector(text_dim.x, 0));
+        Color primary_color = focused ? style.color_1_active : style.color_1_passive;
+        Color secondary_color = focused ? style.color_2_active : style.color_2_passive;
+        
+        draw_text(text.c_str(), secondary_color);
+        draw_text(value_text().c_str(), primary_color, Vector(text_dim.x, 0));
     }
 
-private:
+protected:
 
     DATATYPE value;
 };

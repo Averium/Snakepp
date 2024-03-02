@@ -20,7 +20,10 @@ int main(void) {
 
 /*
 TODO:
-    - keybind widget
+    - UPGRADE MAKEFILE FOR AUTOMATIC DEPENDENCIES
+    
+    - make switch a datalabel subclass
+    - keybind widget (also datalabel subclass)
     - finish gui
 
     - settings file

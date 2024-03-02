@@ -27,15 +27,9 @@ Slider::Slider(
 void Slider::events(MouseHandler& mouse, EventHandler& keyboard) {
     Widget::events(mouse, keyboard);
 
-    Vector mouse_position = mouse.get_position();
-    bool mouse_hold = mouse.check(MOUSE_BUTTON_LEFT, HOLD);
-
-    if (!mouse_hold) { grabbed = false; }
-    else if (focused) { grabbed = true; }
-
-    if (grabbed) {
-        slider.centerx(clamp_position(mouse_position.x));
-    }
+    if (mouse.check(MOUSE_BUTTON_LEFT, PRESS) && focused) { grabbed = true; }
+    if (!mouse.check(MOUSE_BUTTON_LEFT, HOLD)) { grabbed = false; }
+    if (grabbed) { slider.centerx(clamp_position(mouse.get_position().x)); }
 }
 
 
