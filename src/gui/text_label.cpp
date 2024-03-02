@@ -3,7 +3,7 @@
 #include "debug.hpp"
 
 
-TextLabel::TextLabel() : style(grey_widget) {}
+TextLabel::TextLabel() : style(STYLE_LIGHT_42) {}
 
 
 TextLabel::TextLabel(

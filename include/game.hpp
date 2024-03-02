@@ -21,8 +21,6 @@ class Game: public StateMachine {
 
 public:
     Game();
-    
-    WindowHeader header;
 
     Timer logic_timer;
     EventHandler key_handler;
@@ -33,6 +31,8 @@ public:
     Apple apple;
 
     Gui* gui = nullptr;
+
+    WindowHeader* window_header = nullptr;
 
     WidgetGroup* menu_group = nullptr;
     WidgetGroup* paused_group = nullptr;
@@ -58,9 +58,10 @@ public:
     Button* paused_resume_button = nullptr;
     Button* paused_menu_button = nullptr;
 
-
     TextLabel* gameover_gameover_label = nullptr;
     TextLabel* gameover_info_label = nullptr;
+    Button* gameover_restart_button = nullptr;
+    Button* gameover_menu_button = nullptr;
 
     void init_window(void);
     void init_objects(void);

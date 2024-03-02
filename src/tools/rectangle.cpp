@@ -46,6 +46,16 @@ bool Rect::collide(Rect rect) {
 void Rect::width(unsigned int new_width)   { w = new_width; }
 void Rect::height(unsigned int new_height) { h = new_height; }
 
+void Rect::size(unsigned int new_width, unsigned int new_height) {
+    w = new_width;
+    h = new_height;
+}
+
+void Rect::size(Vector new_size) {
+    w = new_size.x;
+    h = new_size.y;
+}
+
 void Rect::topleft(Vector vector) {
     top(vector.y);
     left(vector.x);
@@ -71,6 +81,31 @@ void Rect::center(Vector vector) {
     centery(vector.y);
 }
 
+void Rect::topleft(int x, int y) {
+    top(y);
+    left(x);
+}
+
+void Rect::topright(int x, int y) {
+    top(y);
+    right(x);
+}
+
+void Rect::bottomleft(int x, int y) {
+    bottom(y);
+    left(x);
+}
+
+void Rect::bottomright(int x, int y) {
+    bottom(y);
+    right(x);
+}
+
+void Rect::center(int x, int y) {
+    centerx(x);
+    centery(y);
+}
+
 void Rect::left(int value)           { x = value; }
 void Rect::right(int value)          { x = value - w; }
 void Rect::top(int value)            { y = value; }
@@ -84,4 +119,21 @@ void Rect::print(void) const {
     std::cout << top() << ", ";
     std::cout << width() << ", ";
     std::cout << height() << "]" << std::endl;
+}
+
+void Rect::move(int new_x, int new_y, unsigned int new_width, unsigned int new_height) {
+    x = new_x;
+    y = new_y;
+    w = new_width;
+    h = new_height;
+}
+
+void Rect::move(Vector new_topleft, Vector new_size) {
+    size(new_size);
+    topleft(new_topleft);
+}
+
+void Rect::move(Rect new_rect) {
+    size(new_rect.size());
+    topleft(new_rect.topleft());
 }

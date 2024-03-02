@@ -36,7 +36,7 @@ void Gui::new_register(const std::string& name) {
 
 
 void Gui::init_font(void) {
-    font = LoadFont(PATH::FONT);
+    font = LoadFont(PATH::FONT.c_str());
 }
 
 

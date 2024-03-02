@@ -9,7 +9,7 @@
 
 
 namespace PATH {
-    constexpr char FONT[] = "resources/fonts/font.ttf";
+    const std::string FONT = "resources/fonts/font.ttf";
     const std::string LAYOUT = "resources/data/layout";
     const std::string COLORS = "resources/data/colors";
 }
@@ -26,7 +26,7 @@ namespace CONST {
     constexpr unsigned int NON_TRANSPARENT = 255U;
 
     
-    constexpr float GAME_PERIOD = 0.1F;
+    constexpr float GAME_PERIOD = 0.10F;
     constexpr unsigned int STARTING_LENGTH = 3U;
     constexpr char HEADER_TEXT[] = "Click here to move window";
     constexpr char HEADER_TEXT_SIZE = 40U;

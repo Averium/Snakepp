@@ -15,9 +15,10 @@ typedef struct {
 } WidgetStyle;
 
 
-const WidgetStyle grey_widget =             { 42U, COLORS("GREY140"), COLORS("GREY100"), COLORS("GREY140"), COLORS("GREY100") };
-const WidgetStyle grey_widget_small =       { 32U, COLORS("GREY140"), COLORS("GREY100"), COLORS("GREY140"), COLORS("GREY100") };
-const WidgetStyle dark_grey_widget =        { 42U, COLORS("GREY80"),  COLORS("GREY60"),  COLORS("GREY80"),  COLORS("GREY60")  };
-const WidgetStyle dark_grey_widget_small =  { 32U, COLORS("GREY80"),  COLORS("GREY60"),  COLORS("GREY80"),  COLORS("GREY60")  };
-const WidgetStyle red_widget =              { 42U, COLORS("RED180"),  COLORS("RED120"),  COLORS("GREY140"), COLORS("GREY100") };
-const WidgetStyle red_widget_small =        { 32U, COLORS("RED180"),  COLORS("RED120"),  COLORS("GREY140"), COLORS("GREY100") };
+const WidgetStyle STYLE_LIGHT_42 = { 42U, COLORS("GREY140"), COLORS("GREY100"), COLORS("GREY140"), COLORS("GREY100") };
+const WidgetStyle STYLE_LIGHT_32 = { 32U, COLORS("GREY140"), COLORS("GREY100"), COLORS("GREY140"), COLORS("GREY100") };
+const WidgetStyle STYLE_DARK_42 =  { 42U, COLORS("GREY80"),  COLORS("GREY60"),  COLORS("GREY80"),  COLORS("GREY60")  };
+const WidgetStyle STYLE_DARK_32 =  { 32U, COLORS("GREY80"),  COLORS("GREY60"),  COLORS("GREY80"),  COLORS("GREY60")  };
+const WidgetStyle STYLE_RED_42 =   { 42U, COLORS("RED180"),  COLORS("RED120"),  COLORS("GREY140"), COLORS("GREY100") };
+const WidgetStyle STYLE_RED_32 =   { 32U, COLORS("RED180"),  COLORS("RED120"),  COLORS("GREY140"), COLORS("GREY100") };
+const WidgetStyle STYLE_HEADER =   { 42U, COLORS("RED180"),  COLORS("RED120"),  COLORS("GREY40"),  COLORS("GREY20")  };

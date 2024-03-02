@@ -17,8 +17,16 @@ public:
     void width(unsigned int);
     void height(unsigned int);
 
+    void size(unsigned int, unsigned int);
+    void size(Vector);
+
+    void move(int, int, unsigned int, unsigned int);
+    void move(Vector, Vector);
+    void move(Rect);
+
     inline int width(void) const { return w; }
     inline int height(void) const { return h; }
+    inline Vector size(void) const { return Vector(w, h); }
 
     void left(int);
     void right(int);
@@ -32,6 +40,12 @@ public:
     void bottomleft(Vector);
     void bottomright(Vector);
     void center(Vector);
+
+    void topleft(int, int);
+    void topright(int, int);
+    void bottomleft(int, int);
+    void bottomright(int, int);
+    void center(int, int);
     
     inline int left(void) const { return x; }
     inline int right(void) const { return x + w; }

@@ -20,15 +20,18 @@ int main(void) {
 
 /*
 TODO:
-    - datalabel class
+    - data label class
     - slider class
 
     - always active widget groups & window header as a widget
 
-    file handling
-        - settings file
-        - keybinding file
-        - highscores file
+    - settings file
+        - speed
+        - walls
 
-    sound system
+    - keybinding file
+    - highscores file
+
+    - sound system
+    - ploishing
 */
