@@ -28,6 +28,10 @@ public:
         update_size();    
     }
 
+    virtual DATATYPE get_value(void) const {
+        return value;
+    }
+
 
     virtual std::string value_text(void) const { return std::to_string(value); }
 

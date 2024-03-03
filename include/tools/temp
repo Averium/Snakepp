@@ -1,0 +1,49 @@
+template <typename DATATYPE>
+class ValueMap {
+
+public:
+    ValueMap() : normalized_value((DATATYPE)(0)) {
+        add_range((DATATYPE)(0), (DATATYPE)(1), "NORMALIZED");
+    }
+
+    ValueMap(DATATYPE value, DATATYPE minimum, DATATYPE maximum, const std::string range_key) {
+        add_range((DATATYPE)(0), (DATATYPE)(1), "NORMALIZED");
+        add_range(minimum, maximum, range_key);
+        (*this)(range_key, value);
+    }
+
+    std::vector<std::string> keys(void) const {
+        std::vector<std::string> keys_vector;
+        keys_vector.reserve(ranges.size());
+
+        for (const std::pair<std::string, DATATYPE>& pair : this->ranges) {
+            keys_vector.push_back(pair.first);
+        }
+
+        return keys_vector;
+    }
+
+    virtual DATATYPE operator() (const std::string range_key) {
+        const Range<DATATYPE> range = this->ranges[range_key];
+        return (DATATYPE)((double)(this->normalized_value) * (double)(range.range) + (double)(range.minimum));
+    }
+
+    virtual void operator() (const DATATYPE value, const std::string range_key) {
+        const Range<DATATYPE> range = this->ranges[range_key];
+        this->normalized_value = ((double)(value) - (double)(range.minimum)) / (double)(range.range);
+    }
+
+    void add_range(DATATYPE minimum, DATATYPE maximum, const std::string range_key) {
+        if (this->ranges.contains(range_key)) {
+            print("The following range already exists:", range_key);
+            return;
+        }
+        this->ranges[range_key] = Range<DATATYPE>(minimum, maximum);
+    }
+
+protected:
+    double normalized_value;
+
+private:
+    std::map<const std::string, const Range<DATATYPE>> ranges;
+};

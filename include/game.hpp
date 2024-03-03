@@ -15,6 +15,7 @@
 #include "switch.hpp"
 #include "slider.hpp"
 #include "data_label.hpp"
+#include "tools.hpp"
 
 
 class Game: public StateMachine {
@@ -22,7 +23,8 @@ class Game: public StateMachine {
 public:
     Game();
 
-    Timer logic_timer;
+    ConfigData<int> SETTINGS = ConfigData<int>(PATH::SETTINGS);
+
     EventHandler key_handler;
     MouseHandler mouse_handler;
 
@@ -48,9 +50,9 @@ public:
     Button* menu_exit_button = nullptr;
 
     Button* settings_back_button = nullptr;
-    Switch* settings_test_switch = nullptr;
-    Slider* settings_test_slider = nullptr;
-    DataLabel<int>* settings_test_label = nullptr;
+    Switch* settings_wall_switch = nullptr;
+    Slider* settings_speed_slider = nullptr;
+    DataLabel<int>* settings_speed_label = nullptr;
 
     Button* keybinds_back_button = nullptr;
     Button* highscores_back_button = nullptr;
@@ -70,6 +72,9 @@ public:
     void init_states(void);
     void init_events(void);
     void init_gui(void);
+
+    void load_settings(void);
+    void save_settings(void);
 
     void start(void);
     void stop(void);

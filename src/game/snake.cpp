@@ -1,19 +1,18 @@
-#include "game/snake.hpp"
-#include "debug.hpp"
+#include "snake.hpp"
 
 
 Snake::Snake(void) {
     position = Vector(CONST::UINT_ZERO, CONST::UINT_ZERO);
     direction = DIRECTION::RIGHT;
-    length = SETTINGS("STARTING_LENGTH");
+    length = 1U;
     dead = false;
 }
 
 
-Snake::Snake(Vector start_pos, Grid* grid) {
-    position = start_pos;
+Snake::Snake(Grid* grid, Vector start_pos, unsigned int delay_ms, unsigned int length) : position(start_pos), length(length) {
+    set_delay(delay_ms);
+
     direction = DIRECTION::RIGHT;
-    length = SETTINGS("STARTING_LENGTH");
     dead = false;
     Cell* cell;
 
@@ -25,6 +24,11 @@ Snake::Snake(Vector start_pos, Grid* grid) {
         Cell* cell = grid->cell_at(target);
         cell->set_state(SNAKE_BODY, length - i - 1);
     }
+}
+
+
+bool Snake::ready_to_move(void) {
+    return move_timer.tick();
 }
 
 
@@ -58,4 +62,9 @@ void Snake::change_direction(void) {
 
         turn_queue.pop();
     }
+}
+
+
+void Snake::set_delay(unsigned int delay_ms) {
+    move_timer.set((double)(delay_ms) * CONST::MS_TO_S);
 }

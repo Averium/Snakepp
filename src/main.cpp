@@ -19,10 +19,14 @@ int main(void) {
 
 
 /*
+FIXME:
+    - settings slider jumps to cursor upon entering the state
+
 TODO:
     - UPGRADE MAKEFILE FOR AUTOMATIC DEPENDENCIES
-    
-    - make switch a datalabel subclass
+
+    - create a value map class that can map any value to other preset ranges easily
+
     - keybind widget (also datalabel subclass)
     - finish gui
 

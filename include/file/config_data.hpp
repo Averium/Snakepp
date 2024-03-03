@@ -19,7 +19,6 @@ public:
 
         while (this->file >> name >> value) {
             this->data[name] = value;
-            print(value);
         }
     }
 

@@ -16,15 +16,15 @@ GameStateId RunningState::conditions(void) const {
 
 
 void RunningState::events(void) {
-    if (game->key_handler.check(KEY_UP, PRESS)) { game->snake.turn(DIRECTION::UP); }
-    if (game->key_handler.check(KEY_DOWN, PRESS)) { game->snake.turn(DIRECTION::DOWN); }
-    if (game->key_handler.check(KEY_LEFT, PRESS)) { game->snake.turn(DIRECTION::LEFT); }
-    if (game->key_handler.check(KEY_RIGHT, PRESS)) { game->snake.turn(DIRECTION::RIGHT); }
+    if (game->key_handler.check(KEY_W, PRESS)) { game->snake.turn(DIRECTION::UP); }
+    if (game->key_handler.check(KEY_S, PRESS)) { game->snake.turn(DIRECTION::DOWN); }
+    if (game->key_handler.check(KEY_A, PRESS)) { game->snake.turn(DIRECTION::LEFT); }
+    if (game->key_handler.check(KEY_D, PRESS)) { game->snake.turn(DIRECTION::RIGHT); }
 }
 
 
 void RunningState::update(void) {
-    if (game->logic_timer.tick()) {
+    if (game->snake.ready_to_move()) {
         
         game->snake.change_direction();
         game->snake.move();

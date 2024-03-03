@@ -2,13 +2,14 @@
 #include "timer.hpp"
 
 
-Timer::Timer() {
-    this->period = CONST::FLOAT_ZERO;
-}
+Timer::Timer() : period(CONST::FLOAT_ZERO) {}
 
 
-Timer::Timer(double period) {
-    this->period = period;
+Timer::Timer(double period) : period(period) {}
+
+
+void Timer::set(double new_period) {
+    this->period = new_period;
 }
 
 

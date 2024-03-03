@@ -10,6 +10,8 @@ Game::Game() {
     init_objects();
     init_states();
 
+    load_settings();
+
     running = false;
 }
 
@@ -23,8 +25,10 @@ void Game::init_window(void) {
 
 void Game::init_objects(void) {
     grid = Grid(LAYOUT("GRID"));
-    logic_timer = Timer((float)(SETTINGS("GAME_PERIOD")) / 1000.0F);
-    snake = Snake(Vector(5U, 1U), &grid);
+
+    int delay = map_value<int>(SETTINGS("SNAKE_STARTING_SPEED"), CONST::SPEED_MIN, CONST::SPEED_MAX, CONST::DELAY_MAX, CONST::DELAY_MIN);
+    snake = Snake(&grid, Vector(5U, 1U), delay, SETTINGS("SNAKE_STARTING_LENGTH"));
+
     apple.repos(&grid);
 }
 
@@ -43,10 +47,10 @@ void Game::init_states(void) {
 
 
 void Game::init_events(void) {
-    key_handler.add_key(KEY_UP);
-    key_handler.add_key(KEY_DOWN);
-    key_handler.add_key(KEY_LEFT);
-    key_handler.add_key(KEY_RIGHT);
+    key_handler.add_key(KEY_W);
+    key_handler.add_key(KEY_S);
+    key_handler.add_key(KEY_A);
+    key_handler.add_key(KEY_D);
     key_handler.add_key(KEY_P);
     key_handler.add_key(KEY_R);
     key_handler.add_key(KEY_ESCAPE);
@@ -72,9 +76,12 @@ void Game::init_gui(void) {
     menu_exit_button = new Button(menu_group, LAYOUT("MENU_ITEM_6"), "Exit", STYLE_RED_42, CENTER, 5);
 
     settings_back_button = new Button(settings_group, LAYOUT("MENU_ITEM_6"), "Back", STYLE_LIGHT_42, CENTER, 1);
-    settings_test_switch = new Switch(settings_group, LAYOUT("MENU_ITEM_2"), "Switch", STYLE_RED_42, false, CENTER, 2);
-    settings_test_slider = new Slider(settings_group, LAYOUT("MENU_ITEM_3"), 200U, STYLE_RED_42, CENTER, 3);
-    settings_test_label = new DataLabel<int>(settings_group, LAYOUT("MENU_ITEM_4"), "Test value", 0, STYLE_RED_STATIC_42, CENTER, 4);
+    settings_wall_switch = new Switch(settings_group, LAYOUT("MENU_ITEM_2"), "Walls", STYLE_RED_42, false, CENTER, 2);
+    settings_speed_slider = new Slider(settings_group, LAYOUT("MENU_ITEM_3"), 200U, 0U, STYLE_RED_42, CENTER, 3);
+    settings_speed_label = new DataLabel<int>(settings_group, LAYOUT("MENU_ITEM_4"), "Speed", 2, STYLE_RED_STATIC_42, CENTER, 4);
+
+    settings_speed_slider->add_range(CONST::SPEED_MIN, CONST::SPEED_MAX, "SPEED");
+    settings_speed_slider->add_range(CONST::DELAY_MAX, CONST::DELAY_MIN, "DELAY");
 
     keybinds_back_button = new Button(keybinds_group, LAYOUT("MENU_ITEM_6"), "Back", STYLE_LIGHT_42, CENTER);
     highscores_back_button = new Button(highscores_group, LAYOUT("MENU_ITEM_6"), "Back", STYLE_LIGHT_42, CENTER);
@@ -88,6 +95,27 @@ void Game::init_gui(void) {
     gameover_info_label = new TextLabel(gameover_group, LAYOUT("INFO_LABEL_SUB"), "Press 'r' to restart", STYLE_DARK_32, CENTER, 2);
     gameover_restart_button = new Button(gameover_group, LAYOUT("MENU_ITEM_1"), "Restart", STYLE_RED_42, CENTER, 3);
     gameover_menu_button = new Button(gameover_group, LAYOUT("MENU_ITEM_2"), "Main menu", STYLE_LIGHT_42, CENTER, 4);
+}
+
+
+void Game::load_settings(void) {
+    SETTINGS.load();
+    
+    settings_wall_switch->set_value((bool)(SETTINGS("WALLS")));
+    settings_speed_slider->set_value(SETTINGS("SNAKE_STARTING_SPEED"), "SPEED");
+
+    snake.set_delay(settings_speed_slider->get("DELAY"));
+
+}
+
+
+void Game::save_settings(void) {
+    int speed_value = settings_speed_slider->get("SPEED");
+
+    SETTINGS("SNAKE_STARTING_SPEED", speed_value);
+    SETTINGS("WALLS", settings_wall_switch->get_value() ? 1U : 0U);
+
+    SETTINGS.save();
 }
 
 
@@ -107,7 +135,10 @@ void Game::stop(void) {
 
 void Game::reset(void) {
     grid = Grid(LAYOUT("GRID"));
-    snake = Snake(Vector(5U, 1U), &grid);
+
+    int delay = map_value<int>(SETTINGS("SNAKE_STARTING_SPEED"), CONST::SPEED_MIN, CONST::SPEED_MAX, CONST::DELAY_MAX, CONST::DELAY_MIN);
+    snake = Snake(&grid, Vector(5U, 1U), delay, SETTINGS("SNAKE_STARTING_LENGTH"));
+
     apple.repos(&grid);
 }
 
@@ -118,7 +149,8 @@ void Game::events(void) {
 
     gui->events(mouse_handler, key_handler);
 
-    settings_test_label->set_value(settings_test_slider->map_value<int>(0, 10));
+    int speed_value = settings_speed_slider->get("SPEED");
+    settings_speed_label->set_value(speed_value);
 
     if (window_header->is_close_clicked()) { stop(); }
     if (window_header->is_minimize_clicked()) { MinimizeWindow(); }

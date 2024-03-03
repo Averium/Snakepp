@@ -11,6 +11,10 @@ EventHandler::~EventHandler(void) {
 }
 
 bool EventHandler::check(int keycode, keymode mode) {
+    if (!keymap.contains(keycode)) {
+        return false;
+    }
+
     Key* key = keymap[keycode];
     
     switch (mode) {
