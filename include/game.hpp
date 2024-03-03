@@ -24,6 +24,7 @@ public:
     Game();
 
     ConfigData<int> SETTINGS = ConfigData<int>(PATH::SETTINGS);
+    ConfigData<unsigned int> KEYBINDS = ConfigData<unsigned int>(PATH::KEYBINDS);
 
     EventHandler key_handler;
     MouseHandler mouse_handler;

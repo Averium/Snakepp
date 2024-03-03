@@ -12,6 +12,7 @@ namespace PATH {
     const std::string LAYOUT = "resources/data/layout";
     const std::string COLORS = "resources/data/colors";
     const std::string SETTINGS = "resources/data/settings";
+    const std::string KEYBINDS = "resources/data/keybinds";
 }
 
 namespace CONST {

@@ -47,13 +47,13 @@ void Game::init_states(void) {
 
 
 void Game::init_events(void) {
-    key_handler.add_key(KEY_W);
-    key_handler.add_key(KEY_S);
-    key_handler.add_key(KEY_A);
-    key_handler.add_key(KEY_D);
-    key_handler.add_key(KEY_P);
-    key_handler.add_key(KEY_R);
-    key_handler.add_key(KEY_ESCAPE);
+    key_handler.add_key(KEYBINDS("UP"));
+    key_handler.add_key(KEYBINDS("DOWN"));
+    key_handler.add_key(KEYBINDS("LEFT"));
+    key_handler.add_key(KEYBINDS("RIGHT"));
+    key_handler.add_key(KEYBINDS("PAUSE"));
+    key_handler.add_key(KEYBINDS("RESET"));
+    key_handler.add_key(KEYBINDS("EXIT"));
 }
 
 

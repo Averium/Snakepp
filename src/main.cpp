@@ -25,8 +25,6 @@ FIXME:
 TODO:
     - UPGRADE MAKEFILE FOR AUTOMATIC DEPENDENCIES
 
-    - create a value map class that can map any value to other preset ranges easily
-
     - keybind widget (also datalabel subclass)
     - finish gui
 
