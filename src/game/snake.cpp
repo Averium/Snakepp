@@ -32,15 +32,22 @@ bool Snake::ready_to_move(void) {
 }
 
 
-void Snake::move(void) {
+bool Snake::move(bool walls) {
     Vector new_position = position + direction;
+    unsigned int x = new_position.x;
+    unsigned int y = new_position.y;
 
-    if (new_position.x > (int)CONST::GRID_COLUMNS - 1) { new_position.x = 0; }
-    if (new_position.x < 0) { new_position.x = (int)CONST::GRID_COLUMNS - 1; }
-    if (new_position.y > (int)CONST::GRID_ROWS - 1) { new_position.y = 0; }
-    if (new_position.y < 0) { new_position.y = (int)CONST::GRID_ROWS - 1; }
+    if (walls && (x > (CONST::GRID_COLUMNS - 1) || x < 0 || y > (CONST::GRID_ROWS - 1) || y < 0)) {
+        return true;
+    }
+
+    if (x > CONST::GRID_COLUMNS - 1) { new_position.x = 0; }
+    if (x < 0) { new_position.x = CONST::GRID_COLUMNS - 1; }
+    if (y > CONST::GRID_ROWS - 1) { new_position.y = 0; }
+    if (y < 0) { new_position.y = CONST::GRID_ROWS - 1; }
 
     position = new_position;
+    return false;
 }
 
 

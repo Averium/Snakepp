@@ -27,7 +27,10 @@ void RunningState::update(void) {
     if (game->snake.ready_to_move()) {
         
         game->snake.change_direction();
-        game->snake.move();
+        if (game->snake.move(game->SETTINGS("WALLS"))) {
+            game->snake.dead = true;
+            return;
+        }
         
         Cell* snake_head = game->grid.cell_at(game->snake.position);
         

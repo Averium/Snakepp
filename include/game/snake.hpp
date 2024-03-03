@@ -14,7 +14,7 @@ public:
     Snake(Grid* grid, Vector start_pos, unsigned int delay_ms, unsigned int length);
 
     bool ready_to_move(void);
-    void move(void);
+    bool move(bool walls);
     void turn(Vector new_direction);
     void change_direction(void);
     void set_delay(unsigned int delay_ms);
