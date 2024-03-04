@@ -71,7 +71,6 @@ void Game::init_gui(void) {
     settings_speed_slider->add_range(CONST::SPEED_MIN, CONST::SPEED_MAX, "SPEED");
     settings_speed_slider->add_range(CONST::DELAY_MAX, CONST::DELAY_MIN, "DELAY");
 
-    keybinds_back_button = new Button(keybinds_group, LAYOUT("MENU_ITEM_6"), "Back", STYLE_LIGHT_42, CENTER);
     highscores_back_button = new Button(highscores_group, LAYOUT("MENU_ITEM_6"), "Back", STYLE_LIGHT_42, CENTER);
 
     paused_paused_label = new TextLabel(paused_group, LAYOUT("INFO_LABEL_MAIN"), "Paused", STYLE_DARK_42, CENTER, 1);
@@ -83,6 +82,16 @@ void Game::init_gui(void) {
     gameover_info_label = new TextLabel(gameover_group, LAYOUT("INFO_LABEL_SUB"), "Press 'r' to restart", STYLE_DARK_32, CENTER, 2);
     gameover_restart_button = new Button(gameover_group, LAYOUT("MENU_ITEM_1"), "Restart", STYLE_RED_42, CENTER, 3);
     gameover_menu_button = new Button(gameover_group, LAYOUT("MENU_ITEM_2"), "Main menu", STYLE_LIGHT_42, CENTER, 4);
+
+    keybinds_up_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_1"), "UP", 350U, KEYBINDS("UP"), STYLE_RED_42, CENTER, 1);
+    keybinds_down_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_2"), "DOWN", 350U, KEYBINDS("DOWN"), STYLE_RED_42, CENTER, 2);
+    keybinds_left_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_3"), "LEFT", 350U, KEYBINDS("LEFT"), STYLE_RED_42, CENTER, 3);
+    keybinds_right_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_4"), "RIGHT", 350U, KEYBINDS("RIGHT"), STYLE_RED_42, CENTER, 4);
+    keybinds_pause_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_5"), "PAUSE", 350U, KEYBINDS("PAUSE"), STYLE_RED_42, CENTER, 5);
+    keybinds_reset_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_6"), "RESET", 350U, KEYBINDS("RESET"), STYLE_RED_42, CENTER, 6);
+    keybinds_exit_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_7"), "EXIT", 350U, KEYBINDS("EXIT"), STYLE_RED_42, CENTER, 7);
+    
+    keybinds_back_button = new Button(keybinds_group, LAYOUT("MENU_ITEM_9"), "Back", STYLE_LIGHT_42, CENTER, 8);
 }
 
 

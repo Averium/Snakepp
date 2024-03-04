@@ -14,6 +14,7 @@
 #include "button.hpp"
 #include "switch.hpp"
 #include "slider.hpp"
+#include "keybind_label.hpp"
 #include "data_label.hpp"
 #include "tools.hpp"
 
@@ -56,6 +57,14 @@ public:
     DataLabel<int>* settings_speed_label = nullptr;
 
     Button* keybinds_back_button = nullptr;
+    KeybindLabel* keybinds_up_label = nullptr;
+    KeybindLabel* keybinds_down_label = nullptr;
+    KeybindLabel* keybinds_left_label = nullptr;
+    KeybindLabel* keybinds_right_label = nullptr;
+    KeybindLabel* keybinds_pause_label = nullptr;
+    KeybindLabel* keybinds_reset_label = nullptr;
+    KeybindLabel* keybinds_exit_label = nullptr;
+
     Button* highscores_back_button = nullptr;
     
     TextLabel* paused_paused_label = nullptr;
@@ -71,7 +80,6 @@ public:
     void init_window(void);
     void init_objects(void);
     void init_states(void);
-    void init_events(void);
     void init_gui(void);
 
     void load_settings(void);

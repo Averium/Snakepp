@@ -34,8 +34,8 @@ bool Snake::ready_to_move(void) {
 
 bool Snake::move(bool walls) {
     Vector new_position = position + direction;
-    unsigned int x = new_position.x;
-    unsigned int y = new_position.y;
+    int x = new_position.x;
+    int y = new_position.y;
 
     if (walls && (x > (CONST::GRID_COLUMNS - 1) || x < 0 || y > (CONST::GRID_ROWS - 1) || y < 0)) {
         return true;

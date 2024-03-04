@@ -10,7 +10,13 @@ public:
     KeyboardHandler();
     KeyboardHandler(ConfigData<unsigned int>* keybinds);
 
-    bool check(const std::string key, Keymode keymode);
+    void update_keys(void);
+    void save_keybinds(void);
+
+    void configure_key(const std::string keyname, unsigned int keycode);
+
+    bool check(const std::string keyname, Keymode keymode);
+    unsigned int wait_for_key(void);
 
 private:
     ConfigData<unsigned int>* keybinds;

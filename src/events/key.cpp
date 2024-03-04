@@ -17,6 +17,11 @@ void Key::update(void) {
 }
 
 
+void Key::set_keycode(int new_keycode) {
+    keycode = new_keycode;
+}
+
+
 bool Key::is_pressed(void) const {
     return (pressed && !last_pressed);
 }

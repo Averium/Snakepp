@@ -10,6 +10,10 @@ enum Alignment {
     TOPRIGHT,
     BOTTOMLEFT,
     BOTTOMRIGHT,
+    MIDLEFT,
+    MIDRIGHT,
+    MIDTOP,
+    MIDBOTTOM,
     CENTER,
 };
 
@@ -30,7 +34,7 @@ protected:
     Alignment alignment;
     Vector anchor;
 
-    bool focused;
+    bool hovered;
     bool clicked;
     bool holded;
 };

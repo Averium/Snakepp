@@ -21,15 +21,22 @@ int main(void) {
 /*
 FIXME:
     - settings slider jumps to cursor upon entering the state
+    - change or automate widget layer situation
 
 TODO:
     - UPGRADE MAKEFILE FOR AUTOMATIC DEPENDENCIES
 
-    - keybind widget (also datalabel subclass) or just use datalabel class
-    - finish gui
+    - add unconfigured keypress mode to KeyboardHandler that tracks all keys, but only when the mode is active
+        - (text input and key config scenarios)
 
-    - keybinding file
+    - keybind widget (datalabel subclass) or just use datalabel class and solve with that
+    - keybind window
+
+    - text input widget (datalabel subclass)
+
+    - highscores system
     - highscores file
+    - highscores window
 
     - sound system
     - ploishing

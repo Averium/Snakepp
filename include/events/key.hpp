@@ -11,6 +11,7 @@ public:
     Key(int keycode);
 
     virtual void update(void);
+    virtual void set_keycode(int keycode);
 
     bool is_pressed(void) const;
     bool is_released(void) const;

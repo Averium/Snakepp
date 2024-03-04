@@ -17,4 +17,5 @@ void KeyBindsState::on_entry(void) {
 
 void KeyBindsState::on_exit(void) {
     game->gui->deactivate_item(game->keybinds_group);
+    game->keyboard.save_keybinds();
 }
