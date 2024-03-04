@@ -29,7 +29,7 @@ unsigned int WidgetGroup::number_of_items(void) const {
     return items.size();
 }
 
-void WidgetGroup::events(MouseHandler& mouse, EventHandler& keyboard) {
+void WidgetGroup::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
     for (GuiItem* item : items) {
         item->events(mouse, keyboard);
     }

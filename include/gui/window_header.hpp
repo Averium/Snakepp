@@ -11,7 +11,7 @@ public:
     WindowHeader();
     WindowHeader(Gui* gui, Vector dim, std::string text, WidgetStyle style, int layer);
 
-    void events(MouseHandler& mouse, EventHandler& keyboard);
+    void events(MouseHandler& mouse, KeyboardHandler& keyboard);
     void render(void) const override;
 
     inline bool is_close_clicked(void) { return close_clicked; }

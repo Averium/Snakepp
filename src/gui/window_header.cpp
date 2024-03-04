@@ -22,7 +22,7 @@ WindowHeader::WindowHeader(Gui* gui, Vector dim, std::string text, WidgetStyle s
 }
 
 
-void WindowHeader::events(MouseHandler& mouse, EventHandler& keyboard) {
+void WindowHeader::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
 
     Widget::events(mouse, keyboard);
 

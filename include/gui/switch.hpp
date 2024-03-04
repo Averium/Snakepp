@@ -21,7 +21,7 @@ public:
 
     inline std::string value_text(void) const override { return value ? "On" : "Off"; }
 
-    virtual void events(MouseHandler& mouse, EventHandler& keyboard) override;
+    virtual void events(MouseHandler& mouse, KeyboardHandler& keyboard) override;
 
 protected:
     bool state;

@@ -50,4 +50,8 @@ public:
         file.close();
     }
 
+    const std::map<const std::string, DATATYPE>* all(void) const {
+        return &data;
+    }
+
 };

@@ -10,7 +10,7 @@ EventHandler::~EventHandler(void) {
     }
 }
 
-bool EventHandler::check(int keycode, keymode mode) {
+bool EventHandler::check(int keycode, Keymode mode) {
     if (!keymap.contains(keycode)) {
         return false;
     }

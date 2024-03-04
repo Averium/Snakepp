@@ -16,7 +16,7 @@ public:
     void add_item(GuiItem* item);
     unsigned int number_of_items(void) const;
 
-    virtual void events(MouseHandler& mouse, EventHandler& keyboard) override;
+    virtual void events(MouseHandler& mouse, KeyboardHandler& keyboard) override;
     virtual void update(void) override;
     virtual void render(void) const override;
 

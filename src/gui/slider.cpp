@@ -41,7 +41,7 @@ void Slider::set_value(const unsigned int value, const std::string range_key) {
 }
 
 
-void Slider::events(MouseHandler& mouse, EventHandler& keyboard) {
+void Slider::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
     Widget::events(mouse, keyboard);
 
     if (mouse.check(MOUSE_BUTTON_LEFT, PRESS) && focused) { grabbed = true; }

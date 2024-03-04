@@ -9,7 +9,7 @@ GuiItem::GuiItem() {}
 GuiItem::GuiItem(Gui* gui, int layer): gui(gui), layer(layer) {};
 
 
-void GuiItem::events(MouseHandler& mouse, EventHandler& keyboard) {}
+void GuiItem::events(MouseHandler& mouse, KeyboardHandler& keyboard) {}
 
 
 void GuiItem::update(void) {}

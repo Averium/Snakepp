@@ -5,8 +5,8 @@
 GameOverState::GameOverState(Game* game) : GameState(GAMEOVER_STATE, game) {}
 
 GameStateId GameOverState::conditions(void) const {
-    if (game->key_handler.check(game->KEYBINDS("RESET"), PRESS)) { return GAME_STATE; }
-    if (game->key_handler.check(game->KEYBINDS("EXIT"), PRESS)) { return SHUTDOWN_STATE; }
+    if (game->keyboard.check("RESET", PRESS)) { return GAME_STATE; }
+    if (game->keyboard.check("EXIT", PRESS)) { return SHUTDOWN_STATE; }
     if (game->gameover_restart_button->is_clicked()) { return GAME_STATE; }
     if (game->gameover_menu_button->is_clicked()) { return MENU_STATE; }
     

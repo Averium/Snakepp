@@ -25,7 +25,6 @@ FIXME:
 TODO:
     - UPGRADE MAKEFILE FOR AUTOMATIC DEPENDENCIES
 
-    - Move KEYBINDS reference to event handler and ask for key name instead of keycode
     - keybind widget (also datalabel subclass) or just use datalabel class
     - finish gui
 

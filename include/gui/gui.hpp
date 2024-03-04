@@ -17,7 +17,7 @@ public:
     template <typename TYPE>
     void new_register(const std::string& name);
 
-    void events(MouseHandler& mouse, EventHandler& keyboard) override;
+    void events(MouseHandler& mouse, KeyboardHandler& keyboard) override;
     void update(void) override;
     void render(void) const override;
 

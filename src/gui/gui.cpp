@@ -40,7 +40,7 @@ void Gui::init_font(void) {
 }
 
 
-void Gui::events(MouseHandler& mouse, EventHandler& keyboard) {
+void Gui::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
     for (GuiItem* item : active_items) {
         item->events(mouse, keyboard);
     }

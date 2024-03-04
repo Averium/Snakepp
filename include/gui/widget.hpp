@@ -23,7 +23,7 @@ public:
     inline bool is_clicked(void) { return clicked; }
     void align(Vector anchor);
 
-    virtual void events(MouseHandler& mouse, EventHandler& keyboard) override;
+    virtual void events(MouseHandler& mouse, KeyboardHandler& keyboard) override;
 
 protected:
 

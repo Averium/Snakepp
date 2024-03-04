@@ -12,7 +12,7 @@ Widget::Widget(WidgetGroup* group, Rect body, Alignment alignment, int layer) :
     group->add_item(this);
 }
 
-void Widget::events(MouseHandler& mouse, EventHandler& keyboard) {
+void Widget::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
     Vector mouse_position = mouse.get_position();
 
     focused = collide(mouse_position);

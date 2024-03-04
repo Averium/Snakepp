@@ -5,7 +5,7 @@
 #include "key.hpp"
 
 
-enum keymode {
+enum Keymode {
     PRESS,
     RELEASE,
     HOLD,
@@ -18,7 +18,7 @@ public:
     EventHandler(void);
     ~EventHandler();
 
-    bool check(int keycode, keymode mode);
+    virtual bool check(int keycode, Keymode mode);
 
     virtual void add_key(int keycode);
     virtual void update(void);

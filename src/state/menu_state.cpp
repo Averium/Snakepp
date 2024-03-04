@@ -12,7 +12,7 @@ GameStateId MenuState::conditions(void) const {
     if (game->menu_highscores_button->is_clicked()) { return HIGHSCORES_STATE; }
     if (game->menu_exit_button->is_clicked()) { return SHUTDOWN_STATE; }
 
-    if (game->key_handler.check(game->KEYBINDS("EXIT"), PRESS)) { return SHUTDOWN_STATE; }
+    if (game->keyboard.check("EXIT", PRESS)) { return SHUTDOWN_STATE; }
     
     return MENU_STATE;
 }

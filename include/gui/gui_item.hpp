@@ -1,6 +1,6 @@
 #pragma once
 
-#include "event_handler.hpp"
+#include "keyboard_handler.hpp"
 #include "mouse_handler.hpp"
 
 
@@ -15,7 +15,7 @@ public:
     GuiItem();
     GuiItem(Gui* gui, int layer);
 
-    virtual void events(MouseHandler& mouse, EventHandler& keyboard);
+    virtual void events(MouseHandler& mouse, KeyboardHandler& keyboard);
     virtual void update(void);
     virtual void render(void) const;
 

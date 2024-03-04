@@ -5,7 +5,6 @@
 Game::Game() {
 
     init_window();
-    init_events();
     init_gui();
     init_objects();
     init_states();
@@ -43,17 +42,6 @@ void Game::init_states(void) {
     add_state(new RunningState(this));
     add_state(new GameOverState(this));
     add_state(new ShutdownState(this));
-}
-
-
-void Game::init_events(void) {
-    key_handler.add_key(KEYBINDS("UP"));
-    key_handler.add_key(KEYBINDS("DOWN"));
-    key_handler.add_key(KEYBINDS("LEFT"));
-    key_handler.add_key(KEYBINDS("RIGHT"));
-    key_handler.add_key(KEYBINDS("PAUSE"));
-    key_handler.add_key(KEYBINDS("RESET"));
-    key_handler.add_key(KEYBINDS("EXIT"));
 }
 
 
@@ -144,10 +132,10 @@ void Game::reset(void) {
 
 
 void Game::events(void) {
-    key_handler.update();
-    mouse_handler.update();
+    keyboard.update();
+    mouse.update();
 
-    gui->events(mouse_handler, key_handler);
+    gui->events(mouse, keyboard);
 
     int speed_value = settings_speed_slider->get("SPEED");
     settings_speed_label->set_value(speed_value);
