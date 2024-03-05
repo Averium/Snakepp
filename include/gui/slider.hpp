@@ -11,7 +11,15 @@ class Slider : public Widget, public ValueMap {
 
 public:
     Slider();
-    Slider(WidgetGroup* group, Vector position, unsigned int length, double value, WidgetStyle style, Alignment alignment = TOPLEFT, int layer = 1);
+    Slider(
+        WidgetGroup* group,
+        Vector position,
+        unsigned int length,
+        double value,
+        WidgetStyle style,
+        Alignment alignment = CENTER,
+        int layer = CONST::UINT_ONE
+    );
 
     inline int clamp_position(int position) const { return std::min(std::max(position, left()), right()); }
     inline double get_value(void) const { return normalized_value; }
@@ -24,13 +32,13 @@ public:
     void render(void) const override;
 
 private:
-    static const unsigned int slider_size = 30U;
-    static const unsigned int rail_width = 15U;
+    static const unsigned int slider_size = CONST::SLIDER_SIZE;
+    static const unsigned int rail_width = CONST::SLIDER_RAIL_WIDTH;
 
-    bool grabbed;
+    bool grabbed = false;
 
     WidgetStyle style;
 
-    Rect slider = Rect(0, 0, slider_size, slider_size);
+    Rect slider = Rect(CONST::UINT_ZERO, CONST::UINT_ZERO, slider_size, slider_size);
     Rect rail = Rect();
 };

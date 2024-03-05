@@ -15,7 +15,7 @@ public:
         Vector position,
         std::string text,
         const WidgetStyle style,
-        Alignment alignment = TOPLEFT,
+        Alignment alignment = CENTER,
         int layer = 1
     );
 

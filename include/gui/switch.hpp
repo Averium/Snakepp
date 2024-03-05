@@ -13,7 +13,7 @@ public:
         std::string text,
         const WidgetStyle style,
         bool state = false,
-        Alignment alignment = TOPLEFT,
+        Alignment alignment = CENTER,
         int layer = 1
     );
 

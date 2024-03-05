@@ -1,23 +1,24 @@
 #pragma once
 
-#include "text_label.hpp"
+#include <string>
+
+#include "data_label.hpp"
 
 
-class Button : public TextLabel {
+class TextInput : public DataLabel<std::string> {
 
 public:
-    Button();
-    Button(
+    TextInput();
+    TextInput(
         WidgetGroup* group,
         Vector position,
         std::string text,
         const WidgetStyle style,
         Alignment alignment = CENTER,
-        int layer = 1
+        int layer = CONST::UINT_ONE
     );
 
-    virtual void render(void) const override;
+private:
 
-protected:
 
 };

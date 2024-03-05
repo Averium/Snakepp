@@ -22,7 +22,7 @@ class State {
 public:
     inline State(GameStateId id, StateMachine* state_machine): id(id), state_machine(state_machine) {};
 
-    inline virtual GameStateId conditions(void) const { return id; };
+    inline virtual GameStateId conditions(void) const = 0;
 
     inline virtual void on_entry(void) {}
     inline virtual void on_exit(void) {}

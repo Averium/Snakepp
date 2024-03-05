@@ -17,17 +17,22 @@ WidgetGroup::WidgetGroup(WidgetGroup* group, int layer) : GuiItem(group->gui, la
     }
 }
 
+
 WidgetGroup::~WidgetGroup() {
     for (GuiItem* item : items) { delete item; }
 }
 
+
 void WidgetGroup::add_item(GuiItem* item) {
+    item->set_id(++id_counter);
     items.insert(item);
 }
+
 
 unsigned int WidgetGroup::number_of_items(void) const {
     return items.size();
 }
+
 
 void WidgetGroup::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
     for (GuiItem* item : items) {
@@ -35,9 +40,11 @@ void WidgetGroup::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
     }
 }
 
+
 void WidgetGroup::update(void) {
     for (GuiItem* item : items) { item->update(); }
 }
+
 
 void WidgetGroup::render(void) const {
     for (GuiItem* item : items) { item->render(); }

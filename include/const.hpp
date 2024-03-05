@@ -32,6 +32,9 @@ namespace CONST {
     constexpr unsigned int DELAY_MAX = 200U;
     constexpr unsigned int SPEED_MIN = 1U;
     constexpr unsigned int SPEED_MAX = 10U;
+ 
+    constexpr unsigned int SLIDER_SIZE = 30U;
+    constexpr unsigned int SLIDER_RAIL_WIDTH = 15U;
 }
 
 namespace DIRECTION {

@@ -29,12 +29,12 @@ public:
 
     virtual void events(MouseHandler& mouse, KeyboardHandler& keyboard) override;
 
+    bool hovered = false;
 protected:
 
     Alignment alignment;
     Vector anchor;
 
-    bool hovered;
-    bool clicked;
-    bool holded;
+    bool clicked = false;
+    bool holded = false;
 };

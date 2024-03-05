@@ -9,7 +9,7 @@ class WidgetGroup : public GuiItem {
 
 public:
     WidgetGroup();
-    WidgetGroup(WidgetGroup* group, int layer = 1);
+    WidgetGroup(WidgetGroup* group, int layer = CONST::UINT_ONE);
 
     ~WidgetGroup();
 
@@ -21,6 +21,7 @@ public:
     virtual void render(void) const override;
 
 protected:
+    unsigned int id_counter = CONST::UINT_ZERO;
     std::set<GuiItem*, SortByLayer> items;
 
 };

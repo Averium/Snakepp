@@ -3,7 +3,7 @@
 
 
 Gui::Gui() : WidgetGroup(this, 0) {
-    gui = this;
+    this->gui = this;
     init_font();
 }
 
@@ -44,20 +44,6 @@ bool Gui::is_focused(void) const {
 
 Widget* Gui::get_focused_widget(void) const {
     return focused_widget;
-}
-
-
-template <typename TYPE>
-void Gui::new_register(const std::string& name) {
-    TYPE* value = new TYPE();
-
-    if constexpr (std::is_same_v<TYPE, bool>) {
-        bool_register[name] = value;
-    } else if constexpr (std::is_same_v<TYPE, int>) {
-        int_register[name] = value;
-    } else if constexpr (std::is_same_v<TYPE, float>) {
-        float_register[name] = value;
-    }
 }
 
 

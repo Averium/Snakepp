@@ -11,9 +11,9 @@ class GameState: public State {
 public:
     inline GameState(GameStateId id, Game* game) : State(id, nullptr), game(game) {}
 
-    virtual void events(void) {};
-    virtual void update(void) {};
-    virtual void render(void) {};
+    inline virtual void events(void) {};
+    inline virtual void update(void) {};
+    inline virtual void render(void) {};
 
 protected:
     Game* game;

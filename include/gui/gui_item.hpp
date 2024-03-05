@@ -20,11 +20,15 @@ public:
     virtual void render(void) const;
 
     virtual int get_layer(void) const;
+    
+    void set_id(unsigned int new_id);
+    unsigned int get_id(void) const;
 
     Gui* gui = nullptr;
 
 protected:
     int layer;
+    unsigned int id;
 };
 
 

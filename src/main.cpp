@@ -19,10 +19,6 @@ int main(void) {
 
 
 /*
-FIXME:
-    - settings slider jumps to cursor upon entering the state
-    - change or automate widget layer situation
-
 TODO:
     - UPGRADE MAKEFILE FOR AUTOMATIC DEPENDENCIES
 

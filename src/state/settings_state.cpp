@@ -11,7 +11,6 @@ GameStateId SettingsState::conditions(void) const {
 
 
 void SettingsState::on_entry(void) {
-    game->load_settings();
     game->gui->activate_item(game->settings_group);
 }
 

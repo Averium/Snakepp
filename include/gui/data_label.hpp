@@ -15,7 +15,7 @@ public:
         std::string text,
         DATATYPE value,
         const WidgetStyle style,
-        Alignment alignment = TOPLEFT,
+        Alignment alignment = CENTER,
         int layer = 1
     ) : TextLabel(group, position, text + ": ", style, alignment, layer)
     {

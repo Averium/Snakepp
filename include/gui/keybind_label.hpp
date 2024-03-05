@@ -16,7 +16,7 @@ public:
         unsigned int width,
         unsigned int keycode,
         const WidgetStyle style,
-        Alignment alignment = TOPLEFT,
+        Alignment alignment = CENTER,
         int layer = 1
     );
 
