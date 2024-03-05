@@ -8,18 +8,18 @@ RunningState::RunningState(Game* game) : GameState(GAME_STATE, game) {}
 GameStateId RunningState::conditions(void) const {
     Cell* snake_head = game->grid.cell_at(game->snake.position);
     if (game->snake.dead) { return GAMEOVER_STATE; }
-    if (game->keyboard.check("PAUSE", PRESS)) { return PAUSED_STATE; }
-    if (game->keyboard.check("EXIT", PRESS)) { return PAUSED_STATE; }
+    if (game->keyboard.check("Pause", PRESS)) { return PAUSED_STATE; }
+    if (game->keyboard.check("Exit", PRESS)) { return PAUSED_STATE; }
 
     return GAME_STATE;
 }
 
 
 void RunningState::events(void) {
-    if (game->keyboard.check("UP", PRESS)) { game->snake.turn(DIRECTION::UP); }
-    if (game->keyboard.check("DOWN", PRESS)) { game->snake.turn(DIRECTION::DOWN); }
-    if (game->keyboard.check("LEFT", PRESS)) { game->snake.turn(DIRECTION::LEFT); }
-    if (game->keyboard.check("RIGHT", PRESS)) { game->snake.turn(DIRECTION::RIGHT); }
+    if (game->keyboard.check("Up", PRESS)) { game->snake.turn(DIRECTION::UP); }
+    if (game->keyboard.check("Down", PRESS)) { game->snake.turn(DIRECTION::DOWN); }
+    if (game->keyboard.check("Left", PRESS)) { game->snake.turn(DIRECTION::LEFT); }
+    if (game->keyboard.check("Right", PRESS)) { game->snake.turn(DIRECTION::RIGHT); }
 }
 
 
