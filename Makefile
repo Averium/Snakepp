@@ -22,6 +22,8 @@ OBJECT := $(filter-out $(OBJECT_FOLDER)/const$(O), $(OBJECT)) $(OBJECT_FOLDER)/c
 HEADER := $(wildcard $(INCLUDE_FOLDER)/*$(H))
 HEADER += $(wildcard $(INCLUDE_FOLDER)/*/*$(H))
 
+ONLY_HEADER := $(filter-out $(patsubst $(SOURCE_FOLDER)/%$(C),$(INCLUDE_FOLDER)/%$(H),$(SOURCE)),$(HEADER))
+
 INCLUDE_FOLDERS := $(patsubst %/,%,$(sort $(wildcard $(dir $(HEADER)))))
 OBJECT_FOLDERS := $(patsubst $(INCLUDE_FOLDER)%,$(OBJECT_FOLDER)%,$(INCLUDE_FOLDERS))
 
@@ -35,7 +37,7 @@ all: $(OBJECT) $(HEADER)
 
 force: clean all
 
-$(OBJECT_FOLDER)/%$(O): $(SOURCE_FOLDER)/%$(C) $(INCLUDE_FOLDER)/%$(H) | $(OBJECT_FOLDERS)
+$(OBJECT_FOLDER)/%$(O): $(SOURCE_FOLDER)/%$(C) $(INCLUDE_FOLDER)/%$(H) $(ONLY_HEADER) | $(OBJECT_FOLDERS)
 	$(GCC) $(INCLUDE_FLAGS) -c $< -o $@
 
 $(OBJECT_FOLDERS):

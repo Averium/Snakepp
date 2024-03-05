@@ -33,7 +33,13 @@ public:
     }
 
 
-    virtual std::string value_text(void) const { return std::to_string(value); }
+    virtual std::string value_text(void) const {
+        if constexpr(std::is_same_v<DATATYPE, std::string>) {
+            return value;
+        } else {
+            return std::to_string(value);
+        }
+    }
 
 
     virtual void update_size(void) {

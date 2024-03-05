@@ -22,6 +22,8 @@ int main(void) {
 TODO:
     - UPGRADE MAKEFILE FOR AUTOMATIC DEPENDENCIES
 
+    - change keybind widget from TextLabel subclass to DataLabel subclass with fixed width
+    
     - text input widget (datalabel subclass)
 
     - highscores system

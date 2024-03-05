@@ -82,9 +82,12 @@ public:
 
     TextLabel* gamedata_statistics_label = nullptr;
     TextLabel* gamedata_gametitle_label = nullptr;
+    TextLabel* gamedata_settings_label = nullptr;
     DataLabel<unsigned int>* gamedata_score_label = nullptr;
     DataLabel<unsigned int>* gamedata_apples_label = nullptr;
     DataLabel<unsigned int>* gamedata_bonuses_label = nullptr;
+    DataLabel<unsigned int>* gamedata_speed_label = nullptr;
+    DataLabel<std::string>* gamedata_walls_label = nullptr;
 
     void init_window(void);
     void init_objects(void);

@@ -56,7 +56,7 @@ void Game::init_gui(void) {
     highscores_group = new WidgetGroup(gui);
     gamedata_group = new WidgetGroup(gui);
 
-    window_header = new WindowHeader(gui, LAYOUT("HEADER"), "Snake", STYLE_HEADER);
+    window_header = new WindowHeader(gui, LAYOUT("HEADER"), "Hold to move the window", STYLE_HEADER);
     gui->activate_item(window_header);
 
     menu_start_button = new Button(menu_group, LAYOUT("MENU_ITEM_1"), "Start game", STYLE_RED_42);
@@ -66,9 +66,9 @@ void Game::init_gui(void) {
     menu_exit_button = new Button(menu_group, LAYOUT("MENU_ITEM_6"), "Exit", STYLE_RED_42);
 
     settings_back_button = new Button(settings_group, LAYOUT("MENU_ITEM_9"), "Back", STYLE_LIGHT_42);
-    settings_wall_switch = new Switch(settings_group, LAYOUT("MENU_ITEM_3"), "Walls", STYLE_RED_42, false);
-    settings_speed_slider = new Slider(settings_group, LAYOUT("MENU_ITEM_4"), 200U, 0U, STYLE_RED_42);
-    settings_speed_label = new DataLabel<int>(settings_group, LAYOUT("MENU_ITEM_5"), "Speed", 0, STYLE_RED_STATIC_42);
+    settings_wall_switch = new Switch(settings_group, LAYOUT("MENU_ITEM_5"), "Walls", STYLE_RED_42, false);
+    settings_speed_slider = new Slider(settings_group, LAYOUT("MENU_ITEM_3"), 200U, 0U, STYLE_RED_42);
+    settings_speed_label = new DataLabel<int>(settings_group, LAYOUT("MENU_ITEM_2"), "Speed", 0, STYLE_RED_STATIC_42);
 
     settings_speed_slider->add_range(CONST::SPEED_MIN, CONST::SPEED_MAX, "SPEED");
     settings_speed_slider->add_range(CONST::DELAY_MAX, CONST::DELAY_MIN, "DELAY");
@@ -97,9 +97,12 @@ void Game::init_gui(void) {
 
     gamedata_gametitle_label = new TextLabel(gamedata_group, LAYOUT("DATA_TITLE_LABEL"), "Snake", STYLE_DARK_72, MIDTOP);
     gamedata_statistics_label = new TextLabel(gamedata_group, LAYOUT("DATA_STATISTICS_LABEL"), "Statistics", STYLE_DARK_42);
+    gamedata_statistics_label = new TextLabel(gamedata_group, LAYOUT("DATA_SETTINGS_LABEL"), "Settings", STYLE_DARK_42);
     gamedata_apples_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_APPLES_LABEL"), "Apples", 0, STYLE_STAT_LABEL, MIDLEFT);
     gamedata_bonuses_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_BONUSES_LABEL"), "Bonuses", 0, STYLE_STAT_LABEL, MIDLEFT);
     gamedata_score_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_SCORE_LABEL"), "Score", 0, STYLE_SCORE_LABEL, MIDLEFT);
+    gamedata_speed_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_SPEED_LABEL"), "Speed", 0, STYLE_SCORE_LABEL, MIDLEFT);
+    gamedata_walls_label = new DataLabel<std::string>(gamedata_group, LAYOUT("DATA_WALLS_LABEL"), "Walls", "", STYLE_SCORE_LABEL, MIDLEFT);
     
     gui->activate_item(gamedata_group);
 }
@@ -162,6 +165,9 @@ void Game::events(void) {
     gamedata_score_label->set_value(score.get_score());
     gamedata_apples_label->set_value(score.get_apples());
     gamedata_bonuses_label->set_value(score.get_bonuses());
+
+    gamedata_speed_label->set_value(speed_value);
+    gamedata_walls_label->set_value(settings_wall_switch->value_text());
 
     if (window_header->is_close_clicked()) { stop(); }
     if (window_header->is_minimize_clicked()) { MinimizeWindow(); }
