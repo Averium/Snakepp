@@ -17,6 +17,7 @@
 #include "keybind_label.hpp"
 #include "data_label.hpp"
 #include "tools.hpp"
+#include "score.hpp"
 
 
 class Game: public StateMachine {
@@ -33,17 +34,19 @@ public:
     Grid grid;
     Snake snake;
     Apple apple;
+    Score score;
 
-    Gui* gui = nullptr;
+    Gui* gui;
 
     WindowHeader* window_header = nullptr;
 
-    WidgetGroup* menu_group = nullptr;
-    WidgetGroup* paused_group = nullptr;
-    WidgetGroup* gameover_group = nullptr;
-    WidgetGroup* settings_group = nullptr;
-    WidgetGroup* keybinds_group = nullptr;
-    WidgetGroup* highscores_group = nullptr;
+    WidgetGroup* menu_group;
+    WidgetGroup* paused_group;
+    WidgetGroup* gameover_group;
+    WidgetGroup* settings_group;
+    WidgetGroup* keybinds_group;
+    WidgetGroup* highscores_group;
+    WidgetGroup* gamedata_group;
     
     Button* menu_start_button = nullptr;
     Button* menu_settings_button = nullptr;
@@ -76,6 +79,12 @@ public:
     TextLabel* gameover_info_label = nullptr;
     Button* gameover_restart_button = nullptr;
     Button* gameover_menu_button = nullptr;
+
+    TextLabel* gamedata_statistics_label = nullptr;
+    TextLabel* gamedata_gametitle_label = nullptr;
+    DataLabel<unsigned int>* gamedata_score_label = nullptr;
+    DataLabel<unsigned int>* gamedata_apples_label = nullptr;
+    DataLabel<unsigned int>* gamedata_bonuses_label = nullptr;
 
     void init_window(void);
     void init_objects(void);

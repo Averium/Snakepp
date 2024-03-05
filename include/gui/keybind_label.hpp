@@ -20,8 +20,8 @@ public:
         int layer = 1
     );
 
-    void events(MouseHandler& mouse, KeyboardHandler& keyboard);
-    void render(void) const;
+    virtual void events(MouseHandler& mouse, KeyboardHandler& keyboard);
+    virtual void render(void) const;
 
 private:
     std::string key_text;

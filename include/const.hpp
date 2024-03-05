@@ -35,6 +35,9 @@ namespace CONST {
  
     constexpr unsigned int SLIDER_SIZE = 30U;
     constexpr unsigned int SLIDER_RAIL_WIDTH = 15U;
+
+    constexpr unsigned int APPLE_MULTIPLIER = 3U;
+    constexpr unsigned int BONUS_MULTIPLIER = 10U;
 }
 
 namespace DIRECTION {

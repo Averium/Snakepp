@@ -27,6 +27,26 @@ Snake::Snake(Grid* grid, Vector start_pos, unsigned int delay_ms, unsigned int l
 }
 
 
+unsigned int Snake::get_length(void) const {
+    return length;
+}
+
+
+void Snake::increment_length(void) {
+    ++length;
+}
+
+
+void Snake::set_dead(void) {
+    dead = true;
+}
+
+
+bool Snake::is_dead(void) const {
+    return dead;
+}
+
+
 bool Snake::ready_to_move(void) {
     return move_timer.tick();
 }

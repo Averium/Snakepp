@@ -29,6 +29,7 @@ void Game::init_objects(void) {
     snake = Snake(&grid, Vector(5U, 1U), delay, SETTINGS("SNAKE_STARTING_LENGTH"));
 
     apple.repos(&grid);
+    score.reset();
 }
 
 
@@ -53,6 +54,7 @@ void Game::init_gui(void) {
     settings_group = new WidgetGroup(gui);
     keybinds_group = new WidgetGroup(gui);
     highscores_group = new WidgetGroup(gui);
+    gamedata_group = new WidgetGroup(gui);
 
     window_header = new WindowHeader(gui, LAYOUT("HEADER"), "Snake", STYLE_HEADER);
     gui->activate_item(window_header);
@@ -80,8 +82,8 @@ void Game::init_gui(void) {
 
     gameover_gameover_label = new TextLabel(gameover_group, LAYOUT("INFO_LABEL_MAIN"), "Game over", STYLE_RED_42);
     gameover_info_label = new TextLabel(gameover_group, LAYOUT("INFO_LABEL_SUB"), "Press 'r' to restart", STYLE_DARK_32);
-    gameover_restart_button = new Button(gameover_group, LAYOUT("MENU_ITEM_8"), "Restart", STYLE_RED_42);
-    gameover_menu_button = new Button(gameover_group, LAYOUT("MENU_ITEM_9"), "Main menu", STYLE_LIGHT_42);
+    gameover_restart_button = new Button(gameover_group, LAYOUT("MENU_ITEM_1"), "Restart", STYLE_RED_42);
+    gameover_menu_button = new Button(gameover_group, LAYOUT("MENU_ITEM_2"), "Main menu", STYLE_LIGHT_42);
 
     keybinds_up_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_1"), "Up", 350U, KEYBINDS("Up"), STYLE_RED_42);
     keybinds_down_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_2"), "Down", 350U, KEYBINDS("Down"), STYLE_RED_42);
@@ -92,6 +94,14 @@ void Game::init_gui(void) {
     keybinds_exit_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_7"), "Exit", 350U, KEYBINDS("Exit"), STYLE_RED_42);
     
     keybinds_back_button = new Button(keybinds_group, LAYOUT("MENU_ITEM_9"), "Back", STYLE_LIGHT_42);
+
+    gamedata_gametitle_label = new TextLabel(gamedata_group, LAYOUT("DATA_TITLE_LABEL"), "Snake", STYLE_DARK_72, MIDTOP);
+    gamedata_statistics_label = new TextLabel(gamedata_group, LAYOUT("DATA_STATISTICS_LABEL"), "Statistics", STYLE_DARK_42);
+    gamedata_apples_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_APPLES_LABEL"), "Apples", 0, STYLE_STAT_LABEL, MIDLEFT);
+    gamedata_bonuses_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_BONUSES_LABEL"), "Bonuses", 0, STYLE_STAT_LABEL, MIDLEFT);
+    gamedata_score_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_SCORE_LABEL"), "Score", 0, STYLE_SCORE_LABEL, MIDLEFT);
+    
+    gui->activate_item(gamedata_group);
 }
 
 
@@ -136,6 +146,7 @@ void Game::reset(void) {
     snake = Snake(&grid, Vector(5U, 1U), delay, SETTINGS("SNAKE_STARTING_LENGTH"));
 
     apple.repos(&grid);
+    score.reset();
 }
 
 
@@ -148,11 +159,15 @@ void Game::events(void) {
     int speed_value = settings_speed_slider->get("SPEED");
     settings_speed_label->set_value(speed_value);
 
+    gamedata_score_label->set_value(score.get_score());
+    gamedata_apples_label->set_value(score.get_apples());
+    gamedata_bonuses_label->set_value(score.get_bonuses());
+
     if (window_header->is_close_clicked()) { stop(); }
     if (window_header->is_minimize_clicked()) { MinimizeWindow(); }
 
     check_for_transition();
-    current_state->events(); // Ha ezt kikommentelem, akkor nem aktiválódik a slider
+    current_state->events();
 }
 
 

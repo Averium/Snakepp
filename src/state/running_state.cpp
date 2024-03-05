@@ -7,7 +7,7 @@ RunningState::RunningState(Game* game) : GameState(GAME_STATE, game) {}
 
 GameStateId RunningState::conditions(void) const {
     Cell* snake_head = game->grid.cell_at(game->snake.position);
-    if (game->snake.dead) { return GAMEOVER_STATE; }
+    if (game->snake.is_dead()) { return GAMEOVER_STATE; }
     if (game->keyboard.check("Pause", PRESS)) { return PAUSED_STATE; }
     if (game->keyboard.check("Exit", PRESS)) { return PAUSED_STATE; }
 
@@ -28,22 +28,23 @@ void RunningState::update(void) {
         
         game->snake.change_direction();
         if (game->snake.move(game->SETTINGS("WALLS"))) {
-            game->snake.dead = true;
+            game->snake.set_dead();
             return;
         }
         
         Cell* snake_head = game->grid.cell_at(game->snake.position);
         
         if (snake_head->type == SNAKE_BODY) {
-            game->snake.dead = true;
+            game->snake.set_dead();
         }
 
         if (snake_head->type == APPLE) {
-            game->snake.length++;
+            game->snake.increment_length();
+            game->score.increment_apples();
             game->apple.repos(&game->grid);
         }
         
-        snake_head->set_state(SNAKE_NEW, game->snake.length);
+        snake_head->set_state(SNAKE_NEW, game->snake.get_length());
         
         game->grid.update();
     }

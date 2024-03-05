@@ -14,11 +14,14 @@ public:
         Vector position,
         std::string text,
         const WidgetStyle style,
-        Alignment alignment = CENTER,
+        Alignment alignment = TOPLEFT,
         int layer = CONST::UINT_ONE
     );
 
-private:
+    virtual void events(MouseHandler& mouse, KeyboardHandler& keyboard) override;
+    virtual void render(void) const override;
 
+private:
+    std::string visible_text;
 
 };
