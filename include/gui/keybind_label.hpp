@@ -2,10 +2,10 @@
 
 #include <unordered_map>
 
-#include "text_label.hpp"
+#include "data_label.hpp"
 
 
-class KeybindLabel : public TextLabel {
+class KeybindLabel : public DataLabel<std::string> {
 
 public:
     KeybindLabel();
@@ -13,15 +13,14 @@ public:
         WidgetGroup* group,
         Vector position,
         std::string text,
-        unsigned int width,
         unsigned int keycode,
         const WidgetStyle style,
         Alignment alignment = CENTER,
         int layer = 1
     );
 
+    virtual std::string value_text(void) const override;
     virtual void events(MouseHandler& mouse, KeyboardHandler& keyboard);
-    virtual void render(void) const;
 
 private:
     std::string key_text;

@@ -12,7 +12,7 @@ Switch::Switch(
     bool state,
     Alignment alignment,
     int layer
-) : DataLabel<bool>(group, position, text, state, style, alignment, layer) {
+) : DataLabel<bool>(group, position, text + ": ", state, style, alignment, layer) {
     set_value(value);
 }
 

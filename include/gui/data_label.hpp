@@ -17,7 +17,7 @@ public:
         const WidgetStyle style,
         Alignment alignment = CENTER,
         int layer = 1
-    ) : TextLabel(group, position, text + ": ", style, alignment, layer)
+    ) : TextLabel(group, position, text, style, alignment, layer)
     {
         set_value(value);
     }

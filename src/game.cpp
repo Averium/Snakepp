@@ -68,7 +68,7 @@ void Game::init_gui(void) {
     settings_back_button = new Button(settings_group, LAYOUT("MENU_ITEM_9"), "Back", STYLE_LIGHT_42);
     settings_wall_switch = new Switch(settings_group, LAYOUT("MENU_ITEM_5"), "Walls", STYLE_RED_42, false);
     settings_speed_slider = new Slider(settings_group, LAYOUT("MENU_ITEM_3"), 200U, 0U, STYLE_RED_42);
-    settings_speed_label = new DataLabel<int>(settings_group, LAYOUT("MENU_ITEM_2"), "Speed", 0, STYLE_RED_STATIC_42);
+    settings_speed_label = new DataLabel<int>(settings_group, LAYOUT("MENU_ITEM_2"), "Speed: ", 0, STYLE_RED_STATIC_42);
 
     settings_speed_slider->add_range(CONST::SPEED_MIN, CONST::SPEED_MAX, "SPEED");
     settings_speed_slider->add_range(CONST::DELAY_MAX, CONST::DELAY_MIN, "DELAY");
@@ -85,24 +85,24 @@ void Game::init_gui(void) {
     gameover_restart_button = new Button(gameover_group, LAYOUT("MENU_ITEM_1"), "Restart", STYLE_RED_42);
     gameover_menu_button = new Button(gameover_group, LAYOUT("MENU_ITEM_2"), "Main menu", STYLE_LIGHT_42);
 
-    keybinds_up_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_1"), "Up", 350U, KEYBINDS("Up"), STYLE_RED_42);
-    keybinds_down_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_2"), "Down", 350U, KEYBINDS("Down"), STYLE_RED_42);
-    keybinds_left_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_3"), "Left", 350U, KEYBINDS("Left"), STYLE_RED_42);
-    keybinds_right_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_4"), "Right", 350U, KEYBINDS("Right"), STYLE_RED_42);
-    keybinds_pause_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_5"), "Pause", 350U, KEYBINDS("Pause"), STYLE_RED_42);
-    keybinds_reset_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_6"), "Reset", 350U, KEYBINDS("Reset"), STYLE_RED_42);
-    keybinds_exit_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_7"), "Exit", 350U, KEYBINDS("Exit"), STYLE_RED_42);
+    keybinds_up_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_1"), "Up", KEYBINDS("Up"), STYLE_KEYBIND_LABEL);
+    keybinds_down_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_2"), "Down", KEYBINDS("Down"), STYLE_KEYBIND_LABEL);
+    keybinds_left_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_3"), "Left", KEYBINDS("Left"), STYLE_KEYBIND_LABEL);
+    keybinds_right_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_4"), "Right", KEYBINDS("Right"), STYLE_KEYBIND_LABEL);
+    keybinds_pause_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_5"), "Pause", KEYBINDS("Pause"), STYLE_KEYBIND_LABEL);
+    keybinds_reset_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_6"), "Reset", KEYBINDS("Reset"), STYLE_KEYBIND_LABEL);
+    keybinds_exit_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_7"), "Exit", KEYBINDS("Exit"), STYLE_KEYBIND_LABEL);
     
     keybinds_back_button = new Button(keybinds_group, LAYOUT("MENU_ITEM_9"), "Back", STYLE_LIGHT_42);
 
     gamedata_gametitle_label = new TextLabel(gamedata_group, LAYOUT("DATA_TITLE_LABEL"), "Snake", STYLE_DARK_72, MIDTOP);
     gamedata_statistics_label = new TextLabel(gamedata_group, LAYOUT("DATA_STATISTICS_LABEL"), "Statistics", STYLE_DARK_42);
     gamedata_statistics_label = new TextLabel(gamedata_group, LAYOUT("DATA_SETTINGS_LABEL"), "Settings", STYLE_DARK_42);
-    gamedata_apples_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_APPLES_LABEL"), "Apples", 0, STYLE_STAT_LABEL, MIDLEFT);
-    gamedata_bonuses_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_BONUSES_LABEL"), "Bonuses", 0, STYLE_STAT_LABEL, MIDLEFT);
-    gamedata_score_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_SCORE_LABEL"), "Score", 0, STYLE_SCORE_LABEL, MIDLEFT);
-    gamedata_speed_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_SPEED_LABEL"), "Speed", 0, STYLE_SCORE_LABEL, MIDLEFT);
-    gamedata_walls_label = new DataLabel<std::string>(gamedata_group, LAYOUT("DATA_WALLS_LABEL"), "Walls", "", STYLE_SCORE_LABEL, MIDLEFT);
+    gamedata_apples_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_APPLES_LABEL"), "Apples: ", 0, STYLE_STAT_LABEL, MIDLEFT);
+    gamedata_bonuses_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_BONUSES_LABEL"), "Bonuses: ", 0, STYLE_STAT_LABEL, MIDLEFT);
+    gamedata_score_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_SCORE_LABEL"), "Score: ", 0, STYLE_SCORE_LABEL, MIDLEFT);
+    gamedata_speed_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_SPEED_LABEL"), "Speed: ", 0, STYLE_SCORE_LABEL, MIDLEFT);
+    gamedata_walls_label = new DataLabel<std::string>(gamedata_group, LAYOUT("DATA_WALLS_LABEL"), "Walls: ", "", STYLE_SCORE_LABEL, MIDLEFT);
     
     gui->activate_item(gamedata_group);
 }

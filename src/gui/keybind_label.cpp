@@ -8,18 +8,14 @@ KeybindLabel::KeybindLabel(
     WidgetGroup* group,
     Vector position,
     std::string text,
-    unsigned int width,
     unsigned int keycode,
     const WidgetStyle style,
     Alignment alignment,
     int layer
 ) :
-    TextLabel(group, position, text, style, alignment, layer),
+    DataLabel<std::string>(group, position, text, KEYMAP[keycode], style, alignment, layer),
     key_text(KEYMAP[keycode])
-{
-    this->width(width);
-    this->align(position);
-}
+{}
 
 
 void KeybindLabel::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
@@ -34,7 +30,7 @@ void KeybindLabel::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
 
         if (keycode != KEY_NULL) {
             keyboard.configure_key(this->text, keycode);
-            key_text = KEYMAP[keycode];
+            set_value(KEYMAP[keycode]);
             gui->release();
         }
 
@@ -45,16 +41,8 @@ void KeybindLabel::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
 }
 
 
-void KeybindLabel::render(void) const {
-    std::string left_text = gui->is_focused(this) ? placeholder : key_text;
-
-    Vector value_dim = text_dimensions(left_text.c_str());
-
-    Color primary_color = hovered ? style.color_1_active : style.color_1_passive;
-    Color secondary_color = hovered ? style.color_2_active : style.color_2_passive;
-    
-    draw_text(text.c_str(), secondary_color);
-    draw_text(left_text.c_str(), primary_color, Vector(width() - value_dim.x, 0));
+std::string KeybindLabel::value_text(void) const {
+    return gui->is_focused(this) ? placeholder : value;
 }
 
 
