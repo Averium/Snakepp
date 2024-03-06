@@ -6,9 +6,6 @@ A small game development project to practice C++, GNU Make and Raylib.
 - [About](#about)
 - [Features](#features)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## About
 The goal of this project is to gain experience and better understanding of the following topics:
