@@ -1,4 +1,4 @@
-# Project Name
+# Snake with C++ and Raylib
 
 A small game development project to practice C++, GNU Make and Raylib.
 
