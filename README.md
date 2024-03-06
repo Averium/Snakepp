@@ -30,8 +30,8 @@ List the key features of your project. You can use bullet points for better read
 ## Installation
 Step-by-step instructions on how to get started with this project:
 
-$ install any MinGW version with C++20 support 
-$ git clone https://github.com/Averium/raylib_snake.git
-$ cd <your_project>
-$ compile with make
-$ run main.exe
+- install any MinGW version with C++20 support 
+- git clone https://github.com/Averium/raylib_snake.git
+- cd <your_project>
+- compile with make
+- run main.exe
