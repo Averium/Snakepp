@@ -47,7 +47,7 @@ void TextInput::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
                 gui->release();
                 break;
             case KEY_SPACE:
-                visible_text.append(" ");
+                visible_text.append("_");
                 return;
             default:
                 visible_text.append(format_char(keyboard, keycode));

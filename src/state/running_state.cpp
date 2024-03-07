@@ -7,7 +7,10 @@ RunningState::RunningState(Game* game) : GameState(GAME_STATE, game) {}
 
 GameStateId RunningState::conditions(void) const {
     Cell* snake_head = game->grid.cell_at(game->snake.position);
-    if (game->snake.is_dead()) { return NEWHIGHSCORE_STATE; }
+    if (game->snake.is_dead()) {
+        if (game->score.is_highscore()) { return NEWHIGHSCORE_STATE; }
+        else { return GAMEOVER_STATE; }
+    }
     if (game->keyboard.check("Pause", PRESS)) { return PAUSED_STATE; }
     if (game->keyboard.check("Exit", PRESS)) { return PAUSED_STATE; }
 

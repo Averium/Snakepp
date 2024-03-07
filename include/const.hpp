@@ -13,6 +13,7 @@ namespace PATH {
     const std::string COLORS = "resources/data/colors";
     const std::string SETTINGS = "resources/data/settings";
     const std::string KEYBINDS = "resources/data/keybinds";
+    const std::string HIGHSCORES = "resources/data/highscores";
 }
 
 namespace CONST {
@@ -38,6 +39,7 @@ namespace CONST {
 
     constexpr unsigned int APPLE_MULTIPLIER = 3U;
     constexpr unsigned int BONUS_MULTIPLIER = 10U;
+    constexpr unsigned int STORED_HIGHSCORES = 5U;
 }
 
 namespace DIRECTION {

@@ -25,5 +25,11 @@ void NewHighscoreState::on_entry(void) {
 
 void NewHighscoreState::on_exit(void) {
     game->gui->deactivate_item(game->newhighscore_group);
+
+    std::string name = game->newhighscore_name_label->get_value();
+    if (name != "") {
+        game->score.register_player(name);
+    }
+
     game->reset();
 }
