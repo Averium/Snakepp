@@ -19,15 +19,18 @@ int main(void) {
 
 
 /*
+FIX:
+    - highscores are not ordered correctly
+    - highscores are not registered if a button is clicked while the input is focused
+
 TODO:
     - UPGRADE MAKEFILE FOR AUTOMATIC DEPENDENCIES
 
     - different style structs for different widgets
 
-    - separate keymap for character keys and mod keys
-
-    - highscores system
-    - highscores file
+    - show highscores on highscores screen
+    - show highscores screen after registering a new highscore
+    - remove "restart" and "menu" buttons from new_highscore screen and add "ok" button
 
     - sound system
     - ploishing
