@@ -13,7 +13,7 @@ public:
         WidgetGroup* group,
         Vector position,
         std::string text,
-        unsigned int keycode,
+        std::string keyname,
         const WidgetStyle style,
         Alignment alignment = CENTER,
         int layer = 1
@@ -26,5 +26,4 @@ private:
     std::string key_text;
 
     static const std::string placeholder;
-    static std::unordered_map<unsigned int, std::string> KEYMAP;
 };

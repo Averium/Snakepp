@@ -5,6 +5,7 @@
 #include "state.hpp"
 
 #include "gameover_state.hpp"
+#include "new_highscore_state.hpp"
 #include "highscores_state.hpp"
 #include "keybind_state.hpp"
 #include "menu_state.hpp"

@@ -10,7 +10,7 @@ public:
     MouseHandler(void);
 
     void update(void) override;
-    void add_key(int keycode) override;
+    void add_key(const unsigned int keycode) override;
 
     inline Vector get_position(void) const { return position; }
     inline Vector get_drag(void) const { return drag; }

@@ -8,7 +8,7 @@ MouseHandler::MouseHandler(void) : EventHandler::EventHandler() {
 }
 
 
-void MouseHandler::add_key(int keycode) {
+void MouseHandler::add_key(const unsigned int keycode) {
     Key* mouse_key = new MouseKey(keycode);
     keymap[keycode] = mouse_key;
 }

@@ -4,11 +4,21 @@
 
 
 template <typename TYPE>
-void print(TYPE data) {
+void debug(TYPE data) {
     std::cout << "DEBUG: " << data << std::endl;
 }
 
 template <typename TYPE>
-void print(const char* message, TYPE data) {
+void debug(const char* message, TYPE data) {
     std::cout << "DEBUG: " << message << " " << data << std::endl;
+}
+
+template <typename TYPE>
+void message(TYPE data) {
+    std::cout << "MESSAGE: " << data << std::endl;
+}
+
+template <typename TYPE>
+void message(const char* message, TYPE data) {
+    std::cout << "MESSAGE: " << message << " " << data << std::endl;
 }

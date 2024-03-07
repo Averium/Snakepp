@@ -18,7 +18,7 @@ public:
     inline bool is_minimize_clicked(void) { return minimize_clicked; }
 
 private:
-    bool grab;
+    bool grabbed;
     bool close_hovered;
     bool close_clicked;
     bool minimize_hovered;

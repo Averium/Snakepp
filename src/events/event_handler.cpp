@@ -4,13 +4,7 @@
 EventHandler::EventHandler(void) {}
 
 
-EventHandler::~EventHandler(void) {
-    for (std::pair<const int, Key*>& pair : keymap) {
-        delete pair.second;
-    }
-}
-
-bool EventHandler::check(int keycode, Keymode mode) {
+bool EventHandler::check(const unsigned int keycode, const Keymode mode) {
     if (!keymap.contains(keycode)) {
         return false;
     }
@@ -31,14 +25,14 @@ bool EventHandler::check(int keycode, Keymode mode) {
 }
 
 
-void EventHandler::add_key(int keycode) {
+void EventHandler::add_key(const unsigned int keycode) {
     Key* key = new Key(keycode);
     keymap[keycode] = key;
 }
 
 
 void EventHandler::update(void) {
-    for (std::pair<const int, Key*>& pair : keymap) {
+    for (std::pair<const unsigned int, Key*>& pair : keymap) {
         pair.second->update();
     }
 }

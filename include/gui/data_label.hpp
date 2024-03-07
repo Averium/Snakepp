@@ -54,7 +54,7 @@ public:
         }
 
         height(text_dim.y > state_text_dim.y ? text_dim.y : state_text_dim.y);
-        align(anchor);
+        align();
     }
 
 
@@ -62,8 +62,8 @@ public:
         Vector text_dim = text_dimensions(text.c_str());
         Vector data_dim = text_dimensions(value_text().c_str());
 
-        Color primary_color = hovered ? style.color_1_active : style.color_1_passive;
-        Color secondary_color = hovered ? style.color_2_active : style.color_2_passive;
+        Color primary_color = is_hovered() ? style.color_1_active : style.color_1_passive;
+        Color secondary_color = is_hovered() ? style.color_2_active : style.color_2_passive;
         
         Vector text_position = (style.fixed_width > CONST::UINT_ZERO) ? Vector(width() - data_dim.x, 0) : Vector(text_dim.x, 0);
 

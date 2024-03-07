@@ -21,6 +21,7 @@ public:
         int layer = CONST::UINT_ONE
     );
 
+    inline bool is_grabbed(void) const { return grabbed; }
     inline int clamp_position(int position) const { return std::min(std::max(position, left()), right()); }
     inline double get_value(void) const { return normalized_value; }
     inline unsigned int get_value(const std::string range_key) { return this->get(range_key); }

@@ -30,10 +30,10 @@ void WindowHeader::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
     bool mouse_click = mouse.check(MOUSE_BUTTON_LEFT, PRESS);
     bool mouse_hold = mouse.check(MOUSE_BUTTON_LEFT, HOLD);
 
-    if (!mouse_hold) { grab = false; }
-    else if (hovered) { grab = true; }
+    if (!mouse_hold) { grabbed = false; }
+    else if (is_hovered()) { grabbed = true; }
 
-    if (grab) {
+    if (grabbed) {
         window_position = (window_position + mouse_position - grab_position);
         SetWindowPosition(window_position.x, window_position.y);
     }

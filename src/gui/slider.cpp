@@ -44,9 +44,9 @@ void Slider::set_value(const unsigned int value, const std::string range_key) {
 void Slider::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
     Widget::events(mouse, keyboard);
 
-    if (mouse.check(MOUSE_BUTTON_LEFT, PRESS) && hovered) { grabbed = true; }
+    if (mouse.check(MOUSE_BUTTON_LEFT, PRESS) && is_hovered()) { grabbed = true; }
     if (!mouse.check(MOUSE_BUTTON_LEFT, HOLD)) { grabbed = false; }
-    if (grabbed) {
+    if (is_grabbed()) {
         slider.centerx(clamp_position(mouse.get_position().x));
         double new_value = ((double)(slider.centerx()) - (double)(rail.left())) / (double)(rail.width());
         set_value(new_value);
@@ -55,8 +55,8 @@ void Slider::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
 
 
 void Slider::render(void) const {
-    Color rail_color = (grabbed || hovered) ? style.color_2_passive : style.color_2_passive;
-    Color slider_color = (grabbed || hovered) ? style.color_1_active : style.color_1_passive;
+    Color rail_color = (is_grabbed() || is_hovered()) ? style.color_2_passive : style.color_2_passive;
+    Color slider_color = (is_grabbed() || is_hovered()) ? style.color_1_active : style.color_1_passive;
 
     DrawRectangle(rail.left(), rail.top(), rail.width(), rail.height(), rail_color);
     DrawRectangle(slider.left(), slider.top(), slider.width(), slider.height(), slider_color);

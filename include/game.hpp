@@ -4,6 +4,8 @@
 #include "snake.hpp"
 #include "apple.hpp"
 #include "timer.hpp"
+#include "tools.hpp"
+#include "score.hpp"
 #include "event_handler.hpp"
 #include "mouse_handler.hpp"
 #include "window_header.hpp"
@@ -16,8 +18,7 @@
 #include "slider.hpp"
 #include "keybind_label.hpp"
 #include "data_label.hpp"
-#include "tools.hpp"
-#include "score.hpp"
+#include "text_input.hpp"
 
 
 class Game: public StateMachine {
@@ -47,6 +48,7 @@ public:
     WidgetGroup* keybinds_group;
     WidgetGroup* highscores_group;
     WidgetGroup* gamedata_group;
+    WidgetGroup* newhighscore_group;
     
     Button* menu_start_button = nullptr;
     Button* menu_settings_button = nullptr;
@@ -79,6 +81,11 @@ public:
     TextLabel* gameover_info_label = nullptr;
     Button* gameover_restart_button = nullptr;
     Button* gameover_menu_button = nullptr;
+
+    TextLabel* newhighscore_newhighscore_label = nullptr;
+    TextInput* newhighscore_name_label = nullptr;
+    Button* newhighscore_restart_button = nullptr;
+    Button* newhighscore_menu_button = nullptr;
 
     TextLabel* gamedata_statistics_label = nullptr;
     TextLabel* gamedata_gametitle_label = nullptr;

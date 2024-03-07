@@ -22,5 +22,5 @@ void Switch::relay(void) { set_value(!value); }
 
 void Switch::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
     Widget::events(mouse, keyboard);
-    if (clicked) { relay(); }
+    if (is_clicked()) { relay(); }
 }

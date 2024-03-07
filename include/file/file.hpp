@@ -33,18 +33,18 @@ public:
     void load(void) {
         file.open(path, std::ios::in);
 
-        if (!file.is_open()) { print("Failed to open file:", path); }
+        if (!file.is_open()) { message("Failed to open file:", path); }
 
         read_data();
         file.close();
     }
 
     void save(void) {
-        if (read_only) { print("The following file is read-only:", path); }
+        if (read_only) { message("The following file is read-only:", path); }
         
         file.open(path, std::ios::out);
 
-        if (!file.is_open()) { print("Failed to open file:", path); }
+        if (!file.is_open()) { message("Failed to open file:", path); }
 
         write_data();
         file.close();

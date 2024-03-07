@@ -16,13 +16,12 @@ class EventHandler {
 
 public:
     EventHandler(void);
-    ~EventHandler();
 
-    virtual bool check(int keycode, Keymode mode);
+    virtual bool check(const unsigned int keycode, const Keymode mode);
 
-    virtual void add_key(int keycode);
+    virtual void add_key(const unsigned int keycode);
     virtual void update(void);
 
 protected:
-    std::map<int, Key*> keymap;
+    std::map<const unsigned int, Key*> keymap;
 };

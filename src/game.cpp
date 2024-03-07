@@ -42,6 +42,7 @@ void Game::init_states(void) {
     add_state(new PausedState(this));
     add_state(new RunningState(this));
     add_state(new GameOverState(this));
+    add_state(new NewHighscoreState(this));
     add_state(new ShutdownState(this));
 }
 
@@ -54,6 +55,7 @@ void Game::init_gui(void) {
     settings_group = new WidgetGroup(gui);
     keybinds_group = new WidgetGroup(gui);
     highscores_group = new WidgetGroup(gui);
+    newhighscore_group = new WidgetGroup(gui);
     gamedata_group = new WidgetGroup(gui);
 
     window_header = new WindowHeader(gui, LAYOUT("HEADER"), "Hold to move the window", STYLE_HEADER);
@@ -85,13 +87,18 @@ void Game::init_gui(void) {
     gameover_restart_button = new Button(gameover_group, LAYOUT("MENU_ITEM_1"), "Restart", STYLE_RED_42);
     gameover_menu_button = new Button(gameover_group, LAYOUT("MENU_ITEM_2"), "Main menu", STYLE_LIGHT_42);
 
-    keybinds_up_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_1"), "Up", KEYBINDS("Up"), STYLE_KEYBIND_LABEL);
-    keybinds_down_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_2"), "Down", KEYBINDS("Down"), STYLE_KEYBIND_LABEL);
-    keybinds_left_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_3"), "Left", KEYBINDS("Left"), STYLE_KEYBIND_LABEL);
-    keybinds_right_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_4"), "Right", KEYBINDS("Right"), STYLE_KEYBIND_LABEL);
-    keybinds_pause_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_5"), "Pause", KEYBINDS("Pause"), STYLE_KEYBIND_LABEL);
-    keybinds_reset_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_6"), "Reset", KEYBINDS("Reset"), STYLE_KEYBIND_LABEL);
-    keybinds_exit_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_7"), "Exit", KEYBINDS("Exit"), STYLE_KEYBIND_LABEL);
+    newhighscore_newhighscore_label = new TextLabel(newhighscore_group, LAYOUT("MENU_ITEM_1"), "New highscore!", STYLE_DARK_72);
+    newhighscore_name_label = new TextInput(newhighscore_group, LAYOUT("MENU_ITEM_3"), "Enter your name", STYLE_HIGHSCORE_INPUT);
+    newhighscore_restart_button = new Button(newhighscore_group, LAYOUT("MENU_ITEM_5"), "Restart", STYLE_RED_42);
+    newhighscore_menu_button = new Button(newhighscore_group, LAYOUT("MENU_ITEM_6"), "Main menu", STYLE_LIGHT_42);
+
+    keybinds_up_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_1"), "Up", keyboard.decode_key(KEYBINDS("Up")), STYLE_KEYBIND_LABEL);
+    keybinds_down_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_2"), "Down", keyboard.decode_key(KEYBINDS("Down")), STYLE_KEYBIND_LABEL);
+    keybinds_left_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_3"), "Left", keyboard.decode_key(KEYBINDS("Left")), STYLE_KEYBIND_LABEL);
+    keybinds_right_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_4"), "Right", keyboard.decode_key(KEYBINDS("Right")), STYLE_KEYBIND_LABEL);
+    keybinds_pause_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_5"), "Pause", keyboard.decode_key(KEYBINDS("Pause")), STYLE_KEYBIND_LABEL);
+    keybinds_reset_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_6"), "Reset", keyboard.decode_key(KEYBINDS("Reset")), STYLE_KEYBIND_LABEL);
+    keybinds_exit_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_7"), "Exit", keyboard.decode_key(KEYBINDS("Exit")), STYLE_KEYBIND_LABEL);
     
     keybinds_back_button = new Button(keybinds_group, LAYOUT("MENU_ITEM_9"), "Back", STYLE_LIGHT_42);
 

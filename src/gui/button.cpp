@@ -15,6 +15,6 @@ Button::Button(
 
 
 void Button::render(void) const {
-    Color color = hovered ? style.color_1_active : style.color_1_passive;
+    Color color = is_hovered() ? style.color_1_active : style.color_1_passive;
     draw_text(text.c_str(), color);
 }
