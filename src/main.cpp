@@ -23,6 +23,7 @@ TODO:
     - UPGRADE MAKEFILE FOR AUTOMATIC DEPENDENCIES
 
     - different style structs for different widgets
+    - add flashing cursor line to text input widget
 
     - show highscores on highscores screen
     - show highscores screen after registering a new highscore

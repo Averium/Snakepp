@@ -25,7 +25,8 @@ public:
 
     virtual void set_value(DATATYPE value) {
         this->value = value;
-        update_size();    
+        value_changed = true;
+        update_size();
     }
 
     virtual DATATYPE get_value(void) const {
@@ -58,6 +59,12 @@ public:
     }
 
 
+    virtual void events(MouseHandler& mouse, KeyboardHandler& keyboard) override {
+        Widget::events(mouse, keyboard);
+        value_changed = false;
+    }
+
+
     virtual void render(void) const override {
         Vector text_dim = text_dimensions(text.c_str());
         Vector data_dim = text_dimensions(value_text().c_str());
@@ -72,6 +79,7 @@ public:
     }
 
 protected:
+    bool value_changed = false;
 
     DATATYPE value;
 };

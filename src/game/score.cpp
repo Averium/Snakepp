@@ -7,6 +7,8 @@ Score::Score() : ConfigData<unsigned int>(PATH::HIGHSCORES) {}
 bool Score::is_highscore(void) const {
 
     unsigned int highest_score = get_score();
+    if (highest_score == CONST::UINT_ZERO) { return false; }
+
     for (const std::pair<std::string, unsigned int>& pair : data) {
         if (pair.second > highest_score) { highest_score = pair.second; }
     }

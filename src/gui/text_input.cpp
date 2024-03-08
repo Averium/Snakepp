@@ -21,12 +21,21 @@ void TextInput::clear(void) {
 }
 
 
+void TextInput::blink_cursor(void) {
+    if (cursor_timer.tick()) { cursor_visible = !cursor_visible; }
+}
+
+
 void TextInput::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
-    Widget::events(mouse, keyboard);
+    DataLabel::events(mouse, keyboard);
 
     if (gui->is_focused(this)) {
+        blink_cursor();
 
-        if (mouse.check(MOUSE_BUTTON_LEFT, PRESS)) { gui->release(); }
+        if (mouse.check(MOUSE_BUTTON_LEFT, PRESS)) {
+            if (visible_text != "") { set_value(visible_text); }
+            gui->release();
+        }
 
         unsigned int keycode = keyboard.wait_for_key();
         unsigned int length = visible_text.size();
@@ -58,6 +67,8 @@ void TextInput::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
         if (is_clicked()) {
             gui->focus(this);
             visible_text = "";
+            cursor_visible = true;
+            cursor_timer.reset();
         }
     }
 
@@ -83,16 +94,21 @@ std::string TextInput::format_char(KeyboardHandler& keyboard, const unsigned int
 
 
 void TextInput::render(void) const {
-    const std::string second_text = gui->is_focused(this) ? visible_text : value;
+
+    const std::string second_text = is_focused() ? visible_text : value;
+    const std::string cursor_text = is_focused() && cursor_visible ? "I" : " ";
 
     Vector text_dim = text_dimensions(text.c_str());
     Vector data_dim = text_dimensions(second_text.c_str());
+    Vector cursor_dim = text_dimensions(" ");
 
-    Color primary_color = gui->is_focused(this) ? style.color_1_active : style.color_1_passive;
+    Color primary_color = is_focused() ? style.color_1_active : style.color_1_passive;
     Color secondary_color = is_hovered() ? style.color_2_active : style.color_2_passive;
     
-    Vector text_position = (style.fixed_width > CONST::UINT_ZERO) ? Vector(width() - data_dim.x, 0) : Vector(text_dim.x, 0);
+    Vector text_position = (style.fixed_width > CONST::UINT_ZERO) ? Vector(width() - data_dim.x - cursor_dim.x, CONST::UINT_ZERO) : Vector(text_dim.x, CONST::UINT_ZERO);
+    Vector cursor_position = (style.fixed_width > CONST::UINT_ZERO) ? Vector(width() - cursor_dim.x, CONST::UINT_ZERO) : Vector(text_dim.x + cursor_dim.x, CONST::UINT_ZERO);
 
     draw_text(text.c_str(), secondary_color);
     draw_text(second_text.c_str(), primary_color, text_position);
+    draw_text(cursor_text.c_str(), secondary_color, cursor_position);
 }

@@ -6,10 +6,11 @@ NewHighscoreState::NewHighscoreState(Game* game) : GameState(NEWHIGHSCORE_STATE,
 
 
 GameStateId NewHighscoreState::conditions(void) const {
-    if (game->keyboard.check("Reset", PRESS)) { return GAME_STATE; }
-    if (game->keyboard.check("Exit", PRESS)) { return SHUTDOWN_STATE; }
-    if (game->newhighscore_restart_button->is_clicked()) { return GAME_STATE; }
-    if (game->newhighscore_menu_button->is_clicked()) { return MENU_STATE; }
+    if (!game->gui->is_focused()) {
+        if (game->keyboard.check("Reset", PRESS)) { return GAME_STATE; }
+        if (game->keyboard.check("Exit", PRESS)) { return SHUTDOWN_STATE; }
+    }
+    if (game->newhighscore_done_button->is_clicked()) { return HIGHSCORES_STATE; }
     
     return NEWHIGHSCORE_STATE;
 }

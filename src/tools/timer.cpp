@@ -13,6 +13,11 @@ void Timer::set(double new_period) {
 }
 
 
+void Timer::reset(void) {
+    this->statemark = GetTime();
+}
+
+
 bool Timer::tick(void) {
     double now = GetTime();
 

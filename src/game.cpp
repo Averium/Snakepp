@@ -89,8 +89,7 @@ void Game::init_gui(void) {
 
     newhighscore_newhighscore_label = new TextLabel(newhighscore_group, LAYOUT("MENU_ITEM_1"), "New highscore!", STYLE_DARK_72);
     newhighscore_name_label = new TextInput(newhighscore_group, LAYOUT("MENU_ITEM_3"), "Enter your name", STYLE_HIGHSCORE_INPUT);
-    newhighscore_restart_button = new Button(newhighscore_group, LAYOUT("MENU_ITEM_5"), "Restart", STYLE_RED_42);
-    newhighscore_menu_button = new Button(newhighscore_group, LAYOUT("MENU_ITEM_6"), "Main menu", STYLE_LIGHT_42);
+    newhighscore_done_button = new Button(newhighscore_group, LAYOUT("MENU_ITEM_6"), "Done", STYLE_LIGHT_42);
 
     keybinds_up_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_1"), "Up", keyboard.decode_key(KEYBINDS("Up")), STYLE_KEYBIND_LABEL);
     keybinds_down_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_2"), "Down", keyboard.decode_key(KEYBINDS("Down")), STYLE_KEYBIND_LABEL);

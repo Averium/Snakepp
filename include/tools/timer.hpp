@@ -10,6 +10,7 @@ public:
     Timer(double period);
 
     void set(double new_period);
+    void reset(void);
     bool tick(void);
 
 private:

@@ -27,6 +27,7 @@ public:
     inline bool is_clicked(void) const { return clicked; }
     inline bool is_hovered(void) const { return hovered; }
     inline bool is_holded(void) const { return holded; }
+    inline bool is_focused(void) const { return gui->is_focused(this); }
 
     void align(Vector anchor);
     void align(void);

@@ -40,6 +40,8 @@ namespace CONST {
     constexpr unsigned int APPLE_MULTIPLIER = 3U;
     constexpr unsigned int BONUS_MULTIPLIER = 10U;
     constexpr unsigned int STORED_HIGHSCORES = 5U;
+
+    constexpr double CURSOR_FLASH_PERIOD = 0.4F;
 }
 
 namespace DIRECTION {

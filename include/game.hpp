@@ -84,8 +84,7 @@ public:
 
     TextLabel* newhighscore_newhighscore_label = nullptr;
     TextInput* newhighscore_name_label = nullptr;
-    Button* newhighscore_restart_button = nullptr;
-    Button* newhighscore_menu_button = nullptr;
+    Button* newhighscore_done_button = nullptr;
 
     TextLabel* gamedata_statistics_label = nullptr;
     TextLabel* gamedata_gametitle_label = nullptr;

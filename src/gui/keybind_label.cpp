@@ -20,7 +20,7 @@ KeybindLabel::KeybindLabel(
 void KeybindLabel::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
     Widget::events(mouse, keyboard);
 
-    if (gui->is_focused(this)) {
+    if (is_focused()) {
         if (mouse.check(MOUSE_BUTTON_LEFT, PRESS)) {
             gui->release();
         }
@@ -41,7 +41,7 @@ void KeybindLabel::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
 
 
 std::string KeybindLabel::value_text(void) const {
-    return gui->is_focused(this) ? placeholder : value;
+    return is_focused() ? placeholder : value;
 }
 
 
