@@ -7,19 +7,26 @@ Cell::Cell() {
 }
 
 
-Cell::Cell(Vector position, celltype type, unsigned int counter) {
+Cell::Cell(
+    const Vector position,
+    const Vector grid_position,
+    const celltype type,
+    const unsigned int counter
+) :
+    Rect(CELL_SIZE - CELL_GAP * 2)
+{
     set_state(type, counter);
-    this->grid_position = position;
+    topleft(position * CELL_SIZE + grid_position + Vector(CELL_GAP, CELL_GAP));
 }
 
 
-void Cell::set_state(celltype type, unsigned int counter) {
+void Cell::set_state(const celltype type, const unsigned int counter) {
     this->type = type;
     this->counter = counter;
 }
 
 
-void Cell::set_state(celltype type) {
+void Cell::set_state(const celltype type) {
     this->type = type;
     this->counter = UINT_ZERO;
 }
@@ -42,46 +49,33 @@ void Cell::update(void) {
 }
 
 
-void Cell::render(Vector position, Vector snake_direction) {
-    Vector screen_position = grid2screen(position);
-    Vector c, c1, c2, shift;
-
-    unsigned int CELL_SIDE = CELL_SIZE - CELL_GAP * 2;
+void Cell::render(Vector position, Vector forward) const {
+    Vector sideway(forward.y, forward.x);
+    Rect eye(width() / 3, width() / 3);
+    Rect pattern(width() / 2, height() / 2);
 
     switch (type) {
-    case SNAKE_HEAD:
+        case SNAKE_HEAD:
 
-        DrawRectangle(screen_position.x, screen_position.y, CELL_SIDE, CELL_SIDE,COLORS("SNAKE"));
+            draw(COLORS("SNAKE"));
+            eye.center(center() + (forward + sideway) * (width() / 4)); eye.draw(COLORS("PATTERN"));
+            eye.center(center() + (forward - sideway) * (width() / 4)); eye.draw(COLORS("PATTERN"));
+            break;
 
-        c = screen_position + Vector(CELL_SIDE / 2, CELL_SIDE / 2);
-        shift = Vector(snake_direction.y, snake_direction.x) * (CELL_SIDE / 4);
-        c1 = c + shift + snake_direction * (CELL_SIDE / 4);
-        c2 = c - shift + snake_direction * (CELL_SIDE / 4);
+        case SNAKE_BODY:
 
-        DrawRectangle(c1.x - CELL_SIDE / 6, c1.y - CELL_SIDE / 6, CELL_SIDE / 3, CELL_SIDE / 3, COLORS("PATTERN"));
-        DrawRectangle(c2.x - CELL_SIDE / 6, c2.y - CELL_SIDE / 6, CELL_SIDE / 3, CELL_SIDE / 3, COLORS("PATTERN"));
-        break;
-    case SNAKE_BODY:
-        DrawRectangle(screen_position.x, screen_position.y, CELL_SIDE, CELL_SIDE, COLORS("SNAKE"));
-        DrawRectangle(
-            screen_position.x + CELL_SIDE / 4,
-            screen_position.y + CELL_SIDE / 4,
-            CELL_SIDE / 2,
-            CELL_SIDE / 2,
-            COLORS("PATTERN")
-        );
-        break;
-    case APPLE:
-        DrawRectangle(screen_position.x, screen_position.y, CELL_SIDE, CELL_SIDE, COLORS("APPLE"));
-        break;
-    default:
-        break;   
+            draw(COLORS("SNAKE"));
+            pattern.center(center());
+            pattern.draw(COLORS("PATTERN"));
+            break;
+
+        case APPLE:
+
+            draw(COLORS("APPLE"));
+            break;
+
+        default:
+
+            break;
     }
-}
-
-
-Vector Cell::grid2screen(Vector position) {
-    unsigned char col = grid_position.x;
-    unsigned char row = grid_position.y;
-    return Vector(col * CELL_SIZE + CELL_GAP, row * CELL_SIZE + CELL_GAP) + position;
 }

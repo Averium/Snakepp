@@ -11,5 +11,5 @@ class Apple {
 public:
     Apple();
 
-    void repos(Grid* grid);
+    void repos(Grid* grid) const;
 };

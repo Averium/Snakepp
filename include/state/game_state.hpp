@@ -13,7 +13,7 @@ public:
 
     inline virtual void events(void) {};
     inline virtual void update(void) {};
-    inline virtual void render(void) {};
+    inline virtual void render(void) const {};
 
 protected:
     Game* game;

@@ -35,7 +35,7 @@ private:
     std::string decode(
         std::unordered_map<unsigned int, std::string>& map,
         const unsigned int keycode
-    ) const ;
+    ) const;
 
     ConfigData<unsigned int>* keybinds;
 

@@ -22,7 +22,7 @@ void LayoutData::read_data(void) {
 
 
 void LayoutData::write_data(void) {
-    for (std::pair<const std::string, Vector>& pair : data) {
+    for (const auto& pair : data) {
         file << pair.first << " " << pair.second.x << " " << pair.second.y << "\n";
     }
 }

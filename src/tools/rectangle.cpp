@@ -4,37 +4,33 @@
 
 Rect::Rect(void) {}
 
-Rect::Rect(unsigned int w, unsigned int h) {
-    this->x = 0;
-    this->y = 0;
-    this->w = w;
-    this->h = h;
-}
+Rect::Rect(const unsigned int s) : x(0), y(0), w(s), h(s) {}
 
-Rect::Rect(int x, int y, unsigned int w, unsigned int h) {
-    this->x = x;
-    this->y = y;
-    this->w = w;
-    this->h = h;
-}
+Rect::Rect(const unsigned int w, const unsigned int h) : x(0), y(0), w(w), h(h) {}
 
-Rect::Rect(Rect &rect) {
-    this->x = rect.left();
-    this->y = rect.top();
-    this->w = rect.width();
-    this->h = rect.height();
-}
+Rect::Rect(
+    const int x,
+    const int y,
+    const unsigned int w,
+    const unsigned int h)
+: 
+    x(x), y(y), w(w), h(h) {}
 
-bool Rect::collide(Vector point) {
+Rect::Rect(const Rect &rect)
+:
+    x(rect.left()), y(rect.top()), w(rect.width()), h(rect.height()) {}
+
+
+bool Rect::collide(const Vector point) const {
     return (
-        (left() <= point.x)  &&
-        (right() >= point.x) &&
-        (top() <= point.y)   &&
+        (left()   <= point.x) &&
+        (right()  >= point.x) &&
+        (top()    <= point.y) &&
         (bottom() >= point.y)
     );
 }
 
-bool Rect::collide(Rect rect) {
+bool Rect::collide(const Rect rect) const {
     return (
         (this->left() <= rect.right()) &&
         (this->right() >= rect.left()) &&
@@ -44,12 +40,12 @@ bool Rect::collide(Rect rect) {
 }
 
 
-void Rect::size(unsigned int new_width, unsigned int new_height) {
+void Rect::size(const unsigned int new_width, const unsigned int new_height) {
     w = new_width;
     h = new_height;
 }
 
-void Rect::size(Vector new_size) {
+void Rect::size(const Vector new_size) {
     w = new_size.x;
     h = new_size.y;
 }
@@ -61,19 +57,29 @@ void Rect::print(void) const {
     std::cout << height() << "]" << std::endl;
 }
 
-void Rect::move(int new_x, int new_y, unsigned int new_width, unsigned int new_height) {
+void Rect::move(
+    const int new_x,
+    const int new_y,
+    const unsigned int new_width,
+    const unsigned int new_height
+){
     x = new_x;
     y = new_y;
     w = new_width;
     h = new_height;
 }
 
-void Rect::move(Vector new_topleft, Vector new_size) {
+void Rect::move(const Vector new_topleft, const Vector new_size) {
     size(new_size);
     topleft(new_topleft);
 }
 
-void Rect::move(Rect new_rect) {
+void Rect::move(const Rect new_rect) {
     size(new_rect.size());
     topleft(new_rect.topleft());
+}
+
+
+void Rect::draw(const Color color) const {
+    DrawRectangle(left(), top(), width(), height(), color);
 }

@@ -21,7 +21,7 @@ void ColorData::read_data(void) {
 
 
 void ColorData::write_data(void) {
-    for (std::pair<const std::string, Color>& pair : data) {
+    for (const auto& pair : data) {
         Color color = pair.second;
         file << pair.first << " " << color.r << " " << color.g << " " << color.b << "\n";
     }

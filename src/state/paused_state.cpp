@@ -14,11 +14,6 @@ GameStateId PausedState::conditions(void) const {
 }
 
 
-void PausedState::render(void) {
-    game->grid.render_cells(game->snake.direction);
-}
-
-
 void PausedState::on_entry(void) {
     game->gui->activate_item(game->paused_group);
 }
@@ -26,4 +21,9 @@ void PausedState::on_entry(void) {
 
 void PausedState::on_exit(void) {
     game->gui->deactivate_item(game->paused_group);
+}
+
+
+void PausedState::render(void) const {
+    game->grid.render_cells(game->snake.direction);
 }

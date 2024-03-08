@@ -24,6 +24,5 @@ public:
 
 private:
     std::string key_text;
-
     static const std::string placeholder;
 };

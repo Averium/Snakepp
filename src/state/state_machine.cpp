@@ -4,7 +4,7 @@
 StateMachine::StateMachine(void) {}
 
 StateMachine::~StateMachine() {
-    for (std::pair<const GameStateId, State*>& pair : states) {
+    for (const auto& pair : states) {
         delete pair.second;
     }
 }

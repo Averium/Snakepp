@@ -17,7 +17,7 @@ std::vector<std::string> ValueMap::keys(void) const {
     std::vector<std::string> keys_vector;
     keys_vector.reserve(ranges.size());
 
-    for (const std::pair<const std::string, Range>& pair : this->ranges) {
+    for (const auto& pair : this->ranges) {
         keys_vector.push_back(pair.first);
     }
 

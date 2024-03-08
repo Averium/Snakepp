@@ -7,18 +7,18 @@
 #include "cell.hpp"
 
 
-class Grid{
+class Grid : public Rect{
 
 public:
 
     Grid(void);
-    Grid(Vector position);
+    Grid(const Vector position);
 
     void update(void);
-    void render_background(void);
-    void render_cells(Vector snake_direction);
+    void render_background(void) const;
+    void render_cells(const Vector snake_direction);
 
-    Cell* cell_at(Vector position);
+    Cell* cell_at(const Vector position);
 
 private:
     Cell grid[GRID_ROWS][GRID_COLUMNS];

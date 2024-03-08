@@ -33,13 +33,10 @@ public:
     void render(void) const override;
 
 private:
-    static const unsigned int slider_size = SLIDER_SIZE;
-    static const unsigned int rail_width = SLIDER_RAIL_WIDTH;
-
     bool grabbed = false;
 
     WidgetStyle style;
 
-    Rect slider = Rect(UINT_ZERO, UINT_ZERO, slider_size, slider_size);
+    Rect slider = Rect(UINT_ZERO, UINT_ZERO, SLIDER_SIZE, SLIDER_SIZE);
     Rect rail = Rect();
 };

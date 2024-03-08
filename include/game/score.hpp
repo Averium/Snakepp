@@ -2,6 +2,7 @@
 
 #include <string>
 #include <array>
+#include <utility>
 
 #include "config_data.hpp"
 #include "const.hpp"
@@ -18,7 +19,7 @@ public:
     void register_highscore(std::string name);
     void erase_lowest_highscore(void);
 
-    std::array<std::string, STORED_HIGHSCORES> sorted_keys(void);
+    std::array<std::pair<std::string, unsigned int>, STORED_HIGHSCORES> sorted_pairs(void) const;
 
     void increment_apples(void);
     void increment_bonuses(void);

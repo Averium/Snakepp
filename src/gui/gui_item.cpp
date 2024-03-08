@@ -28,7 +28,6 @@ unsigned int GuiItem::get_id(void) const { return this->id; }
 
 
 
-
 bool SortByLayer::operator()(const GuiItem* first, const GuiItem* second) const {
     if (first->get_layer() == second->get_layer()) {
         return first->get_id() < second->get_id();

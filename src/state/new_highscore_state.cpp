@@ -33,3 +33,7 @@ void NewHighscoreState::on_exit(void) {
 
     game->reset();
 }
+
+void NewHighscoreState::render(void) const {
+    game->grid.render_cells(game->snake.direction);
+}

@@ -32,7 +32,7 @@ void EventHandler::add_key(const unsigned int keycode) {
 
 
 void EventHandler::update(void) {
-    for (std::pair<const unsigned int, Key*>& pair : keymap) {
+    for (const auto& pair : keymap) {
         pair.second->update();
     }
 }

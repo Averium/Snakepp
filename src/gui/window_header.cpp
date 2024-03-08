@@ -54,9 +54,9 @@ void WindowHeader::render(void) const {
     Color close_color = close_hovered ? style.color_2_active : style.color_2_passive;
     Color minimize_color = minimize_hovered ? style.color_3_active : style.color_3_passive;
 
-    DrawRectangle(left(), top(), width(), height(), style.color_1_passive);
+    draw(style.color_1_passive);
     draw_text(text.c_str(), style.color_1_active, label_position);
 
-    DrawRectangle(close_rect.left(), close_rect.top(), close_rect.width(), close_rect.height(), close_color);
-    DrawRectangle(minimize_rect.left(), minimize_rect.top(), minimize_rect.width(), minimize_rect.height(), minimize_color);
+    close_rect.draw(close_color);
+    minimize_rect.draw(minimize_color);
 }

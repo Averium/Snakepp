@@ -14,13 +14,13 @@ Slider::Slider(
     Alignment alignment,
     int layer
 ) : 
-    Widget(group, Rect(position.x, position.y, length, this->slider_size), alignment, layer),
+    Widget(group, Rect(position.x, position.y, length, SLIDER_SIZE), alignment, layer),
     ValueMap(0U, 0U, length, "PIXELS"),
     style(style)
 {
     align(position);
 
-    rail.size(this->width(), this->rail_width);
+    rail.size(this->width(), SLIDER_RAIL_WIDTH);
     rail.midleft(this->midleft());
 
     slider.centerx(this->left());
@@ -58,6 +58,6 @@ void Slider::render(void) const {
     Color rail_color = (is_grabbed() || is_hovered()) ? style.color_2_passive : style.color_2_passive;
     Color slider_color = (is_grabbed() || is_hovered()) ? style.color_1_active : style.color_1_passive;
 
-    DrawRectangle(rail.left(), rail.top(), rail.width(), rail.height(), rail_color);
-    DrawRectangle(slider.left(), slider.top(), slider.width(), slider.height(), slider_color);
+    rail.draw(rail_color);
+    slider.draw(slider_color);
 }

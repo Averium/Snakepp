@@ -112,9 +112,9 @@ void Game::init_gui(void) {
     highscores_back_button = new Button(highscores_group, LAYOUT("MENU_ITEM_9"), "Back", STYLE_LIGHT_42);
 
     unsigned int index = UINT_ZERO;
-    for (const std::string key : score.sorted_keys()) {
-        std::string number = "MENU_ITEM_" + std::to_string(index + 3U);
-        highscore_labels[index] = new DataLabel<unsigned int>(highscores_group, LAYOUT(number), key, score(key), STYLE_HIGHSCORE_LABEL);
+    for (const auto& pair : score.sorted_pairs()) {
+        Vector position = LAYOUT("MENU_ITEM_" + std::to_string(index + 3U));
+        highscore_labels[index] = new DataLabel<unsigned int>(highscores_group, position, pair.first, pair.second, STYLE_HIGHSCORE_LABEL);
         ++index;
     }
 
@@ -144,9 +144,9 @@ void Game::save_settings(void) {
 
 void Game::update_highscores(void) {
     unsigned int index = UINT_ZERO;
-    for (const std::string& key : score.sorted_keys()) {
-        highscore_labels[index]->set_value(score(key));
-        highscore_labels[index++]->set_text(key);
+    for (const auto& pair : score.sorted_pairs()) {
+        highscore_labels[index]->set_value(pair.second);
+        highscore_labels[index++]->set_text(pair.first);
     }
 }
 

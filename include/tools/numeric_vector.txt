@@ -1,0 +1,50 @@
+#pragma once
+
+#include <cmath>
+
+#include "raylib.hpp"
+
+
+template <class NUMERIC>
+class Vector {
+
+public:
+    Vector(void): x((NUMERIC)(0)), y((NUMERIC)(0)) {}
+    Vector(NUMERIC x, NUMERIC y): x(x), y(y) {}
+    Vector(Vector2 vector): x((NUMERIC)(vector.x)), y((NUMERIC)(vector.y)) {}
+    Vector(const Vector &vector): x((NUMERIC)(vector.x)), y((NUMERIC)(vector.y)) {}
+
+    inline float length(void) const { return sqrt((float)(x) * (float)(x) + (float)(y) * (float)(y)) };
+    inline Vector2 vector2(void) const { return {(float)(x), (float)(y)}; }
+
+    inline Vector<NUMERIC> operator * (NUMERIC value) const {
+        return Vector<NUMERIC>(this->x * value, this->y * value);
+    }
+
+    inline Vector<NUMERIC> operator / (NUMERIC value) const {
+        return Vector<NUMERIC>(this->x / value, this->y / value);
+    }
+
+    inline Vector<NUMERIC> operator + (Vector vector) const {
+        return Vector<NUMERIC>(this->x + vector.x, this->y + vector.y);
+    }
+
+    inline Vector<NUMERIC> operator - (Vector vector) const {
+        return Vector<NUMERIC>(this->x - vector.x, this->y - vector.y);
+    }
+    
+    inline Vector<NUMERIC> operator - (void) const {
+        return Vector<NUMERIC>(-this->x, -this->y);
+    }
+
+    inline Vector<NUMERIC> operator += (Vector vector) const { return this->operator+(vector)}
+    inline Vector<NUMERIC> operator -= (Vector vector) const { return this->operator-(vector)}
+
+    bool operator == (Vector vector) const { return (this->x == vector.x && this->y == vector.y); }
+    bool operator != (Vector vector) const { return (this->x != vector.x || this->y != vector.y); }
+
+    NUMERIC x;
+    NUMERIC y;
+
+    void print(void) const { std::cout << "Vector: [" << x << ", " << y << "]" << std::endl; }
+};

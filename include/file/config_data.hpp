@@ -24,7 +24,7 @@ public:
 
 
     void write_data(void) {
-        for (const std::pair<const std::string, DATATYPE>& pair : this->data) {
+        for (const auto& pair : this->data) {
             if (pair.first != "") {
                 this->file << pair.first << " " << std::to_string(pair.second) << "\n";
             }

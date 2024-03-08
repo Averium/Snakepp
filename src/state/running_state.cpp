@@ -54,6 +54,6 @@ void RunningState::update(void) {
 }
 
 
-void RunningState::render(void) {
+void RunningState::render(void) const {
     game->grid.render_cells(game->snake.direction);
 }

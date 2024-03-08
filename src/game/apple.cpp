@@ -4,7 +4,7 @@
 Apple::Apple() {}
 
 
-void Apple::repos(Grid* grid) {
+void Apple::repos(Grid* grid) const {
     std::vector<Cell*> empty_cells;
 
     for (unsigned char row = UINT_ZERO; row < GRID_ROWS; row++) {

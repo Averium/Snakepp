@@ -16,7 +16,7 @@ void MouseHandler::add_key(const unsigned int keycode) {
 
 void MouseHandler::update(void) {
 
-    for (std::pair<const int, Key*> pair : keymap) {
+    for (const auto& pair : keymap) {
         pair.second->update();
     }
 
