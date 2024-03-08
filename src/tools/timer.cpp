@@ -2,7 +2,7 @@
 #include "timer.hpp"
 
 
-Timer::Timer() : period(CONST::FLOAT_ZERO) {}
+Timer::Timer() : period(FLOAT_ZERO) {}
 
 
 Timer::Timer(double period) : period(period) {}

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <vector>
+#include <array>
 
 #include "config_data.hpp"
 #include "const.hpp"
@@ -18,6 +18,8 @@ public:
     void register_highscore(std::string name);
     void erase_lowest_highscore(void);
 
+    std::array<std::string, STORED_HIGHSCORES> sorted_keys(void);
+
     void increment_apples(void);
     void increment_bonuses(void);
 
@@ -26,10 +28,6 @@ public:
     unsigned int get_score(void) const;
 
 private:
-    unsigned int apples = CONST::UINT_ZERO;
-    unsigned int bonuses = CONST::UINT_ZERO;
-
-    static const unsigned int APPLE_MULTIPLIER = CONST::APPLE_MULTIPLIER;
-    static const unsigned int BONUS_MULTIPLIER = CONST::BONUS_MULTIPLIER;
-    static const unsigned int STORED_HIGHSCORES = CONST::STORED_HIGHSCORES;
+    unsigned int apples = UINT_ZERO;
+    unsigned int bonuses = UINT_ZERO;
 };

@@ -7,8 +7,8 @@ Apple::Apple() {}
 void Apple::repos(Grid* grid) {
     std::vector<Cell*> empty_cells;
 
-    for (unsigned char row = CONST::UINT_ZERO; row < CONST::GRID_ROWS; row++) {
-        for (unsigned char col = CONST::UINT_ZERO; col < CONST::GRID_COLUMNS; col++) {
+    for (unsigned char row = UINT_ZERO; row < GRID_ROWS; row++) {
+        for (unsigned char col = UINT_ZERO; col < GRID_COLUMNS; col++) {
             
             Cell* cell = grid->cell_at(Vector(row, col));
 

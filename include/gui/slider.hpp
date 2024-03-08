@@ -18,7 +18,7 @@ public:
         double value,
         WidgetStyle style,
         Alignment alignment = CENTER,
-        int layer = CONST::UINT_ONE
+        int layer = UINT_ONE
     );
 
     inline bool is_grabbed(void) const { return grabbed; }
@@ -33,13 +33,13 @@ public:
     void render(void) const override;
 
 private:
-    static const unsigned int slider_size = CONST::SLIDER_SIZE;
-    static const unsigned int rail_width = CONST::SLIDER_RAIL_WIDTH;
+    static const unsigned int slider_size = SLIDER_SIZE;
+    static const unsigned int rail_width = SLIDER_RAIL_WIDTH;
 
     bool grabbed = false;
 
     WidgetStyle style;
 
-    Rect slider = Rect(CONST::UINT_ZERO, CONST::UINT_ZERO, slider_size, slider_size);
+    Rect slider = Rect(UINT_ZERO, UINT_ZERO, slider_size, slider_size);
     Rect rail = Rect();
 };

@@ -23,6 +23,11 @@ TextLabel::TextLabel(
 }
 
 
+void TextLabel::set_text(const std::string new_text) {
+    this->text = new_text;
+}
+
+
 Vector TextLabel::text_dimensions(const char* text) const {
     return Vector(MeasureTextEx(gui->font, text, style.font_size, 0.0F));
 }

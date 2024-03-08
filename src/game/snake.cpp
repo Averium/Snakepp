@@ -2,7 +2,7 @@
 
 
 Snake::Snake(void) {
-    position = Vector(CONST::UINT_ZERO, CONST::UINT_ZERO);
+    position = Vector(UINT_ZERO, UINT_ZERO);
     direction = DIRECTION::RIGHT;
     length = 1U;
     dead = false;
@@ -57,14 +57,14 @@ bool Snake::move(bool walls) {
     int x = new_position.x;
     int y = new_position.y;
 
-    if (walls && (x > (CONST::GRID_COLUMNS - 1) || x < 0 || y > (CONST::GRID_ROWS - 1) || y < 0)) {
+    if (walls && (x > (GRID_COLUMNS - 1) || x < 0 || y > (GRID_ROWS - 1) || y < 0)) {
         return true;
     }
 
-    if (x > CONST::GRID_COLUMNS - 1) { new_position.x = 0; }
-    if (x < 0) { new_position.x = CONST::GRID_COLUMNS - 1; }
-    if (y > CONST::GRID_ROWS - 1) { new_position.y = 0; }
-    if (y < 0) { new_position.y = CONST::GRID_ROWS - 1; }
+    if (x > GRID_COLUMNS - 1) { new_position.x = 0; }
+    if (x < 0) { new_position.x = GRID_COLUMNS - 1; }
+    if (y > GRID_ROWS - 1) { new_position.y = 0; }
+    if (y < 0) { new_position.y = GRID_ROWS - 1; }
 
     position = new_position;
     return false;
@@ -80,7 +80,7 @@ void Snake::turn(Vector new_direction) {
 
 
 void Snake::change_direction(void) {
-    if (turn_queue.size() > CONST::UINT_ZERO) {
+    if (turn_queue.size() > UINT_ZERO) {
         Vector new_direction = turn_queue.front();
 
         if (new_direction != -direction) {
@@ -93,5 +93,5 @@ void Snake::change_direction(void) {
 
 
 void Snake::set_delay(unsigned int delay_ms) {
-    move_timer.set((double)(delay_ms) * CONST::MS_TO_S);
+    move_timer.set((double)(delay_ms) * MS_TO_S);
 }

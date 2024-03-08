@@ -9,7 +9,7 @@ class WindowHeader : public TextLabel {
 
 public:
     WindowHeader();
-    WindowHeader(Gui* gui, Vector dim, std::string text, WidgetStyle style, int layer = CONST::UINT_ONE);
+    WindowHeader(Gui* gui, Vector dim, std::string text, WidgetStyle style, int layer = UINT_ONE);
 
     void events(MouseHandler& mouse, KeyboardHandler& keyboard);
     void render(void) const override;

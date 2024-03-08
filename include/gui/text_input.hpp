@@ -16,7 +16,7 @@ public:
         std::string text,
         const WidgetStyle style,
         Alignment alignment = CENTER,
-        int layer = CONST::UINT_ONE
+        int layer = UINT_ONE
     );
 
     std::string format_char(KeyboardHandler& keyboard, const unsigned int keycode) const;
@@ -31,5 +31,5 @@ private:
     bool cursor_visible = true;
     std::string visible_text;
 
-    Timer cursor_timer = Timer(CONST::CURSOR_FLASH_PERIOD);
+    Timer cursor_timer = Timer(CURSOR_FLASH_PERIOD);
 };

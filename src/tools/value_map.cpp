@@ -2,12 +2,12 @@
 
 
 ValueMap::ValueMap() : normalized_value(0.0F) {
-    add_range(CONST::FLOAT_ZERO, CONST::FLOAT_ONE, "NORMALIZED");
+    add_range(FLOAT_ZERO, FLOAT_ONE, "NORMALIZED");
 }
 
 
 ValueMap::ValueMap(double value, double minimum, double maximum, const std::string range_key) {
-    add_range(CONST::FLOAT_ZERO, CONST::FLOAT_ONE, "NORMALIZED");
+    add_range(FLOAT_ZERO, FLOAT_ONE, "NORMALIZED");
     add_range(minimum, maximum, range_key);
     this->set(value, range_key);
 }

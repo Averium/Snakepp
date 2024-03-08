@@ -43,8 +43,8 @@ void TextInput::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
         switch (keycode)
         {
             case KEY_BACKSPACE:
-                if (length > CONST::UINT_ZERO) {
-                    visible_text.erase(length - CONST::UINT_ONE);
+                if (length > UINT_ZERO) {
+                    visible_text.erase(length - UINT_ONE);
                 }
                 break;
             case KEY_ENTER:
@@ -82,14 +82,14 @@ std::string TextInput::format_char(KeyboardHandler& keyboard, const unsigned int
     if (keyboard.is_letter(keycode)) {
         character = keyboard.decode_letter(keycode);
         if (keyboard.shift()) {
-            character[CONST::UINT_ZERO] = toupper(character[CONST::UINT_ZERO]);
+            character[UINT_ZERO] = toupper(character[UINT_ZERO]);
         }
     }
     else {
         character = keyboard.decode_key(keycode);
     }
 
-    return (character.size() == CONST::UINT_ONE) ? character : "";
+    return (character.size() == UINT_ONE) ? character : "";
 }
 
 
@@ -105,8 +105,8 @@ void TextInput::render(void) const {
     Color primary_color = is_focused() ? style.color_1_active : style.color_1_passive;
     Color secondary_color = is_hovered() ? style.color_2_active : style.color_2_passive;
     
-    Vector text_position = (style.fixed_width > CONST::UINT_ZERO) ? Vector(width() - data_dim.x - cursor_dim.x, CONST::UINT_ZERO) : Vector(text_dim.x, CONST::UINT_ZERO);
-    Vector cursor_position = (style.fixed_width > CONST::UINT_ZERO) ? Vector(width() - cursor_dim.x, CONST::UINT_ZERO) : Vector(text_dim.x + cursor_dim.x, CONST::UINT_ZERO);
+    Vector text_position = (style.fixed_width > UINT_ZERO) ? Vector(width() - data_dim.x - cursor_dim.x, UINT_ZERO) : Vector(text_dim.x, UINT_ZERO);
+    Vector cursor_position = (style.fixed_width > UINT_ZERO) ? Vector(width() - cursor_dim.x, UINT_ZERO) : Vector(text_dim.x + cursor_dim.x, UINT_ZERO);
 
     draw_text(text.c_str(), secondary_color);
     draw_text(second_text.c_str(), primary_color, text_position);

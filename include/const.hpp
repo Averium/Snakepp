@@ -16,33 +16,32 @@ namespace PATH {
     const std::string HIGHSCORES = "resources/data/highscores";
 }
 
-namespace CONST {
-    constexpr double FLOAT_ZERO = 0.0F;
-    constexpr double FLOAT_ONE = 1.0F;
-    
-    constexpr unsigned int UINT_ZERO = 0U;
-    constexpr unsigned int UINT_ONE = 1U;
-    constexpr double MS_TO_S = 1.0F / 1000.0F;
+#define FLOAT_ZERO 0.0F
+#define FLOAT_ONE 1.0F
 
-    constexpr unsigned int GRID_COLUMNS = 20U;
-    constexpr unsigned int GRID_ROWS = 20U;
-    constexpr unsigned int CELL_SIZE = 40U;
-    constexpr unsigned int CELL_GAP = 3U;
+#define UINT_ZERO 0U
+#define UINT_ONE 1U
+#define MS_TO_S 0.001F
 
-    constexpr unsigned int DELAY_MIN = 50U;
-    constexpr unsigned int DELAY_MAX = 200U;
-    constexpr unsigned int SPEED_MIN = 1U;
-    constexpr unsigned int SPEED_MAX = 10U;
- 
-    constexpr unsigned int SLIDER_SIZE = 30U;
-    constexpr unsigned int SLIDER_RAIL_WIDTH = 15U;
+#define GRID_COLUMNS 20U
+#define GRID_ROWS 20U
+#define CELL_SIZE 40U
+#define CELL_GAP 3U
 
-    constexpr unsigned int APPLE_MULTIPLIER = 3U;
-    constexpr unsigned int BONUS_MULTIPLIER = 10U;
-    constexpr unsigned int STORED_HIGHSCORES = 5U;
+#define DELAY_MIN 50U
+#define DELAY_MAX 200U
+#define SPEED_MIN 1U
+#define SPEED_MAX 10U
 
-    constexpr double CURSOR_FLASH_PERIOD = 0.4F;
-}
+#define SLIDER_SIZE 30U
+#define SLIDER_RAIL_WIDTH 15U
+
+#define APPLE_MULTIPLIER 3U
+#define BONUS_MULTIPLIER 10U
+#define STORED_HIGHSCORES 5U
+
+#define CURSOR_FLASH_PERIOD 0.4F
+
 
 namespace DIRECTION {
     const Vector UP    = Vector( 0, -1);

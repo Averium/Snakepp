@@ -70,7 +70,9 @@ public:
     KeybindLabel* keybinds_reset_label = nullptr;
     KeybindLabel* keybinds_exit_label = nullptr;
 
+    TextLabel* highscores_info_label = nullptr;
     Button* highscores_back_button = nullptr;
+    std::array<DataLabel<unsigned int>*, STORED_HIGHSCORES> highscore_labels;
     
     TextLabel* paused_paused_label = nullptr;
     TextLabel* paused_info_label = nullptr;
@@ -102,6 +104,8 @@ public:
 
     void load_settings(void);
     void save_settings(void);
+    
+    void update_highscores(void);
 
     void start(void);
     void stop(void);

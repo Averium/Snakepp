@@ -28,6 +28,7 @@ void NewHighscoreState::on_exit(void) {
     std::string player_name = game->newhighscore_name_label->get_value();
     if (player_name != "") {
         game->score.register_highscore(player_name);
+        game->update_highscores();
     }
 
     game->reset();

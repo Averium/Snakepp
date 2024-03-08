@@ -47,7 +47,7 @@ public:
         Vector text_dim = text_dimensions(text.c_str());
         Vector state_text_dim = text_dimensions(value_text().c_str());
 
-        if (style.fixed_width > CONST::UINT_ZERO) {
+        if (style.fixed_width > UINT_ZERO) {
             width(style.fixed_width);
         }
         else {
@@ -66,13 +66,15 @@ public:
 
 
     virtual void render(void) const override {
+        if (text == "") { return; }
+        
         Vector text_dim = text_dimensions(text.c_str());
         Vector data_dim = text_dimensions(value_text().c_str());
 
         Color primary_color = is_hovered() ? style.color_1_active : style.color_1_passive;
         Color secondary_color = is_hovered() ? style.color_2_active : style.color_2_passive;
         
-        Vector text_position = (style.fixed_width > CONST::UINT_ZERO) ? Vector(width() - data_dim.x, 0) : Vector(text_dim.x, 0);
+        Vector text_position = (style.fixed_width > UINT_ZERO) ? Vector(width() - data_dim.x, 0) : Vector(text_dim.x, 0);
 
         draw_text(text.c_str(), secondary_color);
         draw_text(value_text().c_str(), primary_color, text_position);
