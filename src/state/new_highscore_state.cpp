@@ -6,10 +6,8 @@ NewHighscoreState::NewHighscoreState(Game* game) : GameState(NEWHIGHSCORE_STATE,
 
 
 GameStateId NewHighscoreState::conditions(void) const {
-    if (!game->gui->is_focused()) {
-        if (game->keyboard.check("Reset", PRESS)) { return GAME_STATE; }
-        if (game->keyboard.check("Exit", PRESS)) { return SHUTDOWN_STATE; }
-    }
+    if (game->keyboard.check("Reset", PRESS)) { return GAME_STATE; }
+    if (game->keyboard.check("Exit", PRESS)) { return SHUTDOWN_STATE; }
     if (game->newhighscore_restart_button->is_clicked()) { return GAME_STATE; }
     if (game->newhighscore_menu_button->is_clicked()) { return MENU_STATE; }
     
@@ -26,9 +24,9 @@ void NewHighscoreState::on_entry(void) {
 void NewHighscoreState::on_exit(void) {
     game->gui->deactivate_item(game->newhighscore_group);
 
-    std::string name = game->newhighscore_name_label->get_value();
-    if (name != "") {
-        game->score.register_player(name);
+    std::string player_name = game->newhighscore_name_label->get_value();
+    if (player_name != "") {
+        game->score.register_highscore(player_name);
     }
 
     game->reset();

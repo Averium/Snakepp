@@ -15,11 +15,22 @@ bool Score::is_highscore(void) const {
 }
 
 
-void Score::register_player(const std::string name) {
-    data[name] = get_score();
-    if (data.size() > STORED_HIGHSCORES) { data.erase(data.begin()); }
+void Score::register_highscore(const std::string player_name) {
+    data.insert({ player_name, get_score() });
 
+    if (data.size() > STORED_HIGHSCORES) { erase_lowest_highscore(); }
     save();
+}
+
+
+void Score::erase_lowest_highscore(void) {
+    std::pair<std::string, unsigned int> lowest_element = {"", UINT_MAX};
+
+    for (const std::pair<std::string, unsigned int>& pair : data) {
+        if (pair.second < lowest_element.second) { lowest_element = pair; }
+    }
+
+    data.erase(lowest_element.first);
 }
 
 
@@ -52,8 +63,3 @@ unsigned int Score::get_bonuses(void) const {
 unsigned int Score::get_score(void) const {
     return (unsigned int)(apples * APPLE_MULTIPLIER + bonuses * BONUS_MULTIPLIER); 
 }
-
-
-bool SortByValue::operator()(const unsigned int first, const unsigned int second) const {
-    return first < second;
-};

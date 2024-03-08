@@ -1,5 +1,8 @@
 #pragma once
 
+#include <string>
+#include <vector>
+
 #include "config_data.hpp"
 #include "const.hpp"
 
@@ -12,7 +15,8 @@ public:
     void reset(void);
 
     bool is_highscore(void) const;
-    void register_player(std::string name);
+    void register_highscore(std::string name);
+    void erase_lowest_highscore(void);
 
     void increment_apples(void);
     void increment_bonuses(void);
@@ -28,9 +32,4 @@ private:
     static const unsigned int APPLE_MULTIPLIER = CONST::APPLE_MULTIPLIER;
     static const unsigned int BONUS_MULTIPLIER = CONST::BONUS_MULTIPLIER;
     static const unsigned int STORED_HIGHSCORES = CONST::STORED_HIGHSCORES;
-};
-
-
-struct SortByValue {
-    bool operator()(const unsigned int first, const unsigned int second) const;
 };

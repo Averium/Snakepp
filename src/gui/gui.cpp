@@ -1,4 +1,5 @@
 #include "gui.hpp"
+#include "widget.hpp"
 #include "debug.hpp"
 
 
@@ -53,8 +54,13 @@ void Gui::init_font(void) {
 
 
 void Gui::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
-    for (GuiItem* item : active_items) {
-        item->events(mouse, keyboard);
+    if (is_focused()) {
+        focused_widget->events(mouse, keyboard);
+    }
+    else {
+        for (GuiItem* item : active_items) {
+            item->events(mouse, keyboard);
+        }
     }
 }
 

@@ -19,10 +19,6 @@ int main(void) {
 
 
 /*
-FIX:
-    - highscores are not ordered correctly
-    - highscores are not registered if a button is clicked while the input is focused
-
 TODO:
     - UPGRADE MAKEFILE FOR AUTOMATIC DEPENDENCIES
 

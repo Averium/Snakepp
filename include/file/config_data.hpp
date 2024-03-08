@@ -18,7 +18,7 @@ public:
         DATATYPE value;
 
         while (this->file >> name >> value) {
-            this->data[name] = value;
+            this->data.insert( {name, value} );
         }
     }
 
