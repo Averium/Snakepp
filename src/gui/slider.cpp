@@ -55,7 +55,7 @@ void Slider::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
 
 
 void Slider::render(void) const {
-    Color rail_color = (is_grabbed() || is_hovered()) ? style.color_2_passive : style.color_2_passive;
+    Color rail_color = (is_grabbed() || is_hovered()) ? style.color_2_active : style.color_2_passive;
     Color slider_color = (is_grabbed() || is_hovered()) ? style.color_1_active : style.color_1_passive;
 
     rail.draw(rail_color);

@@ -56,23 +56,23 @@ void Cell::render(Vector position, Vector forward) const {
 
     switch (type) {
         case SNAKE_HEAD:
-            draw(COLORS("SNAKE"));
-            eye.center(center() + (forward + sideway) * (width() / 4)); eye.draw(COLORS("PATTERN"));
-            eye.center(center() + (forward - sideway) * (width() / 4)); eye.draw(COLORS("PATTERN"));
+            draw(COLORS("GREEN2"));
+            eye.center(center() + (forward + sideway) * (width() / 4)); eye.draw(COLORS("GREEN1"));
+            eye.center(center() + (forward - sideway) * (width() / 4)); eye.draw(COLORS("GREEN1"));
             break;
 
         case SNAKE_BODY:
-            draw(COLORS("SNAKE"));
+            draw(COLORS("GREEN2"));
             pattern.center(center());
-            pattern.draw(COLORS("PATTERN"));
+            pattern.draw(COLORS("GREEN1"));
             break;
 
         case APPLE:
-            draw(COLORS("APPLE"));
+            draw(COLORS("RED1"));
             break;
 
         case BONUS:
-            draw(COLORS("BONUS"));
+            draw(COLORS("BLUE1"));
             break;
 
         default:

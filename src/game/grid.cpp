@@ -46,7 +46,7 @@ void Grid::update(void) {
 
 
 void Grid::render_background(void) const {
-    draw(COLORS("GRID"));
+    draw(COLORS("GREY1"));
 }
 
 
@@ -57,5 +57,5 @@ void Grid::render_cells(const Vector snake_direction, const bool passive) {
         }
     }
 
-    if (passive) { draw(COLORS("GRID_SHADE")); }
+    if (passive) { draw(COLORS("SHADE")); }
 }

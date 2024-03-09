@@ -65,33 +65,33 @@ void Game::init_gui(void) {
     window_header = new WindowHeader(gui, LAYOUT("HEADER"), "Hold to move the window", STYLE_HEADER);
     gui->activate_item(window_header);
 
-    menu_start_button = new Button(menu_group, LAYOUT("MENU_ITEM_1"), "Play", STYLE_RED_72);
-    menu_settings_button = new Button(menu_group, LAYOUT("MENU_ITEM_3"), "Settings", STYLE_LIGHT_42);
-    menu_keybinds_button = new Button(menu_group, LAYOUT("MENU_ITEM_4"), "Keybinds", STYLE_LIGHT_42);
-    menu_highscores_button = new Button(menu_group, LAYOUT("MENU_ITEM_5"), "High scores", STYLE_LIGHT_42);
-    menu_exit_button = new Button(menu_group, LAYOUT("MENU_ITEM_9"), "Exit", STYLE_RED_42);
+    menu_start_button = new Button(menu_group, LAYOUT("MENU_ITEM_1"), "Play", STYLE_RED_3);
+    menu_settings_button = new Button(menu_group, LAYOUT("MENU_ITEM_3"), "Settings", STYLE_LIGHT_2);
+    menu_keybinds_button = new Button(menu_group, LAYOUT("MENU_ITEM_4"), "Keybinds", STYLE_LIGHT_2);
+    menu_highscores_button = new Button(menu_group, LAYOUT("MENU_ITEM_5"), "High scores", STYLE_LIGHT_2);
+    menu_exit_button = new Button(menu_group, LAYOUT("MENU_ITEM_9"), "Exit", STYLE_DARK_2);
 
-    settings_back_button = new Button(settings_group, LAYOUT("MENU_ITEM_9"), "Back", STYLE_LIGHT_42);
-    settings_wall_switch = new Switch(settings_group, LAYOUT("MENU_ITEM_5"), "Walls", STYLE_RED_42, false);
-    settings_speed_slider = new Slider(settings_group, LAYOUT("MENU_ITEM_3"), 200U, 0U, STYLE_RED_42);
-    settings_speed_label = new DataLabel<int>(settings_group, LAYOUT("MENU_ITEM_2"), "Speed: ", 0, STYLE_RED_STATIC_42);
+    settings_back_button = new Button(settings_group, LAYOUT("MENU_ITEM_9"), "Back", STYLE_LIGHT_2);
+    settings_wall_switch = new Switch(settings_group, LAYOUT("MENU_ITEM_5"), "Walls", STYLE_LIGHT_2, false);
+    settings_speed_slider = new Slider(settings_group, LAYOUT("MENU_ITEM_3"), 200U, 0U, STYLE_LIGHT_2);
+    settings_speed_label = new DataLabel<int>(settings_group, LAYOUT("MENU_ITEM_2"), "Speed: ", 0, STYLE_LIGHT_2_S);
 
     settings_speed_slider->add_range(SPEED_MIN, SPEED_MAX, "SPEED");
     settings_speed_slider->add_range(DELAY_MAX, DELAY_MIN, "DELAY");
 
-    paused_paused_label = new TextLabel(paused_group, LAYOUT("INFO_LABEL_MAIN"), "Paused", STYLE_DARK_42);
-    paused_info_label = new TextLabel(paused_group, LAYOUT("INFO_LABEL_SUB"), "Press 'p' to continue", STYLE_DARK_32);
-    paused_resume_button = new Button(paused_group, LAYOUT("MENU_ITEM_1"), "Resume", STYLE_RED_42);
-    paused_menu_button = new Button(paused_group, LAYOUT("MENU_ITEM_2"), "Main menu", STYLE_LIGHT_42);
+    paused_paused_label = new TextLabel(paused_group, LAYOUT("INFO_LABEL_MAIN"), "Paused", STYLE_DARK_2);
+    paused_info_label = new TextLabel(paused_group, LAYOUT("INFO_LABEL_SUB"), "Press 'p' to continue", STYLE_DARK_1);
+    paused_resume_button = new Button(paused_group, LAYOUT("MENU_ITEM_1"), "Resume", STYLE_RED_2);
+    paused_menu_button = new Button(paused_group, LAYOUT("MENU_ITEM_2"), "Main menu", STYLE_LIGHT_2);
 
-    gameover_gameover_label = new TextLabel(gameover_group, LAYOUT("INFO_LABEL_MAIN"), "Game over", STYLE_RED_42);
-    gameover_info_label = new TextLabel(gameover_group, LAYOUT("INFO_LABEL_SUB"), "Press 'r' to restart", STYLE_DARK_32);
-    gameover_restart_button = new Button(gameover_group, LAYOUT("MENU_ITEM_1"), "Restart", STYLE_RED_42);
-    gameover_menu_button = new Button(gameover_group, LAYOUT("MENU_ITEM_2"), "Main menu", STYLE_LIGHT_42);
+    gameover_gameover_label = new TextLabel(gameover_group, LAYOUT("INFO_LABEL_MAIN"), "Game over", STYLE_RED_2);
+    gameover_info_label = new TextLabel(gameover_group, LAYOUT("INFO_LABEL_SUB"), "Press 'r' to restart", STYLE_DARK_1);
+    gameover_restart_button = new Button(gameover_group, LAYOUT("MENU_ITEM_1"), "Restart", STYLE_RED_2);
+    gameover_menu_button = new Button(gameover_group, LAYOUT("MENU_ITEM_2"), "Main menu", STYLE_LIGHT_2);
 
-    newhighscore_newhighscore_label = new TextLabel(newhighscore_group, LAYOUT("MENU_ITEM_1"), "New highscore!", STYLE_DARK_72);
+    newhighscore_newhighscore_label = new TextLabel(newhighscore_group, LAYOUT("MENU_ITEM_1"), "New highscore!", STYLE_DARK_3);
     newhighscore_name_label = new TextInput(newhighscore_group, LAYOUT("MENU_ITEM_3"), "Enter your name", STYLE_HIGHSCORE_INPUT);
-    newhighscore_done_button = new Button(newhighscore_group, LAYOUT("MENU_ITEM_6"), "Done", STYLE_LIGHT_42);
+    newhighscore_done_button = new Button(newhighscore_group, LAYOUT("MENU_ITEM_6"), "Done", STYLE_LIGHT_2);
 
     keybinds_up_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_1"), "Up", keyboard.decode_key(KEYBINDS("Up")), STYLE_KEYBIND_LABEL);
     keybinds_down_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_2"), "Down", keyboard.decode_key(KEYBINDS("Down")), STYLE_KEYBIND_LABEL);
@@ -100,21 +100,21 @@ void Game::init_gui(void) {
     keybinds_pause_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_5"), "Pause", keyboard.decode_key(KEYBINDS("Pause")), STYLE_KEYBIND_LABEL);
     keybinds_reset_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_6"), "Reset", keyboard.decode_key(KEYBINDS("Reset")), STYLE_KEYBIND_LABEL);
     keybinds_exit_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_7"), "Exit", keyboard.decode_key(KEYBINDS("Exit")), STYLE_KEYBIND_LABEL);
-    keybinds_back_button = new Button(keybinds_group, LAYOUT("MENU_ITEM_9"), "Back", STYLE_LIGHT_42);
+    keybinds_back_button = new Button(keybinds_group, LAYOUT("MENU_ITEM_9"), "Back", STYLE_LIGHT_2);
 
-    begin_info_label = new TextLabel(begin_group, LAYOUT("GRID_CENTER"), "Press any key to start", STYLE_DARK_32);
+    begin_info_label = new TextLabel(begin_group, LAYOUT("GRID_CENTER"), "Press any key to start", STYLE_DARK_1);
     
-    gamedata_gametitle_label = new TextLabel(gamedata_group, LAYOUT("DATA_TITLE_LABEL"), "Snake", STYLE_DARK_72, MIDTOP);
-    gamedata_statistics_label = new TextLabel(gamedata_group, LAYOUT("DATA_STATISTICS_LABEL"), "Statistics", STYLE_DARK_42);
-    gamedata_statistics_label = new TextLabel(gamedata_group, LAYOUT("DATA_SETTINGS_LABEL"), "Settings", STYLE_DARK_42);
-    gamedata_apples_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_APPLES_LABEL"), "Apples: ", 0, STYLE_STAT_LABEL, MIDLEFT);
-    gamedata_bonuses_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_BONUSES_LABEL"), "Bonuses: ", 0, STYLE_STAT_LABEL, MIDLEFT);
+    gamedata_gametitle_label = new TextLabel(gamedata_group, LAYOUT("DATA_TITLE_LABEL"), "Snake", STYLE_DARK_3, MIDTOP);
+    gamedata_statistics_label = new TextLabel(gamedata_group, LAYOUT("DATA_STATISTICS_LABEL"), "Statistics", STYLE_DARK_2);
+    gamedata_statistics_label = new TextLabel(gamedata_group, LAYOUT("DATA_SETTINGS_LABEL"), "Settings", STYLE_DARK_2);
+    gamedata_apples_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_APPLES_LABEL"), "Apples: ", 0, STYLE_STAT_LABEL_RED, MIDLEFT);
+    gamedata_bonuses_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_BONUSES_LABEL"), "Bonuses: ", 0, STYLE_STAT_LABEL_BLUE, MIDLEFT);
     gamedata_score_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_SCORE_LABEL"), "Score: ", 0, STYLE_SCORE_LABEL, MIDLEFT);
     gamedata_speed_label = new DataLabel<unsigned int>(gamedata_group, LAYOUT("DATA_SPEED_LABEL"), "Speed: ", 0, STYLE_SCORE_LABEL, MIDLEFT);
     gamedata_walls_label = new DataLabel<std::string>(gamedata_group, LAYOUT("DATA_WALLS_LABEL"), "Walls: ", "", STYLE_SCORE_LABEL, MIDLEFT);
     
-    highscores_info_label = new TextLabel(highscores_group, LAYOUT("MENU_ITEM_1"), "Highscores", STYLE_DARK_72);
-    highscores_back_button = new Button(highscores_group, LAYOUT("MENU_ITEM_9"), "Back", STYLE_LIGHT_42);
+    highscores_info_label = new TextLabel(highscores_group, LAYOUT("MENU_ITEM_1"), "Highscores", STYLE_DARK_3);
+    highscores_back_button = new Button(highscores_group, LAYOUT("MENU_ITEM_9"), "Back", STYLE_LIGHT_2);
 
     unsigned int index = UINT_ZERO;
     for (const auto& pair : score.sorted_pairs()) {
@@ -213,7 +213,7 @@ void Game::update(void) {
 void Game::render(void) {
     
     BeginDrawing();
-    ClearBackground(COLORS("BACKGROUND"));
+    ClearBackground(COLORS("GREY2"));
 
     grid.render_background();
     current_state->render();
