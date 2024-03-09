@@ -18,7 +18,8 @@ public:
     void render_background(void) const;
     void render_cells(const Vector snake_direction, const bool passive = false);
 
-    Cell* cell_at(const Vector position);
+    Cell& cell_at(const Vector position);
+    std::vector<Cell*> empty_cells(void);
 
 private:
     Cell grid[GRID_ROWS][GRID_COLUMNS];

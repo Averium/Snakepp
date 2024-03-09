@@ -6,7 +6,6 @@ RunningState::RunningState(Game* game) : GameState(GAME_STATE, game) {}
 
 
 GameStateId RunningState::conditions(void) const {
-    Cell* snake_head = game->grid.cell_at(game->snake.position);
     if (game->snake.is_dead()) {
         if (game->score.is_highscore()) { return NEWHIGHSCORE_STATE; }
         else { return GAMEOVER_STATE; }
@@ -35,19 +34,30 @@ void RunningState::update(void) {
             return;
         }
         
-        Cell* snake_head = game->grid.cell_at(game->snake.position);
+        Cell& snake_head = game->grid.cell_at(game->snake.position);
         
-        if (snake_head->type == SNAKE_BODY) {
+        switch (snake_head.type) {
+        case SNAKE_BODY:
             game->snake.set_dead();
-        }
+            break;
 
-        if (snake_head->type == APPLE) {
+        case APPLE:
             game->snake.increment_length();
             game->score.increment_apples();
-            game->apple.repos(&game->grid);
+            game->apple.repos(game->grid);
+
+            if (game->randomizer.roll_bonus()) {
+                game->bonus.repos(game->grid);
+            }
+            break;
+
+        case BONUS:
+            game->snake.increment_length();
+            game->score.increment_bonuses();
+            break;
         }
         
-        snake_head->set_state(SNAKE_NEW, game->snake.get_length());
+        snake_head.set_state(SNAKE_NEW, game->snake.get_length());
         
         game->grid.update();
     }

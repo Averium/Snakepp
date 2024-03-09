@@ -5,12 +5,13 @@
 #include "rectangle.hpp"
 
 
-enum celltype{
+enum Celltype{
     EMPTY,
     SNAKE_BODY,
     SNAKE_HEAD,
     SNAKE_NEW,
     APPLE,
+    BONUS,
 };
 
 
@@ -18,15 +19,15 @@ class Cell : public Rect {
 
 public:
     Cell();
-    Cell(const Vector position, const Vector grid_position, const celltype type, const unsigned int counter);
+    Cell(const Vector position, const Vector grid_position, const Celltype type, const unsigned int counter);
 
-    void set_state(const celltype type, const unsigned int counter);
-    void set_state(const celltype type);
+    void set_state(const Celltype type, const unsigned int counter);
+    void set_state(const Celltype type);
 
     void update(void);
     void render(const Vector position, const Vector forward) const;
 
-    celltype type;
+    Celltype type;
     unsigned int counter;
 
 private:

@@ -9,20 +9,17 @@ Snake::Snake(void) {
 }
 
 
-Snake::Snake(Grid* grid, Vector start_pos, unsigned int delay_ms, unsigned int length) : position(start_pos), length(length) {
+Snake::Snake(Grid& grid, Vector start_pos, unsigned int delay_ms, unsigned int length) : position(start_pos), length(length) {
     set_delay(delay_ms);
 
     direction = DIRECTION::RIGHT;
     dead = false;
-    Cell* cell;
 
-    cell = grid->cell_at(position);
-    cell->set_state(SNAKE_HEAD, length - 1);
+    grid.cell_at(position).set_state(SNAKE_HEAD, length - 1);
 
     for (int i = 1; i < length; i++) {
         Vector target = position - direction * i;
-        Cell* cell = grid->cell_at(target);
-        cell->set_state(SNAKE_BODY, length - i - 1);
+        grid.cell_at(target).set_state(SNAKE_BODY, length - i - 1);
     }
 }
 

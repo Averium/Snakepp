@@ -18,8 +18,21 @@ Grid::Grid(const Vector position) : Rect(position.x, position.y, GRID_COLUMNS * 
 }
 
 
-Cell* Grid::cell_at(const Vector position) {
-    return &grid[position.y][position.x];
+Cell& Grid::cell_at(const Vector position) {
+    return grid[position.y][position.x];
+}
+
+
+std::vector<Cell*> Grid::empty_cells(void) {
+    std::vector<Cell*> cells;
+
+    for (auto& row : grid) {
+        for (auto& cell : row) {
+            if (cell.type == EMPTY) { cells.push_back(&cell); }
+        }
+    }
+
+    return cells;
 }
 
 

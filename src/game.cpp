@@ -19,6 +19,7 @@ void Game::init_window(void) {
     InitWindow(LAYOUT("WINDOW").x, LAYOUT("WINDOW").y, "");
     SetWindowState(FLAG_WINDOW_UNDECORATED);
     SetTargetFPS(SETTINGS("FPS"));
+    SetRandomSeed(555);
 }
 
 
@@ -26,9 +27,9 @@ void Game::init_objects(void) {
     grid = Grid(LAYOUT("GRID"));
 
     int delay = settings_speed_slider->get("DELAY");
-    snake = Snake(&grid, Vector(5U, 1U), delay, SETTINGS("SNAKE_STARTING_LENGTH"));
+    snake = Snake(grid, Vector(5U, 1U), delay, SETTINGS("SNAKE_STARTING_LENGTH"));
 
-    apple.repos(&grid);
+    apple.repos(grid);
     score.reset();
 }
 
@@ -50,6 +51,7 @@ void Game::init_states(void) {
 
 void Game::init_gui(void) {
     gui = new Gui();
+
     menu_group = new WidgetGroup(gui);
     paused_group = new WidgetGroup(gui);
     gameover_group = new WidgetGroup(gui);
@@ -58,6 +60,7 @@ void Game::init_gui(void) {
     highscores_group = new WidgetGroup(gui);
     newhighscore_group = new WidgetGroup(gui);
     gamedata_group = new WidgetGroup(gui);
+    begin_group = new WidgetGroup(gui);
 
     window_header = new WindowHeader(gui, LAYOUT("HEADER"), "Hold to move the window", STYLE_HEADER);
     gui->activate_item(window_header);
@@ -97,9 +100,10 @@ void Game::init_gui(void) {
     keybinds_pause_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_5"), "Pause", keyboard.decode_key(KEYBINDS("Pause")), STYLE_KEYBIND_LABEL);
     keybinds_reset_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_6"), "Reset", keyboard.decode_key(KEYBINDS("Reset")), STYLE_KEYBIND_LABEL);
     keybinds_exit_label = new KeybindLabel(keybinds_group, LAYOUT("MENU_ITEM_7"), "Exit", keyboard.decode_key(KEYBINDS("Exit")), STYLE_KEYBIND_LABEL);
-    
     keybinds_back_button = new Button(keybinds_group, LAYOUT("MENU_ITEM_9"), "Back", STYLE_LIGHT_42);
 
+    begin_info_label = new TextLabel(begin_group, LAYOUT("GRID_CENTER"), "Press any key to start", STYLE_DARK_32);
+    
     gamedata_gametitle_label = new TextLabel(gamedata_group, LAYOUT("DATA_TITLE_LABEL"), "Snake", STYLE_DARK_72, MIDTOP);
     gamedata_statistics_label = new TextLabel(gamedata_group, LAYOUT("DATA_STATISTICS_LABEL"), "Statistics", STYLE_DARK_42);
     gamedata_statistics_label = new TextLabel(gamedata_group, LAYOUT("DATA_SETTINGS_LABEL"), "Settings", STYLE_DARK_42);
@@ -170,9 +174,9 @@ void Game::reset(void) {
     grid = Grid(LAYOUT("GRID"));
 
     int delay = settings_speed_slider->get("DELAY");
-    snake = Snake(&grid, Vector(5U, 1U), delay, SETTINGS("SNAKE_STARTING_LENGTH"));
+    snake = Snake(grid, Vector(5U, 1U), delay, SETTINGS("SNAKE_STARTING_LENGTH"));
 
-    apple.repos(&grid);
+    apple.repos(grid);
     score.reset();
 }
 

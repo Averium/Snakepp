@@ -10,7 +10,7 @@ Cell::Cell() {
 Cell::Cell(
     const Vector position,
     const Vector grid_position,
-    const celltype type,
+    const Celltype type,
     const unsigned int counter
 ) :
     Rect(CELL_SIZE - CELL_GAP * 2)
@@ -20,13 +20,13 @@ Cell::Cell(
 }
 
 
-void Cell::set_state(const celltype type, const unsigned int counter) {
+void Cell::set_state(const Celltype type, const unsigned int counter) {
     this->type = type;
     this->counter = counter;
 }
 
 
-void Cell::set_state(const celltype type) {
+void Cell::set_state(const Celltype type) {
     this->type = type;
     this->counter = UINT_ZERO;
 }
@@ -36,7 +36,7 @@ void Cell::update(void) {
     if (counter > UINT_ZERO) {
         counter--;
     }
-    else if (type == SNAKE_HEAD || type == SNAKE_BODY) {
+    else if (type == SNAKE_HEAD || type == SNAKE_BODY || type == BONUS) {
         set_state(EMPTY);
     }
     
@@ -56,26 +56,26 @@ void Cell::render(Vector position, Vector forward) const {
 
     switch (type) {
         case SNAKE_HEAD:
-
             draw(COLORS("SNAKE"));
             eye.center(center() + (forward + sideway) * (width() / 4)); eye.draw(COLORS("PATTERN"));
             eye.center(center() + (forward - sideway) * (width() / 4)); eye.draw(COLORS("PATTERN"));
             break;
 
         case SNAKE_BODY:
-
             draw(COLORS("SNAKE"));
             pattern.center(center());
             pattern.draw(COLORS("PATTERN"));
             break;
 
         case APPLE:
-
             draw(COLORS("APPLE"));
             break;
 
-        default:
+        case BONUS:
+            draw(COLORS("BONUS"));
+            break;
 
+        default:
             break;
     }
 }

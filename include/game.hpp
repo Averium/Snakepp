@@ -2,7 +2,7 @@
 
 #include "grid.hpp"
 #include "snake.hpp"
-#include "apple.hpp"
+#include "food.hpp"
 #include "timer.hpp"
 #include "tools.hpp"
 #include "score.hpp"
@@ -19,6 +19,7 @@
 #include "keybind_label.hpp"
 #include "data_label.hpp"
 #include "text_input.hpp"
+#include "randomizer.hpp"
 
 
 class Game: public StateMachine {
@@ -32,9 +33,12 @@ public:
     KeyboardHandler keyboard = KeyboardHandler(&KEYBINDS);
     MouseHandler mouse;
 
+    Randomizer randomizer;
+
     Grid grid;
     Snake snake;
     Apple apple;
+    Bonus bonus;
     Score score;
 
     Gui* gui;
@@ -49,6 +53,7 @@ public:
     WidgetGroup* highscores_group;
     WidgetGroup* gamedata_group;
     WidgetGroup* newhighscore_group;
+    WidgetGroup* begin_group;
     
     Button* menu_start_button = nullptr;
     Button* menu_settings_button = nullptr;
@@ -74,6 +79,8 @@ public:
     Button* highscores_back_button = nullptr;
     std::array<DataLabel<unsigned int>*, STORED_HIGHSCORES> highscore_labels;
     
+    TextLabel* begin_info_label = nullptr;
+
     TextLabel* paused_paused_label = nullptr;
     TextLabel* paused_info_label = nullptr;
     Button* paused_resume_button = nullptr;

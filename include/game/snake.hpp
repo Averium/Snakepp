@@ -11,7 +11,7 @@ class Snake {
 
 public:
     Snake(void);
-    Snake(Grid* grid, Vector start_pos, unsigned int delay_ms, unsigned int length);
+    Snake(Grid& grid, Vector start_pos, unsigned int delay_ms, unsigned int length);
 
     unsigned int get_length(void) const;
     void increment_length(void);
