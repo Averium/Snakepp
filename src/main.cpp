@@ -1,20 +1,12 @@
 #include "main.hpp"
 #include "debug.hpp"
 
-#define TEST 0
-
 
 int main(void) {
-    if (TEST) {
+    Game game = Game();
+    game.start();
 
-    }
-
-    else {
-        Game game = Game();
-        game.start();
-
-        CloseWindow();
-    }
+    CloseWindow();
 }
 
 
@@ -23,7 +15,8 @@ TODO:
     - UPGRADE MAKEFILE FOR AUTOMATIC DEPENDENCIES
 
     - different style structs for different widgets
-    - darken the grid when a menu is active ahead of it
+    - add about page
+    - add a label for begin state
 
     - sound system
     - ploishing

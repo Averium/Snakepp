@@ -1,0 +1,81 @@
+#include "integer_vector.hpp"
+#include "debug.hpp"
+
+
+
+IntVector::IntVector(void): x(0), y(0) {}
+IntVector::IntVector(int x, int y): x(x), y(y) {}
+IntVector::IntVector(Vector2 vector): x((unsigned int)(vector.x)), y((unsigned int)(vector.y)) {}
+IntVector::IntVector(const IntVector &vector): x(vector.x), y(vector.y) {}
+
+
+float IntVector::length(void) const {
+    return sqrt((float)(x) * (float)(x) + (float)(y) * (float)(y));
+}
+
+
+Vector2 IntVector::vector2(void) const {
+    return {(float)(x), (float)(y)};
+}
+
+
+IntVector IntVector::operator * (int value) const {
+    int x = (int)(this->x * value);
+    int y = (int)(this->y * value);
+    return IntVector(x, y);
+}
+
+
+IntVector IntVector::operator / (int value) const {
+    int x = (int)(this->x / value);
+    int y = (int)(this->y / value);
+    return IntVector(x, y);
+}
+
+
+IntVector IntVector::operator + (IntVector vector) const {
+    int x = this->x + vector.x;
+    int y = this->y + vector.y;
+    return IntVector(x, y);
+}
+
+
+IntVector IntVector::operator - (IntVector vector) const {
+    int x = this->x - vector.x;
+    int y = this->y - vector.y;
+    return IntVector(x, y);
+}
+
+
+IntVector IntVector::operator += (IntVector vector) const {
+    int x = this->x + vector.x;
+    int y = this->y + vector.y;
+    return IntVector(x, y);
+}
+
+
+IntVector IntVector::operator -= (IntVector vector) const {
+    int x = this->x - vector.x;
+    int y = this->y - vector.y;
+    return IntVector(x, y);
+}
+
+
+IntVector IntVector::operator - (void) const {
+    return IntVector(-this->x, -this->y);
+}
+
+
+bool IntVector::operator == (IntVector vector) const {
+    return (this->x == vector.x && this->y == vector.y);
+}
+
+
+bool IntVector::operator != (IntVector vector) const {
+    return (this->x != vector.x || this->y != vector.y);
+}
+
+
+void IntVector::print(void) const {
+    std::cout << "IntVector: [" << x << ", " << y << "]" << std::endl;
+}

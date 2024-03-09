@@ -18,7 +18,7 @@ Grid::Grid(const Vector position) : Rect(position.x, position.y, GRID_COLUMNS * 
 }
 
 
-Cell* Grid::cell_at(Vector position) {
+Cell* Grid::cell_at(const Vector position) {
     return &grid[position.y][position.x];
 }
 
@@ -37,10 +37,12 @@ void Grid::render_background(void) const {
 }
 
 
-void Grid::render_cells(Vector snake_direction) {
+void Grid::render_cells(const Vector snake_direction, const bool passive) {
     for (auto& row : grid) {
         for (auto& cell : row) {
             cell.render(topleft(), snake_direction);
         }
     }
+
+    if (passive) { draw(COLORS("GRID_SHADE")); }
 }

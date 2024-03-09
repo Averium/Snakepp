@@ -26,5 +26,5 @@ void GameOverState::on_exit(void) {
 
 
 void GameOverState::render(void) const {
-    game->grid.render_cells(game->snake.direction);
+    game->grid.render_cells(game->snake.direction, true);
 }

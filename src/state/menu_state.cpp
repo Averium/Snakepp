@@ -6,7 +6,7 @@ MenuState::MenuState(Game* game) : GameState(MENU_STATE, game) {}
 
 
 GameStateId MenuState::conditions(void) const {
-    if (game->menu_start_button->is_clicked()) { return GAME_STATE; }
+    if (game->menu_start_button->is_clicked()) { return BEGIN_STATE; }
     if (game->menu_settings_button->is_clicked()) { return SETTINGS_STATE; }
     if (game->menu_keybinds_button->is_clicked()) { return KEYBINDS_STATE; }
     if (game->menu_highscores_button->is_clicked()) { return HIGHSCORES_STATE; }

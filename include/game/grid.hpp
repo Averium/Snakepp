@@ -16,7 +16,7 @@ public:
 
     void update(void);
     void render_background(void) const;
-    void render_cells(const Vector snake_direction);
+    void render_cells(const Vector snake_direction, const bool passive = false);
 
     Cell* cell_at(const Vector position);
 

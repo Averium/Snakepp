@@ -12,10 +12,15 @@ ColorData::ColorData(const std::string path) : File(path, true) {
 
 void ColorData::read_data(void) {
     std::string name;
-    unsigned int r, g, b;
+    unsigned int r, g, b, a;
 
-    while (file >> name >> r >> g >> b) {
-        data[name] = {(unsigned char)(r), (unsigned char)(g), (unsigned char)(b), 255U};
+    while (file >> name >> r >> g >> b >> a) {
+        data[name] = {
+            (unsigned char)(r),
+            (unsigned char)(g),
+            (unsigned char)(b),
+            (unsigned char)(a)
+        };
     }
 }
 

@@ -10,6 +10,7 @@
 #include "keybind_state.hpp"
 #include "menu_state.hpp"
 #include "paused_state.hpp"
+#include "begin_state.hpp"
 #include "running_state.hpp"
 #include "settings_state.hpp"
 #include "shutdown_state.hpp"

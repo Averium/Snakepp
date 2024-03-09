@@ -40,6 +40,7 @@ void Game::init_states(void) {
     add_state(new KeyBindsState(this));
     add_state(new HighScoresState(this));
     add_state(new PausedState(this));
+    add_state(new BeginState(this));
     add_state(new RunningState(this));
     add_state(new GameOverState(this));
     add_state(new NewHighscoreState(this));

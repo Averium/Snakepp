@@ -7,15 +7,6 @@
 #include "config_data.hpp"
 
 
-namespace PATH {
-    const std::string FONT = "resources/fonts/font.ttf";
-    const std::string LAYOUT = "resources/data/layout";
-    const std::string COLORS = "resources/data/colors";
-    const std::string SETTINGS = "resources/data/settings";
-    const std::string KEYBINDS = "resources/data/keybinds";
-    const std::string HIGHSCORES = "resources/data/highscores";
-}
-
 #define FLOAT_ZERO 0.0F
 #define FLOAT_ONE 1.0F
 
@@ -41,6 +32,16 @@ namespace PATH {
 #define STORED_HIGHSCORES 5U
 
 #define CURSOR_FLASH_PERIOD 0.4F
+
+
+namespace PATH {
+    const std::string FONT = "resources/fonts/font.ttf";
+    const std::string LAYOUT = "resources/data/layout";
+    const std::string COLORS = "resources/data/colors";
+    const std::string SETTINGS = "resources/data/settings";
+    const std::string KEYBINDS = "resources/data/keybinds";
+    const std::string HIGHSCORES = "resources/data/highscores";
+}
 
 
 namespace DIRECTION {
