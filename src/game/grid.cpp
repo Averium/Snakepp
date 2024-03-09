@@ -8,10 +8,10 @@ Grid::Grid(void) {}
 
 
 Grid::Grid(const Vector position) : Rect(position.x, position.y, GRID_COLUMNS * CELL_SIZE, GRID_COLUMNS * CELL_SIZE) {
-    this->position = position;
-
-    for (unsigned char row = UINT_ZERO; row < GRID_ROWS; row++) {
-        for (unsigned char col = UINT_ZERO; col < GRID_COLUMNS; col++) {      
+    unsigned char col, row;
+    
+    for (row = UINT_ZERO; row < GRID_ROWS; row++) {
+        for (col = UINT_ZERO; col < GRID_COLUMNS; col++) {      
             grid[row][col] = Cell(Vector(col, row), position, EMPTY, UINT_ZERO);
         }
     }
@@ -24,12 +24,9 @@ Cell* Grid::cell_at(Vector position) {
 
 
 void Grid::update(void) {
-    Cell* cell;
-
-    for (unsigned char row = UINT_ZERO; row < GRID_ROWS; row++) {
-        for (unsigned char col = UINT_ZERO; col < GRID_COLUMNS; col++) {
-            cell = &grid[row][col];
-            cell->update();
+    for (auto& row : grid) {
+        for (auto& cell : row) {
+            cell.update();
         }
     }
 }
@@ -41,12 +38,9 @@ void Grid::render_background(void) const {
 
 
 void Grid::render_cells(Vector snake_direction) {
-    Cell* cell;
-
-    for (unsigned char row = UINT_ZERO; row < GRID_ROWS; row++) {
-        for (unsigned char col = UINT_ZERO; col < GRID_COLUMNS; col++) {
-            cell = &grid[row][col];
-            cell->render(position, snake_direction);
+    for (auto& row : grid) {
+        for (auto& cell : row) {
+            cell.render(topleft(), snake_direction);
         }
     }
 }

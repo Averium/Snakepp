@@ -22,5 +22,4 @@ public:
 
 private:
     Cell grid[GRID_ROWS][GRID_COLUMNS];
-    Vector position;
 };

@@ -23,6 +23,7 @@ TODO:
     - UPGRADE MAKEFILE FOR AUTOMATIC DEPENDENCIES
 
     - different style structs for different widgets
+    - darken the grid when a menu is active ahead of it
 
     - sound system
     - ploishing

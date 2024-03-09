@@ -10,7 +10,9 @@ GameStateId NewHighscoreState::conditions(void) const {
         if (game->keyboard.check("Reset", PRESS)) { return GAME_STATE; }
         if (game->keyboard.check("Exit", PRESS)) { return SHUTDOWN_STATE; }
     }
-    if (game->newhighscore_done_button->is_clicked()) { return HIGHSCORES_STATE; }
+    if (game->newhighscore_done_button->is_clicked()) {
+        return (game->newhighscore_name_label->get_value() != "") ? HIGHSCORES_STATE : MENU_STATE;
+    }
     
     return NEWHIGHSCORE_STATE;
 }
