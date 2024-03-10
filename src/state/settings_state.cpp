@@ -2,7 +2,11 @@
 #include "game.hpp"
 
 
-SettingsState::SettingsState(Game* game) : GameState(SETTINGS_STATE, game) {}
+SettingsState::SettingsState(
+    Game* game
+) :
+    GuiState(SETTINGS_STATE, game, game->settings_group)
+{}
 
 GameStateId SettingsState::conditions(void) const {
     if (game->settings_back_button->is_clicked()) { return MENU_STATE; }
@@ -10,12 +14,7 @@ GameStateId SettingsState::conditions(void) const {
 }
 
 
-void SettingsState::on_entry(void) {
-    game->gui->activate_item(game->settings_group);
-}
-
-
 void SettingsState::on_exit(void) {
-    game->gui->deactivate_item(game->settings_group);
+    GuiState::on_exit();
     game->save_settings();
 }

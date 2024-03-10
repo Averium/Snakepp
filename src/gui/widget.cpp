@@ -21,7 +21,7 @@ void Widget::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
 }
 
 
-void Widget::align(void) {
+Vector Widget::align(void) {
     switch (alignment) {
         case TOPLEFT:     topleft(anchor);      break;
         case TOPRIGHT:    topright(anchor);     break;
@@ -34,10 +34,12 @@ void Widget::align(void) {
         case CENTER:      center(anchor);       break;
         default:          topleft(anchor);      break;
     }
+
+    return anchor;
 }
 
 
-void Widget::align(Vector anchor) {
+Vector Widget::align(Vector anchor) {
     this->anchor = anchor;
-    align();
+    return align();
 }

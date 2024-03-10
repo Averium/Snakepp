@@ -1,14 +1,11 @@
 #pragma once
 
-#include "game_state.hpp"
+#include "gui_state.hpp"
 
 
-class MenuState : public GameState {
+class MenuState : public GuiState {
 
 public:
     MenuState(Game* game);
     GameStateId conditions(void) const override;
-
-    void on_entry(void) override;
-    void on_exit(void) override;
 };

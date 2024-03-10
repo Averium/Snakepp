@@ -26,6 +26,7 @@
 
 #define SLIDER_SIZE 30U
 #define SLIDER_RAIL_WIDTH 15U
+#define WIDGET_LINE_SPACING 4U
 
 #define APPLE_MULTIPLIER 3U
 #define BONUS_MULTIPLIER 10U
@@ -37,6 +38,19 @@
 
 #define ROLL_MAX 1000U
 #define ROLL_BONUS_CHANCE 100U
+
+
+#define ABOUT R"(Created by Averium
+
+The goal of this project was to practice
+C++ and GNU make.
+
+All graphics related functions are
+handled by the "Raylib" library.
+
+Check out the source code at:)"
+
+#define GITHUB_LINK "https://github.com/Averium/raylib_snake"
 
 
 namespace PATH {

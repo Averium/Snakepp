@@ -2,7 +2,10 @@
 #include "game.hpp"
 
 
-KeyBindsState::KeyBindsState(Game* game) : GameState(KEYBINDS_STATE, game) {}
+KeyBindsState::KeyBindsState(
+    Game* game
+) : 
+    GuiState(KEYBINDS_STATE, game, game->keybinds_group) {}
 
 GameStateId KeyBindsState::conditions(void) const {
     if (game->keybinds_back_button->is_clicked()) { return MENU_STATE; }
@@ -10,12 +13,7 @@ GameStateId KeyBindsState::conditions(void) const {
 }
 
 
-void KeyBindsState::on_entry(void) {
-    game->gui->activate_item(game->keybinds_group);
-}
-
-
 void KeyBindsState::on_exit(void) {
-    game->gui->deactivate_item(game->keybinds_group);
+    GuiState::on_exit();
     game->keyboard.save_keybinds();
 }

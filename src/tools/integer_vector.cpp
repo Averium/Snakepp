@@ -1,6 +1,4 @@
 #include "integer_vector.hpp"
-#include "debug.hpp"
-#include <cmath>
 
 
 Vector::Vector(void): x(0), y(0) {}

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdlib>
+
 #include "grid.hpp"
 #include "snake.hpp"
 #include "food.hpp"
@@ -13,6 +15,7 @@
 #include "gui.hpp"
 #include "widget_style.hpp"
 #include "text_label.hpp"
+#include "text_label_multiline.hpp"
 #include "button.hpp"
 #include "switch.hpp"
 #include "slider.hpp"
@@ -54,11 +57,13 @@ public:
     WidgetGroup* gamedata_group;
     WidgetGroup* newhighscore_group;
     WidgetGroup* begin_group;
+    WidgetGroup* about_group;
     
     Button* menu_start_button = nullptr;
     Button* menu_settings_button = nullptr;
     Button* menu_keybinds_button = nullptr;
     Button* menu_highscores_button = nullptr;
+    Button* menu_about_button = nullptr;
     Button* menu_exit_button = nullptr;
 
     Button* settings_back_button = nullptr;
@@ -104,19 +109,25 @@ public:
     DataLabel<unsigned int>* gamedata_speed_label = nullptr;
     DataLabel<std::string>* gamedata_walls_label = nullptr;
 
+    TextLabel* about_title_label = nullptr;
+    TextLabelMultiline* about_info_label = nullptr;
+    Button* about_link_button = nullptr;
+    Button* about_back_button = nullptr;
+
     void init_window(void);
     void init_objects(void);
     void init_states(void);
     void init_gui(void);
 
     void load_settings(void);
-    void save_settings(void);
-    
+    void save_settings(void);    
     void update_highscores(void);
 
     void start(void);
     void stop(void);
     void reset(void);
+
+    void open_link(std::string link) const;
 
     void events(void);
     void update(void);

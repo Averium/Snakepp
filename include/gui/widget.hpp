@@ -29,8 +29,8 @@ public:
     inline bool is_holded(void) const { return holded; }
     inline bool is_focused(void) const { return gui->is_focused(this); }
 
-    void align(Vector anchor);
-    void align(void);
+    Vector align(Vector anchor);
+    Vector align(void);
 
     virtual void events(MouseHandler& mouse, KeyboardHandler& keyboard) override;
 

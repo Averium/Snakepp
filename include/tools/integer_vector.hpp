@@ -1,5 +1,8 @@
 #pragma once
 
+#include <cmath>
+
+#include "debug.hpp"
 #include "raylib.hpp"
 
 

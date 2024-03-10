@@ -16,7 +16,6 @@ TODO:
 
     - different style structs for different widgets
     - add about page
-    - add a label for begin state
 
     - sound system
     - ploishing

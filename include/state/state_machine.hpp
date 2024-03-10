@@ -15,6 +15,7 @@
 #include "settings_state.hpp"
 #include "shutdown_state.hpp"
 #include "startup_state.hpp"
+#include "about_state.hpp"
 
 
 class StateMachine {

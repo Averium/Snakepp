@@ -3,9 +3,9 @@
 #include "gui_state.hpp"
 
 
-class HighScoresState : public GuiState {
+class AboutState : public GuiState {
 
 public:
-    HighScoresState(Game* game);
+    AboutState(Game* game);
     GameStateId conditions(void) const override;
 };

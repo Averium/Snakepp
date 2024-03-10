@@ -19,7 +19,7 @@ public:
         int layer = 1
     );
 
-    void set_text(const std::string new_text);
+    virtual void set_text(const std::string new_text);
 
     Vector text_dimensions(const char* text) const;
     void draw_text(const char* text, Color color, Vector position = Vector()) const;

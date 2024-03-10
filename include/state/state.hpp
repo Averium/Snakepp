@@ -13,6 +13,7 @@ enum GameStateId {
     GAMEOVER_STATE,
     NEWHIGHSCORE_STATE,
     SHUTDOWN_STATE,
+    ABOUT_STATE,
 };
 
 

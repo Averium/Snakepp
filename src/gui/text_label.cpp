@@ -1,6 +1,5 @@
 #include "text_label.hpp"
 #include "gui.hpp"
-#include "debug.hpp"
 
 
 TextLabel::TextLabel() : style(STYLE_LIGHT_2) {}
