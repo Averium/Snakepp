@@ -34,6 +34,6 @@ Step-by-step instructions on how to get started with this project:
 - install any MinGW version with C++20 support
 - create a local folder with any name: <your_project> for now
 - open commant promt and cd into <your_project>
-- type "git clone https://github.com/Averium/raylib_snake"
+- type "git clone https://github.com/Averium/Snakepp"
 - type "make" to compile the project -> main.exe appears
 - type "main" to run main.exe
