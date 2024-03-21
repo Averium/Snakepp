@@ -93,7 +93,7 @@ std::string TextInput::format_char(KeyboardHandler& keyboard, const unsigned int
 }
 
 
-void TextInput::render(void) const {
+void TextInput::render(ColorData& colors) const {
 
     const std::string second_text = is_focused() ? visible_text : value;
     const std::string cursor_text = is_focused() && cursor_visible ? "I" : " ";
@@ -102,13 +102,13 @@ void TextInput::render(void) const {
     Vector data_dim = text_dimensions(second_text.c_str());
     Vector cursor_dim = text_dimensions(" ");
 
-    Color primary_color = is_focused() ? style.color_1_active : style.color_1_passive;
-    Color secondary_color = is_hovered() ? style.color_2_active : style.color_2_passive;
+    const std::string primary_color = is_focused() ? style.color_1_active : style.color_1_passive;
+    const std::string secondary_color = is_hovered() ? style.color_2_active : style.color_2_passive;
     
     Vector text_position = (style.fixed_width > UINT_ZERO) ? Vector(width() - data_dim.x - cursor_dim.x, UINT_ZERO) : Vector(text_dim.x, UINT_ZERO);
     Vector cursor_position = (style.fixed_width > UINT_ZERO) ? Vector(width() - cursor_dim.x, UINT_ZERO) : Vector(text_dim.x + cursor_dim.x, UINT_ZERO);
 
-    draw_text(text.c_str(), secondary_color);
-    draw_text(second_text.c_str(), primary_color, text_position);
-    draw_text(cursor_text.c_str(), secondary_color, cursor_position);
+    draw_text(text.c_str(), colors(secondary_color));
+    draw_text(second_text.c_str(), colors(primary_color), text_position);
+    draw_text(cursor_text.c_str(), colors(secondary_color), cursor_position);
 }

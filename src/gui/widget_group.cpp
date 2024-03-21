@@ -46,6 +46,6 @@ void WidgetGroup::update(void) {
 }
 
 
-void WidgetGroup::render(void) const {
-    for (GuiItem* item : items) { item->render(); }
+void WidgetGroup::render(ColorData& colors) const {
+    for (GuiItem* item : items) { item->render(colors); }
 }

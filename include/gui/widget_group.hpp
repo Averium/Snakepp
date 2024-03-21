@@ -18,7 +18,7 @@ public:
 
     virtual void events(MouseHandler& mouse, KeyboardHandler& keyboard) override;
     virtual void update(void) override;
-    virtual void render(void) const override;
+    virtual void render(ColorData& colors) const override;
 
 protected:
     unsigned int id_counter = UINT_ZERO;

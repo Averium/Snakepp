@@ -72,8 +72,8 @@ void Gui::update(void) {
 }
 
 
-void Gui::render(void) const {
+void Gui::render(ColorData& colors) const {
     for (GuiItem* item : active_items) {
-        item->render();
+        item->render(colors);
     }
 }

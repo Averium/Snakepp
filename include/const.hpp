@@ -56,7 +56,8 @@ Check out the source code at:)"
 namespace PATH {
     const std::string FONT = "resources/fonts/font.ttf";
     const std::string LAYOUT = "resources/data/layout";
-    const std::string COLORS = "resources/data/colors";
+    const std::string LIGHT_THEME = "resources/data/theme/light";
+    const std::string DARK_THEME = "resources/data/theme/dark";
     const std::string SETTINGS = "resources/data/settings";
     const std::string KEYBINDS = "resources/data/keybinds";
     const std::string HIGHSCORES = "resources/data/highscores";
@@ -71,4 +72,3 @@ namespace DIRECTION {
 }
 
 extern LayoutData LAYOUT;
-extern ColorData COLORS;

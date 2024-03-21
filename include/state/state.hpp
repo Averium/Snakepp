@@ -1,5 +1,7 @@
 #pragma once
 
+#include "color_data.hpp"
+
 
 enum GameStateId {
     STARTUP_STATE,
@@ -32,7 +34,7 @@ public:
 
     virtual void events(void) = 0;
     virtual void update(void) = 0;
-    virtual void render(void) const = 0;
+    virtual void render(ColorData& colors) const = 0;
 
     const GameStateId id;
 

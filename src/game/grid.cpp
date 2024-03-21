@@ -1,7 +1,4 @@
-#include <iostream>
-
-#include "const.hpp"
-#include "game/grid.hpp"
+#include "grid.hpp"
 
 
 Grid::Grid(void) {}
@@ -45,17 +42,17 @@ void Grid::update(void) {
 }
 
 
-void Grid::render_background(void) const {
-    draw(COLORS("GREY1"));
+void Grid::render_background(ColorData& colors) const {
+    draw(colors("GREY1"));
 }
 
 
-void Grid::render_cells(const Vector snake_direction, const bool passive) {
+void Grid::render_cells(ColorData& colors, const Vector snake_direction, const bool passive) {
     for (auto& row : grid) {
         for (auto& cell : row) {
-            cell.render(topleft(), snake_direction);
+            cell.render(colors, topleft(), snake_direction);
         }
     }
 
-    if (passive) { draw(COLORS("SHADE")); }
+    if (passive) { draw(colors("SHADE")); }
 }

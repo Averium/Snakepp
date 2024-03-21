@@ -24,6 +24,6 @@ void PausedState::on_exit(void) {
 }
 
 
-void PausedState::render(void) const {
-    game->grid.render_cells(game->snake.direction, true);
+void PausedState::render(ColorData& colors) const {
+    game->grid.render_cells(colors, game->snake.direction, true);
 }

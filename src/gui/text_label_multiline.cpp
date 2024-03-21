@@ -43,11 +43,11 @@ void TextLabelMultiline::set_text(const std::string new_text) {
 }
 
 
-void TextLabelMultiline::render(void) const {
+void TextLabelMultiline::render(ColorData& colors) const {
     
     unsigned int height = UINT_ZERO;
     for (const std::string& line : lines) {
-        draw_text(line.c_str(), style.color_1_passive, Vector(UINT_ZERO, height));
+        draw_text(line.c_str(), colors(style.color_1_passive), Vector(UINT_ZERO, height));
         height += line_height;
     }
 }

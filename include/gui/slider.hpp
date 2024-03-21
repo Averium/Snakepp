@@ -30,7 +30,7 @@ public:
     void set_value(const unsigned int new_value, const std::string range_key);
 
     void events(MouseHandler& mouse, KeyboardHandler& keyboard) override;
-    void render(void) const override;
+    void render(ColorData& colors) const override;
 
 private:
     bool grabbed = false;

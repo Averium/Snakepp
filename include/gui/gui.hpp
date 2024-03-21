@@ -22,7 +22,7 @@ public:
 
     void events(MouseHandler& mouse, KeyboardHandler& keyboard) override;
     void update(void) override;
-    void render(void) const override;
+    void render(ColorData& colors) const override;
 
     Font font;
 

@@ -22,7 +22,7 @@ public:
 
     void set_text(const std::string new_text) override;
 
-    virtual void render(void) const override;
+    virtual void render(ColorData& colors) const override;
 
 private:
     unsigned int spacing;

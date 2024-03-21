@@ -33,6 +33,8 @@ public:
     ConfigData<int> SETTINGS = ConfigData<int>(PATH::SETTINGS);
     ConfigData<unsigned int> KEYBINDS = ConfigData<unsigned int>(PATH::KEYBINDS);
 
+    ColorData THEME[2] = {ColorData(PATH::LIGHT_THEME), ColorData(PATH::DARK_THEME)};
+
     KeyboardHandler keyboard = KeyboardHandler(&KEYBINDS);
     MouseHandler mouse;
 
@@ -69,6 +71,7 @@ public:
     Button* settings_back_button = nullptr;
     Switch* settings_wall_switch = nullptr;
     Slider* settings_speed_slider = nullptr;
+    Switch* settings_theme_switch = nullptr;
     DataLabel<int>* settings_speed_label = nullptr;
 
     Button* keybinds_back_button = nullptr;

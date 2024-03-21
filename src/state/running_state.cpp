@@ -64,6 +64,6 @@ void RunningState::update(void) {
 }
 
 
-void RunningState::render(void) const {
-    game->grid.render_cells(game->snake.direction);
+void RunningState::render(ColorData& colors) const {
+    game->grid.render_cells(colors, game->snake.direction);
 }

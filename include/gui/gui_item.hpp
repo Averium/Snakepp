@@ -2,6 +2,7 @@
 
 #include "keyboard_handler.hpp"
 #include "mouse_handler.hpp"
+#include "color_data.hpp"
 
 
 class Gui;
@@ -17,7 +18,7 @@ public:
 
     virtual void events(MouseHandler& mouse, KeyboardHandler& keyboard);
     virtual void update(void);
-    virtual void render(void) const;
+    virtual void render(ColorData& colors) const;
 
     virtual int get_layer(void) const;
     

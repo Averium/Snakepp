@@ -12,7 +12,7 @@ public:
     WindowHeader(Gui* gui, Vector dim, std::string text, WidgetStyle style, int layer = UINT_ONE);
 
     void events(MouseHandler& mouse, KeyboardHandler& keyboard);
-    void render(void) const override;
+    void render(ColorData& colors) const override;
 
     inline bool is_close_clicked(void) { return close_clicked; }
     inline bool is_minimize_clicked(void) { return minimize_clicked; }

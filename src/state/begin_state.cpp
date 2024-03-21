@@ -21,6 +21,6 @@ void BeginState::on_exit(void) {
 }
 
 
-void BeginState::render(void) const {
-    game->grid.render_cells(game->snake.direction);
+void BeginState::render(ColorData& colors) const {
+    game->grid.render_cells(colors, game->snake.direction);
 }

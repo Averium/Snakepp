@@ -12,5 +12,5 @@ public:
     void on_entry(void) override;
     void on_exit(void) override;
 
-    void render(void) const override;
+    void render(ColorData& colors) const override;
 };

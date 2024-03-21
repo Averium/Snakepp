@@ -21,25 +21,25 @@ struct WidgetStyle {
         std::string color_3_active  = "BLACK",
         std::string color_3_passive = "BLACK"
     ) :
-        font_size      ( font_size              ),
-        fixed_width    ( fixed_width            ),
-        color_1_active ( COLORS(color_1_active )),
-        color_1_passive( COLORS(color_1_passive)),
-        color_2_active ( COLORS(color_2_active )),
-        color_2_passive( COLORS(color_2_passive)),
-        color_3_active ( COLORS(color_3_active )),
-        color_3_passive( COLORS(color_3_passive))
+        font_size       ( font_size       ),
+        fixed_width     ( fixed_width     ),
+        color_1_active  ( color_1_active  ),
+        color_1_passive ( color_1_passive ),
+        color_2_active  ( color_2_active  ),
+        color_2_passive ( color_2_passive ),
+        color_3_active  ( color_3_active  ),
+        color_3_passive ( color_3_passive )
     {}
 
     unsigned int font_size = SIZE_2;
     unsigned int fixed_width = UINT_ZERO;
 
-    Color color_1_active =  COLORS("GREY0");
-    Color color_1_passive = COLORS("GREY0");
-    Color color_2_active =  COLORS("GREY0");
-    Color color_2_passive = COLORS("GREY0");
-    Color color_3_active =  COLORS("GREY0");
-    Color color_3_passive = COLORS("GREY0");
+    std::string color_1_active =  "GREY0";
+    std::string color_1_passive = "GREY0";
+    std::string color_2_active =  "GREY0";
+    std::string color_2_passive = "GREY0";
+    std::string color_3_active =  "GREY0";
+    std::string color_3_passive = "GREY0";
 
 };
 

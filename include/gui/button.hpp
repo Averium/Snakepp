@@ -16,7 +16,7 @@ public:
         int layer = 1
     );
 
-    virtual void render(void) const override;
+    virtual void render(ColorData& colors) const override;
 
 protected:
 

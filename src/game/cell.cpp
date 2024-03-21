@@ -49,30 +49,30 @@ void Cell::update(void) {
 }
 
 
-void Cell::render(Vector position, Vector forward) const {
+void Cell::render(ColorData& colors, Vector position, Vector forward) const {
     Vector sideway(forward.y, forward.x);
     Rect eye(width() / 3, width() / 3);
     Rect pattern(width() / 2, height() / 2);
 
     switch (type) {
         case SNAKE_HEAD:
-            draw(COLORS("GREEN2"));
-            eye.center(center() + (forward + sideway) * (width() / 4)); eye.draw(COLORS("GREEN1"));
-            eye.center(center() + (forward - sideway) * (width() / 4)); eye.draw(COLORS("GREEN1"));
+            draw(colors("GREEN2"));
+            eye.center(center() + (forward + sideway) * (width() / 4)); eye.draw(colors("GREEN1"));
+            eye.center(center() + (forward - sideway) * (width() / 4)); eye.draw(colors("GREEN1"));
             break;
 
         case SNAKE_BODY:
-            draw(COLORS("GREEN2"));
+            draw(colors("GREEN2"));
             pattern.center(center());
-            pattern.draw(COLORS("GREEN1"));
+            pattern.draw(colors("GREEN1"));
             break;
 
         case APPLE:
-            draw(COLORS("RED1"));
+            draw(colors("RED1"));
             break;
 
         case BONUS:
-            draw(COLORS("BLUE1"));
+            draw(colors("BLUE1"));
             break;
 
         default:

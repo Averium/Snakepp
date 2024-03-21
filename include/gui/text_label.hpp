@@ -24,7 +24,7 @@ public:
     Vector text_dimensions(const char* text) const;
     void draw_text(const char* text, Color color, Vector position = Vector()) const;
 
-    virtual void render(void) const override;
+    virtual void render(ColorData& colors) const override;
 
 protected:
     std::string text;

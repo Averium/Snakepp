@@ -15,7 +15,7 @@ void GuiItem::events(MouseHandler& mouse, KeyboardHandler& keyboard) {}
 void GuiItem::update(void) {}
 
 
-void GuiItem::render(void) const {}
+void GuiItem::render(ColorData& colors) const {}
 
 
 int GuiItem::get_layer(void) const { return this->layer; }

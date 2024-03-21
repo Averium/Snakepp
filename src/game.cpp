@@ -71,12 +71,13 @@ void Game::init_gui(void) {
     menu_settings_button = new Button(menu_group, LAYOUT("MENU_ITEM_3"), "Settings", STYLE_LIGHT_2);
     menu_keybinds_button = new Button(menu_group, LAYOUT("MENU_ITEM_4"), "Keybinds", STYLE_LIGHT_2);
     menu_highscores_button = new Button(menu_group, LAYOUT("MENU_ITEM_5"), "High scores", STYLE_LIGHT_2);
-    menu_about_button = new Button(menu_group, LAYOUT("MENU_ITEM_7"), "About", STYLE_DARK_2);
-    menu_exit_button = new Button(menu_group, LAYOUT("MENU_ITEM_9"), "Exit", STYLE_DARK_2);
+    menu_about_button = new Button(menu_group, LAYOUT("MENU_ITEM_7"), "About", STYLE_LIGHT_2);
+    menu_exit_button = new Button(menu_group, LAYOUT("MENU_ITEM_9"), "Exit", STYLE_LIGHT_2);
 
     settings_back_button = new Button(settings_group, LAYOUT("MENU_ITEM_9"), "Back", STYLE_LIGHT_2);
-    settings_wall_switch = new Switch(settings_group, LAYOUT("MENU_ITEM_5"), "Walls", STYLE_LIGHT_2_F, false);
+    settings_wall_switch = new Switch(settings_group, LAYOUT("MENU_ITEM_5"), "Walls", STYLE_LIGHT_2, false);
     settings_speed_slider = new Slider(settings_group, LAYOUT("MENU_ITEM_3"), 200U, 0U, STYLE_SETTINGS_SLIDER);
+    settings_theme_switch = new Switch(settings_group, LAYOUT("MENU_ITEM_7"), "Theme", STYLE_LIGHT_2, false, "Dark", "Light");
     settings_speed_label = new DataLabel<int>(settings_group, LAYOUT("MENU_ITEM_2"), "Speed: ", 0, STYLE_LIGHT_2_SF);
 
     settings_speed_slider->add_range(SPEED_MIN, SPEED_MAX, "SPEED");
@@ -141,6 +142,7 @@ void Game::load_settings(void) {
     SETTINGS.load();
     
     settings_wall_switch->set_value((bool)(SETTINGS("WALLS")));
+    settings_theme_switch->set_value((bool)(SETTINGS("THEME")));
     settings_speed_slider->set_value(SETTINGS("SNAKE_STARTING_SPEED"), "SPEED");
 
     snake.set_delay(settings_speed_slider->get("DELAY"));
@@ -152,6 +154,7 @@ void Game::save_settings(void) {
 
     SETTINGS("SNAKE_STARTING_SPEED", speed_value);
     SETTINGS("WALLS", settings_wall_switch->get_value() ? UINT_ONE : UINT_ZERO);
+    SETTINGS("THEME", settings_theme_switch->get_value() ? UINT_ONE : UINT_ZERO);
 
     SETTINGS.save();
 }
@@ -231,11 +234,14 @@ void Game::update(void) {
 void Game::render(void) {
     
     BeginDrawing();
-    ClearBackground(COLORS("GREY2"));
 
-    grid.render_background();
-    current_state->render();
-    gui->render();
+    unsigned int theme_index = (unsigned int)(settings_theme_switch->get_value());
+
+    ClearBackground(THEME[theme_index]("GREY2"));
+    grid.render_background(THEME[theme_index]);
+    current_state->render(THEME[theme_index]);
+    gui->render(THEME[theme_index]);
+
     EndDrawing();
 }
 

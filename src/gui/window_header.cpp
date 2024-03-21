@@ -49,14 +49,14 @@ void WindowHeader::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
 }
 
 
-void WindowHeader::render(void) const {
+void WindowHeader::render(ColorData& colors) const {
     Vector label_position = Vector(style.font_size / 4, centery() - style.font_size / 2 + 2);
-    Color close_color = close_hovered ? style.color_2_active : style.color_2_passive;
-    Color minimize_color = minimize_hovered ? style.color_3_active : style.color_3_passive;
+    std::string close_color = close_hovered ? style.color_2_active : style.color_2_passive;
+    std::string minimize_color = minimize_hovered ? style.color_3_active : style.color_3_passive;
 
-    draw(style.color_1_passive);
-    draw_text(text.c_str(), style.color_1_active, label_position);
+    draw(colors(style.color_1_passive));
+    draw_text(text.c_str(), colors(style.color_1_active), label_position);
 
-    close_rect.draw(close_color);
-    minimize_rect.draw(minimize_color);
+    close_rect.draw(colors(close_color));
+    minimize_rect.draw(colors(minimize_color));
 }

@@ -5,6 +5,7 @@
 #include "raylib.hpp"
 #include "const.hpp"
 #include "cell.hpp"
+#include "color_data.hpp"
 
 
 class Grid : public Rect{
@@ -15,8 +16,8 @@ public:
     Grid(const Vector position);
 
     void update(void);
-    void render_background(void) const;
-    void render_cells(const Vector snake_direction, const bool passive = false);
+    void render_background(ColorData& colors) const;
+    void render_cells(ColorData& colors, const Vector snake_direction, const bool passive = false);
 
     Cell& cell_at(const Vector position);
     std::vector<Cell*> empty_cells(void);

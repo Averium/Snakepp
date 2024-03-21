@@ -25,7 +25,7 @@ public:
     void set_state(const Celltype type);
 
     void update(void);
-    void render(const Vector position, const Vector forward) const;
+    void render(ColorData& colors, const Vector position, const Vector forward) const;
 
     Celltype type;
     unsigned int counter;

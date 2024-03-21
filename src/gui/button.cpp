@@ -14,7 +14,7 @@ Button::Button(
 ) : TextLabel(group, position, text, style, alignment, layer) {}
 
 
-void Button::render(void) const {
-    Color color = is_hovered() ? style.color_1_active : style.color_1_passive;
-    draw_text(text.c_str(), color);
+void Button::render(ColorData& colors) const {
+    const std::string color = is_hovered() ? style.color_1_active : style.color_1_passive;
+    draw_text(text.c_str(), colors(color));
 }

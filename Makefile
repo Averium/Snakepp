@@ -7,7 +7,7 @@ C := .cpp
 O := .o
 H := .hpp
 
-GCC := g++ -std=c++20
+GCC := g++ -std=c++20 -mwindows
 
 RAYLIB_LINK_FLAGS := -lraylib -lopengl32 -lgdi32 -lwinmm
 

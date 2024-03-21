@@ -54,10 +54,10 @@ void Slider::events(MouseHandler& mouse, KeyboardHandler& keyboard) {
 }
 
 
-void Slider::render(void) const {
-    Color rail_color = (is_grabbed() || is_hovered()) ? style.color_2_active : style.color_2_passive;
-    Color slider_color = (is_grabbed() || is_hovered()) ? style.color_1_active : style.color_1_passive;
+void Slider::render(ColorData& colors) const {
+    std::string rail_color = (is_grabbed() || is_hovered()) ? style.color_2_active : style.color_2_passive;
+    std::string slider_color = (is_grabbed() || is_hovered()) ? style.color_1_active : style.color_1_passive;
 
-    rail.draw(rail_color);
-    slider.draw(slider_color);
+    rail.draw(colors(rail_color));
+    slider.draw(colors(slider_color));
 }

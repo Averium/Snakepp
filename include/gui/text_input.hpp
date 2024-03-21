@@ -25,7 +25,7 @@ public:
     void blink_cursor(void);
 
     virtual void events(MouseHandler& mouse, KeyboardHandler& keyboard) override;
-    virtual void render(void) const override;
+    virtual void render(ColorData& colors) const override;
 
 private:
     bool cursor_visible = true;
