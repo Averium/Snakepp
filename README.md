@@ -25,6 +25,10 @@ List the key features of your project. You can use bullet points for better read
 - Easy to get started (everything is included except for a GCC compiler)
 
 ## Installation
+For playing:
+- download latest release
+- run main.exe
+
 Step-by-step instructions on how to get started with this project:
 
 - install any MinGW version with C++20 support
