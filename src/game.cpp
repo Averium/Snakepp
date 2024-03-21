@@ -74,11 +74,11 @@ void Game::init_gui(void) {
     menu_about_button = new Button(menu_group, LAYOUT("MENU_ITEM_7"), "About", STYLE_LIGHT_2);
     menu_exit_button = new Button(menu_group, LAYOUT("MENU_ITEM_9"), "Exit", STYLE_LIGHT_2);
 
-    settings_back_button = new Button(settings_group, LAYOUT("MENU_ITEM_9"), "Back", STYLE_LIGHT_2);
-    settings_wall_switch = new Switch(settings_group, LAYOUT("MENU_ITEM_5"), "Walls", STYLE_LIGHT_2, false);
-    settings_speed_slider = new Slider(settings_group, LAYOUT("MENU_ITEM_3"), 200U, 0U, STYLE_SETTINGS_SLIDER);
+    settings_speed_label = new DataLabel<int>(settings_group, LAYOUT("MENU_ITEM_1"), "Speed: ", 0, STYLE_LIGHT_2_SF);
+    settings_speed_slider = new Slider(settings_group, LAYOUT("MENU_ITEM_2"), 200U, 0U, STYLE_SETTINGS_SLIDER);
+    settings_wall_switch = new Switch(settings_group, LAYOUT("MENU_ITEM_4"), "Walls", STYLE_LIGHT_2, false);
     settings_theme_switch = new Switch(settings_group, LAYOUT("MENU_ITEM_7"), "Theme", STYLE_LIGHT_2, false, "Dark", "Light");
-    settings_speed_label = new DataLabel<int>(settings_group, LAYOUT("MENU_ITEM_2"), "Speed: ", 0, STYLE_LIGHT_2_SF);
+    settings_back_button = new Button(settings_group, LAYOUT("MENU_ITEM_9"), "Back", STYLE_LIGHT_2);
 
     settings_speed_slider->add_range(SPEED_MIN, SPEED_MAX, "SPEED");
     settings_speed_slider->add_range(DELAY_MAX, DELAY_MIN, "DELAY");
