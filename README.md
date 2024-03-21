@@ -35,5 +35,5 @@ Step-by-step instructions on how to get started with this project:
 - create a local folder with any name: <your_project> for now
 - open commant promt and cd into <your_project>
 - type "git clone https://github.com/Averium/Snakepp"
-- type "make" to compile the project -> main.exe appears
+- type "make" to compile the project
 - type "main" to run main.exe
