@@ -16,7 +16,7 @@ The goal of this project is to gain experience and better understanding of the f
 - Raylib
 
 ## Features
-List the key features of your project. You can use bullet points for better readability.
+List of key features.
 
 - Custom game framework
 - Custom event handling system
